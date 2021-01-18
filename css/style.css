@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+
+body {
+    font-family: 'Oswald', sans-serif;
+}
+
+.header-title {
+    margin: auto;
+    width: 80%;
+    padding: 10px;
+    padding-left: 30px;
+    border-bottom: 1px solid;
+}
+
+.header-title h1, .header-title h3 {
+    display: inline-block;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+section.main {
+    margin: auto;
+    width: 80%;
+}
+
+section.menu-left {
+    display: table-cell;
+    padding-right: 15px;
+    border-right: 1px solid;
+}
+
+section.menu-left ul {
+    padding: 0px;
+}
+
+section.menu-left li {
+    list-style: none;
+    padding: 10px;
+    padding-left: 40px;
+}
+
+section.menu-left li:hover {
+    background: whitesmoke;
+    border-radius: 10px 10px 10px 50px;
+    cursor: pointer;
+}
+
+section.content {
+    margin: auto;
+    width: 80%;
+    display: table-cell;
+    padding-left: 10px;
+    overflow: scroll;
+}
+
+footer {
+    position: fixed;
+    left: 90%;
+    bottom: 0;
+    border-top: 1px solid;
+    margin-bottom: 10px;
+    background: white;
+}
+
+footer a{
+    text-decoration: none;
+    color: black;
+}
+
+@media only screen and (max-width: 600px) {
+    section.menu-left {
+        display: none
+    }
+  }
