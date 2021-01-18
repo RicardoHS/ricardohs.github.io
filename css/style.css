@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
-
 body {
     font-family: 'Oswald', sans-serif;
 }
@@ -21,6 +20,17 @@ body {
 section.main {
     margin: auto;
     width: 80%;
+}
+
+section.menu-top {
+    display: none;
+}
+
+section.menu-top li {
+    display: inline;
+    padding: 3px 10px;
+    margin: 0px;
+    border: 1px solid;
 }
 
 section.menu-left {
@@ -62,7 +72,7 @@ footer {
     background: white;
 }
 
-footer a{
+footer a {
     text-decoration: none;
     color: black;
 }
@@ -71,4 +81,11 @@ footer a{
     section.menu-left {
         display: none
     }
-  }
+    section.menu-top {
+        display: inline;
+        border-bottom: 1px solid;
+    }
+    section.menu-top ul {
+        padding: 0px;
+    }
+}
