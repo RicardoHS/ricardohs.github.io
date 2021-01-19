@@ -6,6 +6,4 @@ A person interested on computer science, maths, psychology and philosophy. Const
 
 Stuff I specially enjoy: music composition, piano, minimalistic design, photography, film-making and videogames.
 
-Stuff I enjoy but a little bit less: Anything.
-
 You can contact me through my social media links (bottom-right part)
