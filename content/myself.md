@@ -1,6 +1,6 @@
 # About
 
-<img src="content/img/photo1.jpeg" alt="Smiley face" width="200" height="200" style="border-radius: 50%;">
+<img src="content/img/photo1.jpeg" alt="my face" width="200" height="200" style="border-radius: 50%;">
 
 A person interested on computer science, maths, psychology and philosophy. Constantly learning new things.
 
