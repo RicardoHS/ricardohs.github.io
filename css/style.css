@@ -47,20 +47,19 @@ section.menu-left li {
     list-style: none;
     padding: 10px;
     padding-left: 40px;
+    padding-right: 90px;
 }
 
 section.menu-left li:hover {
     background: whitesmoke;
     border-radius: 10px 10px 10px 50px;
     cursor: pointer;
+    transition: 300ms;
 }
 
 section.content {
-    margin: auto;
-    width: 80%;
     display: table-cell;
     padding-left: 10px;
-    overflow: scroll;
 }
 
 footer {

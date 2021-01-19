@@ -1,9 +1,11 @@
 # About
 
-Nothing yet!
+<img src="content/img/photo1.jpeg" alt="Smiley face" width="200" height="200" style="border-radius: 50%;">
 
-Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo expedita ut temporibus! Debitis eos, voluptatum porro quas nobis laboriosam, nostrum autem optio temporibus necessitatibus, asperiores tempora sint quaerat placeat suscipit? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo expedita ut temporibus! Debitis eos, voluptatum porro quas nobis laboriosam, nostrum autem optio temporibus necessitatibus, asperiores tempora sint quaerat placeat suscipit?
+A person interested on computer science, maths, psychology and philosophy. Constantly learning new things.
 
+Stuff I specially enjoy: music composition, piano, minimalistic design, photography, film-making and videogames.
 
-# OVERFLOW
+Stuff I enjoy but a little bit less: Anything.
 
+You can contact me through my social media links (bottom-right part)
