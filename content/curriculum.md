@@ -40,7 +40,7 @@ The **master thesis** consisted on a methological review/improvement of the curr
 ### Software Engineering
 2017 - Bacheelor's Degree - Universidad Politécnica de Madrid (Spain)
 
-Computer science foundations, electrical phisics, programming, algorithms, computational complexity, data bases, data structures, software design, software requirements engineering, networks, operating systems fundations, programing languages foundations, basic statistics, algebra and more. [[Complete Curriculum]](https://www.etsisi.upm.es/estudios/grados/61iw/ig)
+Computer science foundations, electrical physics, programming, algorithms, computational complexity, data bases, data structures, software design, software requirements engineering, networks, operating systems foundations, programing languages foundations, basic statistics, algebra and more. [[Complete Curriculum]](https://www.etsisi.upm.es/estudios/grados/61iw/ig)
 
 Final thesis consisted on the analysis and develop of a new text compressing algorithm based on fibonacci and lucas secuence generalization, namely zeckendorf generalization. Based on this generalization, a new set of universal codes was proposed, named zeckendorf codes. [[Code]](https://github.com/RicardoHS/zeckendorf-codes) [[Link to PDF (Spanish)]](http://oa.upm.es/51903/1/TFG_RICARDO_HORTELANO_SANCHEZ.pdf)
 
