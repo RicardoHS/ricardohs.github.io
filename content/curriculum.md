@@ -58,5 +58,6 @@ I dont really like these kind of sections. The tools I use are constantly changi
 
  - Programming: Python, R, Bash and Javascript on things I use daily. Julia, C/C++, C#, Java, GoLang on things I use sporadically and need to be briefly reviewed before re-use it.
  - Statistics: Data Analysis, Forecasting, Clustering, Dimmension Reduction, Time Series, Machine Learning, Deep Learning.
+ - Visualization: matplotlib, ggplot2, seaborn, d3.js
  - Tools/Stack: Sci-kit Learn, Pytorch, Numpy, Pandas, nltk, gensim, huggingface, tidyverse, ORMs, Flask, Django, PostgreSQL, MongoDB (ask me if these kind of stuff is important for you)
  - Software: GNU/Linux, Git, CI/CD, SQL, NoSQL, Web Scraping, Docker, Kubernetes, AWS, GCP, DigitalOcean, Bootstrap, Microservices and growing.
