@@ -1,0 +1,11 @@
+https://arxiv.org/pdf/2007.13237.pdf
+
+https://www.jmlr.org/papers/volume10/gunawardana09a/gunawardana09a.pdf
+
+https://sci-hub.do/10.1145/2043932.2043955
+
+http://irntez.ir/wp-content/uploads/2016/12/sciencedirec.pdf
+
+https://infoscience.epfl.ch/record/269050/files/p179.pdf
+
+https://github.com/microsoft/recommenders/blob/main/examples/01_prepare_data/data_split.ipynb
