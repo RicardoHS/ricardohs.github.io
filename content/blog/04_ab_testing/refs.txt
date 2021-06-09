@@ -1,0 +1,8 @@
+https://towardsdatascience.com/a-guide-to-a-b-testing-how-to-formulate-design-and-interpret-f820cc62e21a
+https://blog.analytics-toolkit.com/2017/statistical-significance-ab-testing-complete-guide/
+https://blog.analytics-toolkit.com/2017/importance-statistical-power-online-ab-tests/
+https://www.gigacalculator.com/articles/p-value-definition-and-interpretation-in-statistics/
+
+
+https://www.evanmiller.org/ab-testing/sample-size.html
+https://www.evanmiller.org/ab-testing/chi-squared.html#
