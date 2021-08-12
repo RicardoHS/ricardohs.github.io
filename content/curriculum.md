@@ -1,10 +1,10 @@
 # Work Experience
 ---
-### Data Scientist - Intelygenz (Madrid)
+### Data Scientist / Machine Learning Engineer - Intelygenz (Madrid)
 April 2018 - Present 
 
- - Develop and implement a working methodology for the entire data team that follows the scientific method. This methodology significantly reduced the work required to implement ML models in production. Two tools are based on this work. [[Science Toolkit]](https://github.com/konstellation-io/science-toolkit) [[KRE]](https://github.com/konstellation-io/kre)
- - Design, develop, deploy and monitor machine learning and deep learning models/infrastructure into production environments. Time series forecast, NLP, computer vision and recommendation systems.
+ - Develop and implement a working methodology for the entire data team that follows the scientific method. This methodology significantly reduced the work required to implement ML models in production. Two tools were created from this work. [[Science Toolkit]](https://github.com/konstellation-io/science-toolkit) [[KRE]](https://github.com/konstellation-io/kre)
+ - Design, develop, deploy and monitor machine learning and deep learning models/infrastructure into production environments embracing MLOps philosophy. Time series forecast, NLP, computer vision and recommendation systems.
  - Guide stakeholders to find better business opportunities based on analyzed data that bring new value to the company.
 
 ### Machine Learning Researcher - Universidad Politécnica de Madrid (Madrid)
