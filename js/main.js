@@ -7,7 +7,7 @@ $(document).ready(function () {
         dataFile = `content/${dataFile}`;
         $('section.content').html('Loading...');
         $.get(dataFile, function (data) {
-            $('section.content').html(marked(data));
+            $('section.content').html(marked.parse(data));
         }, "text");
     });
 });
