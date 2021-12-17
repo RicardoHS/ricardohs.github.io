@@ -1,7 +1,15 @@
 # Work Experience
 ---
+### Data Scientist / Machine Learning Engineer - BDEO Technologies (Madrid)
+Nov 2021 - Present
+
+ - Implement MLOps philosophy in the whole data department, increasing data scientist experiments cycles and reducing time to deploying models into production. Data Science manifesto ambassador.
+ - Implement and adapt current data infrastructure to use more robust big data frameworks. This yield to more curated ETL pipelines with more useful data easily available.
+ - Implement new and improve current deep learning computer vision models focusing into optimization. Mask segmentation, image classification, car damage detection and price cost estimation.
+ - Evolve current company products aligning ML models and business needs.
+
 ### Data Scientist / Machine Learning Engineer - Intelygenz (Madrid)
-April 2018 - Present 
+April 2018 - Oct 2021 (3 years, 6 months) 
 
  - Develop and implement a working methodology for the entire data team that follows the scientific method. This methodology significantly reduced the work required to implement ML models in production. Two tools were created from this work. [[Science Toolkit]](https://github.com/konstellation-io/science-toolkit) [[KRE]](https://github.com/konstellation-io/kre)
  - Design, develop, deploy and monitor machine learning and deep learning models/infrastructure into production environments embracing MLOps philosophy. Time series forecast, NLP, computer vision and recommendation systems.
