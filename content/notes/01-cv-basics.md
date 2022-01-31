@@ -196,6 +196,38 @@ cv2.GaussianBlur(img , (5, 5), sigmaX=1.0, borderType=cv2.BORDER_ISOLATED)
 
 ### Linearity and convolution
 
+Linearity is defined when these two properties holds for any function $H$.
 
+ - **Additivity**: $$H(f1 + f2) = H(f1) + H(f2)$$
+ - **Multiplicative scaling** (or homogeneity of degree 1): $$H(a\sdot f1) = a \sdot H(f1)$$
 
+ With these definitions, it is straightforward that functions like $sum$ or $diff$ are linear and functions like $max$ or $average$ are not linear. Same affects to image and kernels. Linearity allows to define a function over a signal (an image) and apply the function to it in the same way as applying the same function to each of the pixels independently and sum up the results. This way, a linear kernel can be parallelized and distributed across multiple CPU and computers.
+
+#### Impulse Function
+
+In the discrete set, an impulse is just a signal with one point of value 1. In the continuous set, is an square very narrow and tall that has unit area. Most of the times, CV only cares about impulse functions in the discrete set.
+
+![](media/cvb_7.png)
+
+The impulse response $h(t)$ is the result of applying a function $H$ over an impulse. If the function is linear we can describe $H$ with $h(t)$. In the next image we can see the effect of applying a kernel on a impulse image. Note how in the next image the kernel is flipped upside down and left to right.
+
+![](media/cvb_8.png)
+
+#### Convolution vs correlation
+
+The cross-correlation formula is
+
+$$
+G = H \otimes F \\
+G[i,j] = \sum_{u=-k}^{k} \sum_{v=-k}^{k} H[u,v] F[i+u, j+v]
+$$
+
+The convolution formula is
+
+$$
+G = H \star F \\
+G[i,j] = \sum_{u=-k}^{k} \sum_{v=-k}^{k} H[u,v] F[i-u, j-v]
+$$
+
+If you note it, the only difference between both is that convolution does not flip the kernel output. The convolution changes the way on how the kernel is iterated, so the output is not flipped. Also note, that for symmetric kernels (like the gaussian filter) the outcome for convolutions and cross-correlations would be the same.
 
