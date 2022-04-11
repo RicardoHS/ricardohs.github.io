@@ -3,22 +3,24 @@
 ### Data Scientist / Machine Learning Engineer - BDEO Technologies (Madrid)
 Nov 2021 - Present
 
- - Implement MLOps philosophy in the whole data department, increasing data scientist experiments cycles and reducing time to deploying models into production. Data Science manifesto ambassador.
- - Implement and adapt current data infrastructure to use more robust big data frameworks. This yield to more curated ETL pipelines with more useful data easily available.
- - Implement new and improve current deep learning computer vision models focusing into optimization. Mask segmentation, image classification, car damage detection and price cost estimation.
- - Evolve current company products aligning ML models and business needs.
+- Implement **MLOps philosophy** in the whole data department, increasing data scientist experiments cycles, reducing errors and time to deploying models into production. **Data Science manifesto** ambassador.
+- Implement and **improve** current **data infrastructure** to use big data frameworks. Define code, microservices and data **architecture** for a wide range of legacy systems. This yield to more curated **ETL pipelines** with more useful data easily available.
+- Implement new and improve current **deep learning computer vision models**. Mask segmentation, image classification, car damage detection and price cost estimation.
+- Evolve current company products aligning ML models and business needs **improving** current and **new KPIs**.
 
 ### Data Scientist / Machine Learning Engineer - Intelygenz (Madrid)
 April 2018 - Oct 2021 (3 years, 6 months) 
 
- - Develop and implement a working methodology for the entire data team that follows the scientific method. This methodology significantly reduced the work required to implement ML models in production. Two tools were created from this work. [[Science Toolkit]](https://github.com/konstellation-io/science-toolkit) [[KRE]](https://github.com/konstellation-io/kre)
- - Design, develop, deploy and monitor machine learning and deep learning models/infrastructure into production environments embracing MLOps philosophy. Time series forecast, NLP, computer vision and recommendation systems.
- - Guide stakeholders to find better business opportunities based on analyzed data that bring new value to the company.
+ - Develop and **implement a working methodology** for the entire data team that follows the scientific method. This methodology significantly reduced the work required to implement ML models in production. Two tools were created from this work. [[Science Toolkit]](https://github.com/konstellation-io/science-toolkit) [[KRE]](https://github.com/konstellation-io/kre)
+ - Design, develop, deploy and monitor **machine learning and ETL pipelines** into **production environments** embracing **MLOps philosophy**. Time series forecast, NLP, computer vision and recommendation systems.
+ - **Analyze** huge amounts of **data** and **communicate** insights to **non-technical stakeholders** in order to find better business opportunities.
+ - Design and perform **A/B testing**.
+ - **Mentor** new ML engineers.
 
 ### Machine Learning Researcher - Universidad Politécnica de Madrid (Madrid)
 January 2017 - March 2018 (1 year, 3 months)
 
- - Research and develop new machine learning models that fits into emerging 5G networks problems at [European-founded project H2020 CogNet](https://5g-ppp.eu/cognet/). Cloud anomaly detection and network traffic pattern recognition.
+ - **Research** and develop new machine learning models that fits into emerging 5G networks problems at [European-founded project H2020 CogNet](https://5g-ppp.eu/cognet/). Cloud anomaly detection and network traffic pattern recognition.
 
 ### Software Developer Intern - Ericsson (Madrid)
 February 2015 - August 2015 (7 months)
@@ -60,12 +62,34 @@ Spent 6 months reviewing computer science stuff, making new friends, learning a 
 <br/>
 <br/>
 
+# Courses
+---
+Here you can find some of the tech courses I have studied on my own.
+
+- [Machine Learning - Coursera, Stanford University](https://www.coursera.org/learn/machine-learning)
+- [PyTorch Scholarship Challenge Nanodegree Program - Udacity, Facebook](https://www.udacity.com/scholarships/facebook-pytorch-scholarship)
+- [Structuring Machine Learning Projects - Coursera, DeepLearning.AI](https://www.coursera.org/learn/machine-learning-projects/home/welcome)
+- [Introduction to Computer Vision - Udacity, Georgia Tech](https://www.udacity.com/course/introduction-to-computer-vision--ud810)
+- [Database Systems Concepts & Design, Udacity, Georgia Tech](https://www.udacity.com/course/database-systems-concepts-design--ud150)
+- [Learn DevOps: The Complete Kubernetes Course - Udemy](https://www.udemy.com/course/learn-devops-the-complete-kubernetes-course/)
+- [Basics of Database Design & Development - Udemy](https://www.udemy.com/course/database-design-development/)
+- [The Complete Front-End Web Development Course! - Udemy](https://www.udemy.com/course/front-end-web-development)
+- [Design of Experiments (4 courses program) - Coursera, Arizona State University](https://www.coursera.org/specializations/design-experiments)
+    - [Experimental Design Basics](https://www.coursera.org/learn/introduction-experimental-design-basics?specialization=design-experiments)
+    - [Factorial and Fractional Factorial Designs](https://www.coursera.org/learn/factorial-fractional-factorial-designs?specialization=design-experiments)
+    - [Response Surfaces, Mixtures, and Model Building](https://www.coursera.org/learn/response-surfaces-mixtures-model-building?specialization=design-experiments)
+    - [Random Models, Nested and Split-plot Designs](https://www.coursera.org/learn/random-models-nested-split-plot-designs?specialization=design-experiments)
+
+ <br/>
+ <br/>
+
 # Technological Stack
 ---
 I dont really like these kind of sections. The tools I use are constantly changing and learning new stuff is not a problem for me. Nevertheless some people find this list useful.
 
- - Programming: Python, R, Bash and Javascript on things I use daily. Julia, C/C++, C#, Java, GoLang on things I use sporadically and need to be briefly reviewed before re-use it.
- - Statistics: Data Analysis, Forecasting, Clustering, Dimmension Reduction, Time Series, Machine Learning, Deep Learning.
+ - Programming: Python, R, Bash and Javascript on things I use daily. Julia, C/C++, C#, Java, GoLang on things I use sporadically.
+ - Statistics: Data Analysis, Forecasting, Clustering, Dimension Reduction, Time Series, Machine Learning, Deep Learning, Experiment Design, A/B testing.
  - Visualization: matplotlib, ggplot2, seaborn, d3.js
- - Tools/Stack: Sci-kit Learn, Pytorch, Numpy, Pandas, nltk, gensim, huggingface, tidyverse, ORMs, Flask, Django, PostgreSQL, MongoDB, Apache Airflow (ask me if these kind of stuff is important for you)
- - Software: GNU/Linux, Git, CI/CD, SQL, NoSQL, Web Scraping, Docker, Kubernetes, AWS, GCP, DigitalOcean, Bootstrap, Microservices and growing.
+ - Tools/Stack: Sci-kit Learn, statsmodels, Pytorch, Pytorch Lightning, Tensorflow, Keras, Numpy, Pandas, pyspark, nltk, gensim, huggingface, tidyverse, ORMs, SQLAlchemy, Flask, Django, PostgreSQL, MongoDB, Apache Airflow (ask me if these kind of stuff is important for you)
+ - Cloud/Infrastructure: Docker, Kubernetes, AWS, GCP, DigitalOcean
+ - Software/Methodology: GNU/Linux, Git, CI/CD, SQL, NoSQL, Web and pdf Scraping, Bootstrap, Microservices...
