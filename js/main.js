@@ -3,7 +3,6 @@ console.log('js is working');
 window.onload = function(){
     if (window.location.pathname === "/index.html"){
         pageParam = new URL(location.href).searchParams.get("page")
-        console.log(pageParam)
         if (pageParam == null){
             window.history.pushState({}, '', window.location.origin)
         }else{

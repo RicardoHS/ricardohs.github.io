@@ -8,9 +8,15 @@
     document.querySelector(".home-link").href = home
 
     dataFile = window.location.href.split("/").at(-1)
-    if (dataFile !== "404.html"){
-        document.location.href = home + "/" + dataFile
-    }else{
-        document.location.href = home + "/index.html"
-    }
+    const delayedRedirect = async () => {
+        const delay = ms => new Promise(res => setTimeout(res, ms));
+        await delay(5000);
+        if (dataFile !== "404.html"){
+            document.location.href = home + "/index.html?page=" + dataFile
+        }else{
+            document.location.href = home + "/index.html"
+        }
+    };
+    delayedRedirect();
+    
 </script>
