@@ -1,0 +1,16 @@
+<body>
+    <p>If you are not redirected in five seconds, <a class="home-link" href="">click here</a>.</p>
+</body>
+
+<script>
+    console.log("js is working")
+    home = window.location.origin
+    document.querySelector(".home-link").href = home
+
+    dataFile = window.location.href.split("/").at(-1)
+    if (dataFile !== "404.html"){
+        document.location.href = home + "/" + dataFile
+    }else{
+        document.location.href = home + "/index.html"
+    }
+</script>
