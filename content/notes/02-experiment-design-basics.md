@@ -11,7 +11,7 @@ This course aims to explain the basics of scientific experimental design and res
 3. Experiments with a Single Factor - The Analysis of Variance
 4. Randomized Blocks, Latin Squares, and Related Designs
 
-## Introduction to Design and Analysis of Experiments
+## 1 - Introduction to Design and Analysis of Experiments
 
 The branch obviously originates with Ronald Fisher. In the mid decade of 1910, Fisher described the principal concepts of the field even nowadays, namely:
 
@@ -94,7 +94,7 @@ These are the seven steps recommended by Montgomery. Conducting an experiment is
 As a final advise, Montgomery say to use the KISS principle. "Keep it simple and sequential". Large experiments often fails because we don't know enough the system when experiment design starts. We learn when conducting multiple experiments. So it's better to run multiple sequential small experiments rather than one large complex experiment.
 
 
-## Simple Comparative Experiments
+## 2 - Simple Comparative Experiments
 
 One thing you want to do when experiment data arrives is to visually inspect the actual data. Apart from the datatable, you will also want to use visual plots. Three of the best plots you can use to inspect the data are:
  - Scatter plots: If n is low than 30. Plotting the values differentiating by color is a good idea.
@@ -355,4 +355,470 @@ Note that this approach have a lot of advantages, so it's preferred over normal 
 # Note: ensure order of p1 and p2 is correct
 t_statistic, p_value = stats.ttest_rel(p1, p2, alternative="two-sided")
 ```
+
+## 3 - Experiments with a Single Factor - The Analysis of Variance
+
+From the previous chapter, all experiments had one factor with two levels. Here we are going to see experiments of one factor with multiple levels and how to analyze them.
+
+The tool used to deal with these kind of experiments is called Analysis of Variance or ANOVA. In it, there will be:
+ - $a$ numbers of factors or treatments
+ - $n$ replicates of the experiment runs in a completely randomized design (CRD)
+ - $N=a \sdot n$ will be the total number of runs.
+ 
+There is also two settings for ANOVA:
+
+ - **Fixed-effects ANOVA**: It assumes the particular levels of the experiment have been chosen by the researcher and the hypothesis will be to check for equality on the means of those levels.
+ - **Random-effects ANOVA**: On it, the level values are chosen at random. We test for differences in variance components.
+
+The name ANOVA comes from the partitioning of the total variability in the response variable into components of the experiment model. In other words, ANOVA assumes an underlying model that explains the experiment and one of its components defines the variability.
+
+ ### Fixed-Effects ANOVA
+
+For a single factor ANOVA the underlying model is:
+
+$$
+y_{ij} = \mu + \tau_i + \epsilon_{ij}
+$$
+
+ - $i = 1,2,\dots,a$
+ - $j = 1,2,\dots,n$
+ - $y_{ij}$ is the $j$ observation in the $i$ treatment. 
+ - $\mu$ is the overall mean. Constant to all of the observations.
+ - $\tau_i$ is the effect of the individual $i$ treatment.
+ - $\epsilon_{ij}$ is the random error $\sim N(0, \sigma^2)$.
+
+ With this framework, if the treatment effects differ it's because the $\tau_i$ components are different. This model is called **the effects model**.
+
+ If you let $\mu_i=\mu+\tau_i$ and then $y_{ij}=\mu_i+\epsilon_{ij}$ this is called **the means model**. Albeit regression models can also be used. 
+
+#### Total variability
+
+The total variability of a model is measured as the total sum of squares:
+
+$$
+SS_T = \sum_{i=1}^{a} \sum_{j=1}^{n} (y_{ij} - \bar{y})^2
+$$
+
+This can be separated into two different components:
+
+$$
+\sum_{i=1}^{a} \sum_{j=1}^{n} (y_{ij} - \bar{y})^2 = n \sum_{i=1}^{a} (\bar{y_i} - \bar{y})^2 + \sum_{i=1}^{a} \sum_{j=1}^{n} (y_{ij} - \bar{y_i})^2
+$$
+
+Then we have
+
+$$
+SS_T = SS_{\text{Treatments}} + SS_E
+$$
+
+The first term is a sum of squares that reflect how different the treatment averages are from the total average. If the means are equal we could expect $SS_{Treatments}$ to be relatively small mainly because the means would be very similar to the total average. The second term just measures the experimental error, something that does not directly affects the treatments.
+
+Our experimental hypotheses would be:
+
+$$
+H_0 : \mu_1 = \mu_2 = \dots = \mu_a \\
+H_1 : \text{At least one mean is different}
+$$
+
+Because sum of squares cannot be directly compared (they do not use the same magnitude) we can compare mean squares. A **mean square** is a sum of squares divided by its degrees of freedom.
+
+$$
+df_{total} = df_{treatments} + df_{error} \\
+an - 1 = a - 1 + a(n-1) \\
+$$
+
+Then we define the mean square for the components as
+
+$$
+MS_{treatment} = \frac{SS_{treatment}}{a-1} \\ \space \\
+MS_E = \frac{SS_E}{a(n-1)}
+$$
+
+Finally, if means are equal then the mean square for the treatments $MS_{treatment}$ will be equal to the mean square of error $MS_E$. If means differ then $MS_{treatment} > MS_E$ .
+
+The statistic used for the experiment is
+
+$$
+F_0 = \frac{MS_{treatments}}{MS_E}
+$$
+
+and follows the F-distribution of parameters $a-1$ and $a(n-1)$. For the experiment, the null hypothesis will be rejected if
+
+$$
+F_0 > F_{\alpha,a-1,a(n-1)}
+$$
+
+with an $\alpha$ value normally set to $0.05$.
+
+```python
+# perform ANOVA, alpha==pvalue
+from scipy import stats
+g3 = stats.norm.rvs(size=10)
+
+f_statistic, pvalue = stats.f_oneway(g1, g2, g3)
+```
+
+The F-distribution looks like this
+
+![](media/dei_6.gif)
+
+### Checking Assumptions
+
+There are several assumptions to check when performing ANOVA:
+
+- Normality
+- Constant Variance (Homoscedasticity)
+- Independence through Completely Randomized Design
+- Checking for unexplained variability (not right fitted model)
+
+Most of these assumptions can be checked analyzing the **residuals** of the model. A residual is just the actual value minus the predicted value.
+
+$$
+e_{ij} = y_{ij} - \hat{y_i}
+$$
+
+These values should hold the same assumptions.
+
+```python
+# check for assumptions visually
+for g in [g1, g2, g3]:
+    stats.probplot(g-np.mean(g), plot=plt)
+    plt.show()
+```
+
+### What to do when the null hypothesis is rejected?
+
+When the null hypothesis is rejected a new problem arise. It's to detect which mean is the different in the group. There are several methods, most popular ones are:
+
+ - Fisher's Least Significant Difference, Fisher LSD
+ - Tukey's Honest Significance Test, Tukey's HSD, Tukey's range test
+ - Other graphical methods
+
+ These numerical methods basically perform all possible pairwise t-test in order to detect which one is different. With equal means as null hypothesis, if the p-value is low enough then implies the means are different.
+
+```python
+import numpy as np
+# perform tukey's HSD test
+endog = np.concatenate([g1,g2,g3])
+groups = np.concatenate([["g1"]*len(g1), ["g2"]*len(g2), ["g3"]*len(g3)])
+
+test = statsmodels.stats.multicomp.pairwise_tukeyhsd(endog, groups, alpha=0.05)
+print(test) # p-adj are the pvalues
+
+# individual values can also be accessed
+test.pvalues 
+test.reject
+
+# graphical test 
+test.plot_simultaneous()
+plt.show()
+```
+
+![](media/dei_7.png)
+
+
+### Determining Sample Size
+
+Determining the sample size of the experiment is something crucial. There are several factor involved, mainly resources and scope. From the design aspect there are several ways to define the final sample size. The main one is to set the sensitivity of the experiment.
+
+Sensitivity is defined as the differences in means that the experiment is able to detect. In general, increasing the sample size increases the sensitivity, so it's more probable to detect smallest differences in the means. 
+
+#### Sample Size for the fixed effects case
+
+Usually we can define the sample size for the fixed effects case satisfying some levels of Error Type I and Error Type II:
+
+ - Error Type I ($\alpha$): Reject $H_0$ when it's true.
+ - Error Type II ($\beta$): Accept (or not reject) $H_0$ when it's false.
+
+From these two definitions we can also define other useful and widely used terms:
+
+ - Power of the experiment: $1-\beta$ 
+ - Operating characteristic curves: Linear plot of $\beta$ against parameter $\Phi$
+
+$$
+\Phi^2 = \frac{n \sum_{i=1}^{a} \tau_i^2}{a\sigma^2}
+$$
+
+As stated before $\tau_i$ is the effect of the individual $i$ treatment. The operating characteristic curve give us information about the amount of sample to use.
+
+Another useful tool is to perform **power analysis**. It consist of plotting sample size in terms of power, the so called power curves. [Full guide.](https://machinelearningmastery.com/statistical-power-and-power-analysis-in-python/)
+
+```python
+# plot power curves
+import statsmodels.stats.power as power
+
+# effect_size = standardized effect size, difference between the two means divided by the standard deviation
+power.TTestIndPower().plot_power(nobs=np.array(range(5,2000)), effect_size=[0.25,0.5,0.8, 0.99])
+plt.show()
+
+# compute experiment power for a given sample size
+# nobs1 = sample size
+power = power.TTestIndPower().solve_power(effect_size=0.1, nobs1=30, alpha=0.05)
+```
+
+![](media/dei_8.png)
+
+### Random-effects model
+
+In the random-effects model the factor levels are chosen at random from a population of levels. The experimenter choses $a$ of these levels at random. The tests aims to infer results for the whole population of levels instead of some of them.
+
+The linear model is similar to the fixed-effects test.
+
+$$
+y_{ij} = \mu + \tau_i + \epsilon_{ij}
+$$
+
+But here, the factor levels $\tau_i$ are sampled at random from a $N(0,\sigma^2_\tau)$. Because $\tau_i$ are independent from $\epsilon_{ij}$ the variance of any observation is:
+
+$$
+V(y_{ij}) = \sigma^2_\tau + \sigma^2
+$$
+
+The $\sigma^2_\tau$ components are called **variance components** and we want to estimate those. The random-effects model is sometimes called **variance components model**.
+
+There are a covariance structure in this model. For any two observations of different factor levels the covariance is $\sigma^2_\tau$ and for any two observations of the same factor level the covariance is $0$. This is because we can assume differences in same factor levels are due only to random error.
+
+$$
+Cov(y_{ij}, y_{ij'}) = \sigma^2_\tau \quad\quad j \neq j' \\
+Cov(y_{ij}, y_{i'j}) = 0 \quad\quad i \neq i' 
+$$
+
+For the ANOVA, the sum of squares identity is still valid
+
+$$
+SS_T = SS_{\text{Treatments}} + SS_E
+$$
+
+But for the hypotheses we can no longer test for equality of means, because now we are interested on the population. So the hypotheses would be:
+
+$$
+H_0: \sigma^2_\tau = 0 \\
+H_1: \sigma^2_\tau > 0
+$$
+
+If $\sigma^2_\tau = 0$ all treatments levels are equal but if it is greater than $0$ then it implies some variability exists apart from the random error.
+
+The statistic is similar as previously:
+
+$$
+F_0 = \frac{MS_{treatments}}{MS_E}
+$$
+
+Distributed as a F-distribution of parameters $a-1$ and $N-a$. However we need to examine the expected mean squares to complete the test procedure:
+
+$$
+E[MS_\text{treatments}] = \sigma^2 + n\sigma^2_\tau \\
+E[MS_E] = \sigma^2
+$$
+
+The ANOVA F-test is similar for the fixed-effects and random-effects models. If mean squares treatments $MS_\text{treatments}$ is larger than mean squares error $MS_E$ then it implies $\sigma^2_\tau$ is larger than $0$ and we can use the F-statistic to test the hypothesis.
+
+$$
+\text{If } MS_\text{treatments} > MS_E \text{ then reject } H_0
+$$
+
+To estimate $\sigma^2$ and $\sigma^2_\tau$ we can use 
+
+$$
+\hat{\sigma}^2 = MS_E \\
+\hat{\sigma}^2_\tau = \frac{MS_{treatments} - MS_E}{n}
+$$
+
+The ANOVA variance components estimators are moments estimators. Normality assumption is not necessary. These estimators are unbiased estimators and negative estimations can occur when error estimation is greater than the effect estimations.
+
+> Example of random-effect ANOVA test: A textile fabric want to test if all the weaves they fabric have the same strength, in other words, they want to know if all weaves are homogeneous independently of the loom they have been fabric. They have 100 looms so they choose at random 4 looms and for each of those 4 looms they choose again 4 weaves. In total they have 4*6=24 weaves to test.
+
+```python
+# example test
+l1 = [98,97,99,96]
+l2 = [91,90,93,92]
+l3 = [96,95,97,95]
+l4 = [95,96,99,98]
+
+
+f_statistic, pvalue = stats.f_oneway(l1,l2,l3,l4)
+# F_onewayResult(statistic=15.681, pvalue=0.0001)
+# there are differences between looms
+```
+
+When dealing with the alternative hypothesis, normally we want to get the overall mean. It's very straightforward
+
+$$
+\mu = \bar{y}
+$$
+
+If we want to get the individual variance components we can use **Residual Maximum Likelihhod (REML)**. [Complete guide to do it on python](https://www.statsmodels.org/dev/examples/notebooks/generated/generic_mle.html). [Explanation of the guide](https://www.statsmodels.org/stable/mixed_linear.html). Just note that if the data is balanced (the same number of observations per level) then the REML is going to be equal to the moments estimators but with REML we will have confidence intervals.
+
+## 4 - Randomized Blocks, Latin Squares, and Related Designs
+
+When designing experiments it occurs very often we need to deal with nuisance variables, that is, variables that affect the experiment but we do not want to directly study. For these variables we want to reduce the error that they introduces in the response variable. If we do not deal with nuisance factors then our error will increase unnecessarily.
+
+One of the techniques we can use is called blocking. By designing the experiment in the so called **randomized complete blocking design RCBD** we can deal with those nuisance factors. Of course, ANOVA can be extended to include RCBD. Other technique used is the **Latin squares designs**.
+
+Some examples of nuisance factors can be, batches of raw materials, operators, pieces of tests equipment, time (days, weeks, etc). Failing to correctly blocking the experiments is a very common flaw in correct experiment design. The consequences can be devastating. Because non-blocking introduces the nuisance factors variability in the response variable, the test can fail to detect the minimum effect. Increasing sample size (and cost) unnecessarily because non-blocking is also an issue.
+
+If the nuisance factor is known and controllable we can use blocking. If the nuisance factor is known but uncontrollable we can use a technique called **Analysis of Covariance** to remove the effect of the nuisance factors. 
+
+If the nuisance factor is unknown and uncontrollable, that is a **lurking variable**, the only thing we can do is to rely on the randomization to balance the impact in the experiment.
+
+A **block** is a **experimental unit** that **holds randomization**. Randomization is not hold between blocks but with-in. With this in mind, we could expect high variability between blocks but low variability with-in blocks. In general, a block is used to define a specific level of your nuisance factor.
+
+> Example: An experiment want to test tip effect between tips. The experiment is performed with different types of material (each type is a block). Here the nuisance factor is material and each material type is a level. With-in each type of material a completely randomized design (CRD) is performed with the same tips to test but not between blocks, that is, first we try all tips with one material in CRD, later CRD all tips with another material, etc. Because we are blocking the material there will be no problem at all.
+
+### Extending ANOVA to blocking
+
+Because with blocking we want to reduce the variance introduced by the blocks we can extend the ANOVA model by adding a new term $\beta_j$
+
+$$
+y_{ij} = \mu + \tau_i + \beta_j + \epsilon_{ij}
+$$
+
+ - $i = 1,2,\dots,a$
+ - $j = 1,2,\dots,b$
+ - $\beta_j$ is the block effect
+ - The rest of terms are the same with the same assumptions as in the fixed-effects ANOVA
+
+This framework assumes that the treatments levels and blocks are fixed. The hypotheses are quite similar
+
+$$
+H_0 : \mu_1 = \mu_2 = \dots = \mu_a \\
+H_1 : \text{At least one mean is different}
+$$
+
+where
+
+$$
+\mu_i = (1/b) \sum_{j=1}^{b} (\mu + \tau_i + \beta_j) = \mu + \tau_i
+$$
+
+Thus the ANOVA partitioning total sum of squares will be
+
+$$
+SS_{T} = b \sum_{i=1}^{a} (\bar{y}_i - \bar{y})^2 + a \sum_{j=1}^{b} (\bar{y}_j - \bar{y})^2 + \sum_{i=1}^{a} \sum_{j=1}^{b} (y_{ij} - \bar{y}_i - \bar{y}_j + \bar{y})^2 
+$$
+$$
+SS_T = SS_{treatments} + SS_{blocks} + SS_E
+$$
+
+Note that the method takes the treatment averages and subtract the grand average squaring the differences for the first term. For the second term it takes the blocks average and subtract the grand average, squaring the differences and the third term is just the unexplained variance or error. It just remove from each observation the treatment and block effect and adds the grand average, in other words it left the residual for each observation.
+
+The degrees of freedoms will be
+
+$$
+ab-1 = a-1 + b-1 + (a-1)(b-1)
+$$
+
+Then
+
+$$
+MS_{treatment} = \frac{SS_{treatment}}{a-1} \\ \space \\
+MS_E = \frac{SS_E}{(a-1)(b-1)}
+$$
+
+And the statistic to test the hypothesis will be
+
+$$
+F_0 = \frac{MS_{treatments}}{MS_E}
+$$
+
+If the ratio $F_0$ should be equal to 1 if there is no treatment effect and greater than one if there is some effect. Similar to previous test we can set an alpha $\alpha$ and if
+
+$$
+F_0 > F_{\alpha,a-1,(a-1)(b-1)}
+$$
+
+we will reject the null hypothesis.
+
+```python
+import pandas as pd
+# perform RCBD ANOVA
+values = [90.3,89.2,98.2,93.9,87.4,97.9,92.5,
+            89.5,90.6,94.7,87.0,95.8,85.5,90.8,
+            89.6,86.2,88.0,93.4,82.5,89.5,85.6,
+            87.4,78.9,90.7]
+data = pd.DataFrame({"PSI": [8500]*6 + [8700]*6 + [8900]*6 + [9100]*6, 
+                     "block": [1,2,3,4,5,6]*4,
+                     "value": values})
+
+from statsmodels.formula.api import ols
+import statsmodels.api as sm
+lm = ols('value ~ C(PSI)+C(block)', data=data).fit()
+print(sm.stats.anova_lm(lm, typ=1))
+"""
+            df      sum_sq    mean_sq         F    PR(>F)
+C(PSI)     3.0  178.171250  59.390417  8.107077  0.001916
+C(block)   5.0  192.252083  38.450417  5.248666  0.005532
+Residual  15.0  109.886250   7.325750       NaN       NaN
+"""
+# pvalue=0.0019 so we reject the null hypothesis
+
+lm.summary()
+"""
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  value   R-squared:                       0.771
+Model:                            OLS   Adj. R-squared:                  0.649
+Method:                 Least Squares   F-statistic:                     6.321
+Date:                Tue, 19 Apr 2022   Prob (F-statistic):            0.00113
+Time:                        17:50:23   Log-Likelihood:                -52.311
+No. Observations:                  24   AIC:                             122.6
+Df Residuals:                      15   BIC:                             133.2
+Df Model:                           8                                         
+Covariance Type:            nonrobust                                         
+==================================================================================
+                     coef    std err          t      P>|t|      [0.025      0.975]
+----------------------------------------------------------------------------------
+Intercept         90.7208      1.657     54.735      0.000      87.188      94.254
+C(PSI)[T.8700]    -1.1333      1.563     -0.725      0.479      -4.464       2.197
+C(PSI)[T.8900]    -3.9000      1.563     -2.496      0.025      -7.231      -0.569
+C(PSI)[T.9100]    -7.0500      1.563     -4.512      0.000     -10.381      -3.719
+C(block)[T.2]      2.0500      1.914      1.071      0.301      -2.029       6.129
+C(block)[T.3]      3.3000      1.914      1.724      0.105      -0.779       7.379
+C(block)[T.4]      2.8500      1.914      1.489      0.157      -1.229       6.929
+C(block)[T.5]     -2.3750      1.914     -1.241      0.234      -6.454       1.704
+C(block)[T.6]      6.7500      1.914      3.527      0.003       2.671      10.829
+==============================================================================
+Omnibus:                        0.977   Durbin-Watson:                   2.830
+Prob(Omnibus):                  0.613   Jarque-Bera (JB):                0.960
+Skew:                           0.364   Prob(JB):                        0.619
+Kurtosis:                       2.345   Cond. No.                         7.48
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+"""
+```
+
+### Latin Square Design
+
+The latin square design is used to simultaneously control two sources of nuisance variability that does not interact. Here is a brief introduction to see how to conduct it.
+
+The model would be
+
+$$
+y_{ijk} = \mu + \alpha_i + \tau_j + \beta_k + \epsilon_{ijk}
+$$
+
+ - $i = 1,2,\dots,p$
+ - $j = 1,2,\dots,p$
+ - $k = 1,2,\dots,p$
+ - $\alpha_i$ is the new column nuisance factor
+
+The hypotheses are similar to the previous frameworks and the statistic will follow a F-distribution with the adjusted degrees of freedom for this case.
+
+$$
+SS_T = SS_{treatments} + SS_{row} + SS_{column} + SS_E
+$$
+
+![](media/dei_9.png)
+
+### Other topics
+
+Other topics that are not described in the course videos but in the text book are:
+
+ - Missing values in blocked design: How can be estimated for RCBD and Latin squares.
+- Replication of Latin Square: How to do it and various strategies.
+- Crossover design: Method for reducing residual effects when a subject receives the same treatment several times in sequence.
+- Graeco-Latin Squares: Extension of latin squares with a third nuisance factor.
+- Incomplete blocked design: Designs when the number of treatments are larger than the size of the blocks and a complete replica of each block cannot be performed.
 
