@@ -7,12 +7,12 @@
     home = window.location.origin
     document.querySelector(".home-link").href = home
 
-    dataFile = window.location.href.split("/").at(-1)
+    pathName = window.location.pathname
     const delayedRedirect = async () => {
         const delay = ms => new Promise(res => setTimeout(res, ms));
         await delay(500);
-        if (dataFile !== "404.html"){
-            document.location.href = home + "/index.html?page=" + dataFile
+        if (pathName !== "/404.html"){
+            document.location.href = home + "/index.html?page=" + pathName
         }else{
             document.location.href = home + "/index.html"
         }
