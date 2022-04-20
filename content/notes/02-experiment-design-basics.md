@@ -118,7 +118,7 @@ The mathematical procedure to perform this reasoning is called two sampled t-tes
 Then we define the two hypotheses:
 
 $$
-H_0 : \mu_1 = \mu_2 \\
+H_0 : \mu_1 = \mu_2 \newline
 H_1 : \mu_1 \neq \mu_2
 $$
 
@@ -131,7 +131,7 @@ $$
 To perform the actual test, we need first to estimate the population parameters. 
 
 $$
-\bar{y} = \frac{1}{n} \sum_{i=0}^n y_i \\
+\bar{y} = \frac{1}{n} \sum_{i=0}^n y_i \newline
 S^2 = \frac{1}{n-1} \sum_{i=0}^n (y_i - \bar{y})^2
 $$
 
@@ -226,7 +226,7 @@ So if we get a t-statistic value of -2.20 then we can interpretive as the two sa
 stats.t.rvs(df=6, size=10)
 ```
 
-The t-distribution is quite similar to the normal distribution, but it have a little more of spread in the tail. The spread is controlled by the degrees of freedom. The **degrees of freedom* are $n_1+n_2-2$.
+The t-distribution is quite similar to the normal distribution, but it have a little more of spread in the tail. The spread is controlled by the degrees of freedom. The **degrees of freedom** are $n_1+n_2-2$.
 
 With this in mind, we can perform the same procedure as the one with the Z statistic.
 
@@ -290,8 +290,8 @@ t_statistic, p_value = stats.ttest_ind(g1, g2, equal_var=False, alternative="two
 There are sometimes we want to perform a test with only one sample, comparing the population mean $\mu$ to a predefined value $\mu_0$. In these cases the predefined value is usually a threshold, acceptance level, boundary, etc. The hypotheses are:
 
 $$
-H_0: \mu = \mu_0 \\
-H_1: \mu \neq \mu_0 \\
+H_0: \mu = \mu_0 \newline
+H_1: \mu \neq \mu_0 \newline
 $$
 
 and the formula for the statistic is
@@ -329,7 +329,7 @@ With this in mind, the experimental design will be to perform a paired t-test on
 The hypotheses will be:
 
 $$
-H_0 : \mu_d = 0 \\
+H_0 : \mu_d = 0 \newline
 H_1 : \mu_d \neq 0
 $$
 
@@ -342,7 +342,7 @@ $$
 being $\bar{d}$ the sample mean of differences and $S_d$ the sample standard deviation of the differences
 
 $$
-\bar{d} = \frac{1}{n} \sum_{j=1}^n d_j \\
+\bar{d} = \frac{1}{n} \sum_{j=1}^n d_j \newline
 S_d = \sqrt{ \frac{\sum_{j=1}^n (d_j - \bar{d})^2}{n-1}  }
 $$
 
@@ -416,25 +416,25 @@ The first term is a sum of squares that reflect how different the treatment aver
 Our experimental hypotheses would be:
 
 $$
-H_0 : \mu_1 = \mu_2 = \dots = \mu_a \\
+H_0 : \mu_1 = \mu_2 = \dots = \mu_a \newline
 H_1 : \text{At least one mean is different}
 $$
 
 Because sum of squares cannot be directly compared (they do not use the same magnitude) we can compare mean squares. A **mean square** is a sum of squares divided by its degrees of freedom.
 
 $$
-df_{total} = df_{treatments} + df_{error} \\
-an - 1 = a - 1 + a(n-1) \\
+df_{total} = df_{treatments} + df_{error} \newline
+an - 1 = a - 1 + a(n-1) \newline
 $$
 
 Then we define the mean square for the components as
 
 $$
-MS_{treatment} = \frac{SS_{treatment}}{a-1} \\ \space \\
+MS_{treatment} = \frac{SS_{treatment}}{a-1} \newline \space \newline
 MS_E = \frac{SS_E}{a(n-1)}
 $$
 
-Finally, if means are equal then the mean square for the treatments $MS_{treatment}$ will be equal to the mean square of error $MS_E$. If means differ then $MS_{treatment} > MS_E$ .
+Finally, if means are equal then the mean square for the treatments $MS_{treatment}$ will be equal to the mean square of error $MS_E$. If means differ then $MS_{treatment} \gt MS_E$ .
 
 The statistic used for the experiment is
 
@@ -445,7 +445,7 @@ $$
 and follows the F-distribution of parameters $a-1$ and $a(n-1)$. For the experiment, the null hypothesis will be rejected if
 
 $$
-F_0 > F_{\alpha,a-1,a(n-1)}
+F_0 \gt F_{\alpha,a-1,a(n-1)}
 $$
 
 with an $\alpha$ value normally set to $0.05$.
@@ -579,8 +579,8 @@ The $\sigma^2_\tau$ components are called **variance components** and we want to
 There are a covariance structure in this model. For any two observations of different factor levels the covariance is $\sigma^2_\tau$ and for any two observations of the same factor level the covariance is $0$. This is because we can assume differences in same factor levels are due only to random error.
 
 $$
-Cov(y_{ij}, y_{ij'}) = \sigma^2_\tau \quad\quad j \neq j' \\
-Cov(y_{ij}, y_{i'j}) = 0 \quad\quad i \neq i' 
+Cov(y_{ij}, y_{ij\prime}) = \sigma^2_\tau \quad\quad j \neq j\prime \newline
+Cov(y_{ij}, y_{i\prime j}) = 0 \quad\quad i \neq i\prime 
 $$
 
 For the ANOVA, the sum of squares identity is still valid
@@ -592,8 +592,8 @@ $$
 But for the hypotheses we can no longer test for equality of means, because now we are interested on the population. So the hypotheses would be:
 
 $$
-H_0: \sigma^2_\tau = 0 \\
-H_1: \sigma^2_\tau > 0
+H_0: \sigma^2_\tau = 0 \newline
+H_1: \sigma^2_\tau \gt 0
 $$
 
 If $\sigma^2_\tau = 0$ all treatments levels are equal but if it is greater than $0$ then it implies some variability exists apart from the random error.
@@ -607,20 +607,20 @@ $$
 Distributed as a F-distribution of parameters $a-1$ and $N-a$. However we need to examine the expected mean squares to complete the test procedure:
 
 $$
-E[MS_\text{treatments}] = \sigma^2 + n\sigma^2_\tau \\
+E[MS_\text{treatments}] = \sigma^2 + n\sigma^2_\tau \newline
 E[MS_E] = \sigma^2
 $$
 
 The ANOVA F-test is similar for the fixed-effects and random-effects models. If mean squares treatments $MS_\text{treatments}$ is larger than mean squares error $MS_E$ then it implies $\sigma^2_\tau$ is larger than $0$ and we can use the F-statistic to test the hypothesis.
 
 $$
-\text{If } MS_\text{treatments} > MS_E \text{ then reject } H_0
+\text{If } MS_\text{treatments} \gt MS_E \text{ then reject } H_0
 $$
 
 To estimate $\sigma^2$ and $\sigma^2_\tau$ we can use 
 
 $$
-\hat{\sigma}^2 = MS_E \\
+\hat{\sigma}^2 = MS_E \newline
 \hat{\sigma}^2_\tau = \frac{MS_{treatments} - MS_E}{n}
 $$
 
@@ -681,7 +681,7 @@ $$
 This framework assumes that the treatments levels and blocks are fixed. The hypotheses are quite similar
 
 $$
-H_0 : \mu_1 = \mu_2 = \dots = \mu_a \\
+H_0 : \mu_1 = \mu_2 = \dots = \mu_a \newline
 H_1 : \text{At least one mean is different}
 $$
 
@@ -694,8 +694,11 @@ $$
 Thus the ANOVA partitioning total sum of squares will be
 
 $$
-SS_{T} = b \sum_{i=1}^{a} (\bar{y}_i - \bar{y})^2 + a \sum_{j=1}^{b} (\bar{y}_j - \bar{y})^2 + \sum_{i=1}^{a} \sum_{j=1}^{b} (y_{ij} - \bar{y}_i - \bar{y}_j + \bar{y})^2 
+SS_{T} = b \sum_{i=1}^{a} ( \bar{y_i} - \bar{y} )^2 + 
+         a \sum_{j=1}^{b} ( \bar{y_j} - \bar{y} )^2 + 
+           \sum_{i=1}^{a} \sum_{j=1}^{b} (y_{ij} - \bar{y}_i - \bar{y}_j + \bar{y})^2 
 $$
+
 $$
 SS_T = SS_{treatments} + SS_{blocks} + SS_E
 $$
@@ -711,7 +714,7 @@ $$
 Then
 
 $$
-MS_{treatment} = \frac{SS_{treatment}}{a-1} \\ \space \\
+MS_{treatment} = \frac{SS_{treatment}}{a-1} \newline \space \newline
 MS_E = \frac{SS_E}{(a-1)(b-1)}
 $$
 
@@ -724,7 +727,7 @@ $$
 If the ratio $F_0$ should be equal to 1 if there is no treatment effect and greater than one if there is some effect. Similar to previous test we can set an alpha $\alpha$ and if
 
 $$
-F_0 > F_{\alpha,a-1,(a-1)(b-1)}
+F_0 \gt F_{\alpha,a-1,(a-1)(b-1)}
 $$
 
 we will reject the null hypothesis.

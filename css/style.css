@@ -60,6 +60,19 @@ section.menu-left li:hover {
 section.content {
     display: table-cell;
     padding-left: 10px;
+    max-width: 60vw;
+}
+
+section.content img{
+    max-width: 65vw;
+}
+
+pre {
+    background-color: #f6f6f6;
+    white-space: pre-wrap;
+    overflow-x: scroll;
+    width: 65vw;
+    padding-left: -5px;
 }
 
 footer {
