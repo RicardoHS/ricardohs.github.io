@@ -1,12 +1,17 @@
 # Work Experience
 ---
-### Data Scientist / Machine Learning Engineer - BDEO Technologies (Madrid)
-Nov 2021 - Present
+### Machine Learning Engineer - Wallapop (Barcelona)
+May 2022 - Present
 
-- Implement **MLOps philosophy** in the whole data department, increasing data scientist experiments cycles, reducing errors and time to deploying models into production. **Data Science manifesto** ambassador.
-- Implement and **improve** current **data infrastructure** to use big data frameworks. Define code, microservices and data **architecture** for a wide range of legacy systems. This yield to more curated **ETL pipelines** with more useful data easily available.
-- Implement new and improve current **deep learning computer vision models**. Mask segmentation, image classification, car damage detection and price cost estimation.
-- Evolve current company products aligning ML models and business needs **improving** current and **new KPIs**.
+- Design and build the company ML Platform from the very beginning to support the data scientist needs and all ML initiatives. Huge range of technical use cases with more than 600k daily predictions each.
+- Work horizontally to detect and evolve current ML solutions. Recsys, vector embeddings and scam detection among others.
+
+### Data Scientist / Machine Learning Engineer - BDEO Technologies (Madrid)
+Nov 2021 - April 2022 (6 months)
+
+- Implement **MLOps philosophy** in the whole data department to increase data scientist experiments cycles, reduce errors and time to deploy models into production. **Data Science manifesto** ambassador.
+- Implement and **improve** current **data infrastructure** to use big data frameworks. Define code, microservices and data **architecture** for a wide range of legacy systems.
+- Implement and improve current **deep learning computer vision models**. Mask segmentation, image classification and car damage detection.
 
 ### Data Scientist / Machine Learning Engineer - Intelygenz (Madrid)
 April 2018 - Oct 2021 (3 years, 6 months) 
