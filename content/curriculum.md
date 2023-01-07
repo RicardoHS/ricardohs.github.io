@@ -5,6 +5,7 @@ May 2022 - Present
 
 - Design and build the company ML Platform from the very beginning to support the data scientist needs and all ML initiatives. Huge range of technical use cases with more than 600k daily predictions each.
 - Work horizontally to detect and evolve current ML solutions. Recsys, vector embeddings and scam detection among others.
+- Build new and evolve current infrastructure to allow new ML initiatives support data on stream.
 
 ### Data Scientist / Machine Learning Engineer - BDEO Technologies (Madrid)
 Nov 2021 - April 2022 (6 months)
@@ -95,6 +96,6 @@ I dont really like these kind of sections. The tools I use are constantly changi
  - Programming: Python, R, Bash and Javascript on things I use daily. Julia, C/C++, C#, Java, GoLang on things I use sporadically.
  - Statistics: Data Analysis, Forecasting, Clustering, Dimension Reduction, Time Series, Machine Learning, Deep Learning, Experiment Design, A/B testing.
  - Visualization: matplotlib, ggplot2, seaborn, d3.js
- - Tools/Stack: Sci-kit Learn, statsmodels, Pytorch, Pytorch Lightning, Tensorflow, Keras, Numpy, Pandas, pyspark, nltk, gensim, huggingface, tidyverse, ORMs, SQLAlchemy, Flask, Django, PostgreSQL, MongoDB, Apache Airflow (ask me if these kind of stuff is important for you)
- - Cloud/Infrastructure: Docker, Kubernetes, AWS, GCP, DigitalOcean
+ - Tools/Stack: Sci-kit Learn, statsmodels, Pytorch, Pytorch Lightning, Tensorflow, Keras, Numpy, Pandas, pyspark, nltk, gensim, huggingface, tidyverse, ORMs, SQLAlchemy, Flask, Django, PostgreSQL, MongoDB (ask me if these kind of stuff is important for you)
+ - Cloud/Infrastructure: Docker, Kubernetes, Apache Beam, Apache Flink, Apache Airflow, AWS, GCP, DigitalOcean
  - Software/Methodology: GNU/Linux, Git, CI/CD, SQL, NoSQL, Web and pdf Scraping, Bootstrap, Microservices...
