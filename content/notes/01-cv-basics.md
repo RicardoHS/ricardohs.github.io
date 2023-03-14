@@ -168,7 +168,7 @@ Also, there is different ways of filtering by averaging:
 
  **How to perform moving average in 2D?** The operation is quite simple using what is called [kernels](https://en.wikipedia.org/wiki/Kernel_(image_processing)). In the next image we can see the kernel $H(u,v)$ that corresponds to the uniform moving average. Click in the next image to see a visual explanation.
 
-<a href="https://www.youtube.com/watch?v=tWSV6qOBwHU" title="Moving average in 2D explanation"><img src="media/cvb_5.png" alt="Alternate Text" /></a>
+<a href="https://www.youtube.com/watch?v=tWSV6qOBwHU" title="Moving average in 2D explanation"><img src="content/notes/media/cvb_5.png" alt="Alternate Text" /></a>
 
  #### Gaussian Filter
 
