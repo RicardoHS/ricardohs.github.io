@@ -1,5 +1,7 @@
 # Computer Vision Basics
 
+> These notes are incomplete because I needed to stop the course. I will continue with it someday. Till that day even this little information can be useful.
+
 Here you can find my notes on the Georgia Tech online course [Introduction to Computer Vision](https://www.udacity.com/course/introduction-to-computer-vision--ud810). The course practices are in Matlab/Octave. Because I don't want to use those software, here you will find the same practices done with python and python frameworks.
 
 ## Index of course
