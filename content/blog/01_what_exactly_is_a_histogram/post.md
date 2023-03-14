@@ -4,9 +4,9 @@ This simple question allows you to know if someone really understands statistics
 
 ## A problem that goes unnoticed
 
-When talking with colleages or when reading people in websites like kaggle, there is always a smell, a feeling that only some persons notice. Lot of people that works with data does not understand stats. Even some stats students does not really understand it.
+When talking with colleagues or when reading people in websites like kaggle, there is always a smell, a feeling that only some persons notice. Lot of people that works with data does not understand stats. Even some stats students does not really understand it.
 
-There are several reasons why this happens and everyone have his own opinion about them: stats is baddly taught, people does not care about learning it propertly, it's difficult, etc. For me, it is clear. Most of the stats students fail to pay attention to one key concept most of the times taught on the first day or first stats lectures. In non maths related bachelors this key concept is sometimes not mentioned at all. I'm talking about the statistical framework, this is in other words, the philosophical idea behind statistics. When you know this, then you are able to understand, among other things, why statistics is so widley used in all scientific areas.
+There are several reasons why this happens and everyone have his own opinion about them: stats is badly taught, people does not care about learning it property, it's difficult, etc. For me, it is clear. Most of the stats students fail to pay attention to one key concept most of the times taught on the first day or first stats lectures. In non maths related bachelors this key concept is sometimes not mentioned at all. I'm talking about the statistical framework, this is in other words, the philosophical idea behind statistics. When you know this, then you are able to understand, among other things, why statistics is so widely used in all scientific areas.
 
 Although this is a problem most of the times goes unnoticed, it is very easy to detect it on a person. You only have to ask, "What exactly is a histogram?" and see their answer. Most of the people answer incorrect or incomplete things, giving importance to the histogram construction rather than the purpose. Even the [histogram wikipedia page](https://en.wikipedia.org/wiki/Histogram) gives an incomplete explanation. Some common answers are:
 
@@ -37,13 +37,13 @@ This process of representing reality in mathematical terms, called modeling, was
 
 These kinds of questions are what led to the creation of statistics. Before this, when it was necessary to model an aspect of reality for which all the factors involved were not known, it simply could not be solved. There was no way to express in mathematical language the idea of ​​picking up a random child on the street, looking in his pockets, and counting how many pieces of candy he had. And since there was no way to express this idea (to model it), then there was no way to study it.
 
-Why do I tell you all this? So that you become familiar with the idea of ​​modeling an aspect of reality (to which from now on we will call it "a process") and the importance it has in mathematics. In pure mathematics this is not really necessary, but in statistics it is vital to know that we are always modeling a process that we do not know everything about. In order to do such a thing, the only thing that we have managed to think as humankind is to make measurements in the process to obtain something that we call data. All of this is what we call the data generating process. Here is a diagram to sumarize it.
+Why do I tell you all this? So that you become familiar with the idea of ​​modeling an aspect of reality (to which from now on we will call it "a process") and the importance it has in mathematics. In pure mathematics this is not really necessary, but in statistics it is vital to know that we are always modeling a process that we do not know everything about. In order to do such a thing, the only thing that we have managed to think as humankind is to make measurements in the process to obtain something that we call data. All of this is what we call the data generating process. Here is a diagram to summarize it.
 
 # Structure
 
  - The problem (most of the students does not really understand stats)
  - Definitions. What people usually said. What a histogram really is.
  - Concepts explanation. [data generating process, population, density function, sample, data, estimator]
- - What stats is. Why it is so usefull.
+ - What stats is. Why it is so useful.
  - Histogram explanation
  - Conclusion. Now you know the Stats framework something taught on the first stat classes and something most stats students fails to understand. Now you know how to know if someone really understand this with one simple question. Now you are really prepared to correctly start learning stats.
