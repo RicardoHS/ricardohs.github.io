@@ -6,4 +6,4 @@ A person interested on computer science, maths, psychology and philosophy. Const
 
 Stuff I specially enjoy: music composition, piano, minimalistic design, photography, film-making and videogames.
 
-You can contact me through my social media links (bottom-right part)
+You can contact me through my social media links (bottom-right part) or visit my [substack](https://ricardohs.substack.com/?r=1k58g7&utm_campaign=pub-share-checklist).
