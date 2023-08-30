@@ -1,4 +1,4 @@
-> This post is a backup of the [substack post](https://ricardohs.substack.com/p/how-to-start-learning-shaders-from?utm_campaign=post&utm_medium=web)
+> Backup of the [substack post](https://ricardohs.substack.com/p/how-to-start-learning-shaders-from?utm_campaign=post&utm_medium=web)
 
 # How to start learning shaders from a programmer perspective
 
