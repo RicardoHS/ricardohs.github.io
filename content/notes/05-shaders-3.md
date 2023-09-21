@@ -19,7 +19,7 @@ Anyway, let’s get down to a most deeper explanation on the smoothstep function
 
 Use this simple code to start. You can use the template of the [previous post](./04-shaders-2.md) to build your own offline environment and run this shader directly in your browser.
 
-```
+```c
 #ifdef GL_ES
 precision mediump float;
 #endif
@@ -86,7 +86,7 @@ With this in mind, would not be straightforward to just draw another white circl
 
 That's exactly what are we going to do, but because we need to return RGB pixel values and the yellow is already (255,255,0) we cannot add the circle but instead subtract it. Another smoothstep will do the work.
 
-```
+```c
 void main() {
     vec2 st = gl_FragCoord.xy/u_resolution;
 
@@ -115,7 +115,7 @@ The answer is straightforward. You can visualize it if you remove the first smoo
 
 Because smoothstep applies to all the image (not just the inner circle) when subtracting both smoothsteps, it gets values equal to 0 to all RGB components in the black border and (1.,1.,0.) for the yellow areas. Just adding 1. solves the issue. (Be sure to understand this paragraph)
 
-```
+```c
 void main() {
     [...]
     float y = 1. + smoothstep(r,r,shape) - smoothstep(r-0.1,r-0.1,shape);
