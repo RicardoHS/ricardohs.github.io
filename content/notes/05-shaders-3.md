@@ -18,7 +18,7 @@ Anyway, let’s get down to a most deeper explanation on the smoothstep function
 
 ## Always start with the simplest case
 
-Use this simple code to start. You can use the template of the [previous post](./04-shaders-2.md) to build your own offline environment and run this shader directly in your browser.
+Use this simple code to start. You can use the template of the [previous post](https://ricardohs.github.io/notes/04-shaders-2.md) to build your own offline environment and run this shader directly in your browser.
 
 ```c
 #ifdef GL_ES
@@ -81,7 +81,7 @@ Let’s try to focus on what Patricio did to draw that green line in the chapter
 
 We have drawn a circle filled with yellow but, How can we draw just the boundary? in other words, How can we draw a white circle with a yellow border?
 
-If you notice it, smoothstep() just returns a single float value, and it's with the combination of the different parallel calls to the main function that we succeed at drawing the circle (a deep explanation of this parallel calls can be found on the [first post](./03-shaders-1.md)).
+If you notice it, smoothstep() just returns a single float value, and it's with the combination of the different parallel calls to the main function that we succeed at drawing the circle (a deep explanation of this parallel calls can be found on the [first post](https://ricardohs.github.io/notes/03-shaders-1.md)).
 
 With this in mind, would not be straightforward to just draw another white circle inside our yellow one but just a little bit smaller to achieve the desired border?
 
