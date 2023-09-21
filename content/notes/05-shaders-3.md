@@ -4,7 +4,8 @@
 
 > This post is expected to serve as a clarification to the 5th chapter of The Book of Shaders. Go there first ([link](https://thebookofshaders.com/05/))
 
-A complex starting point
+## A complex starting point
+
 Despite the [5th chapter of The book of shaders](https://thebookofshaders.com/05/) being a great resource to start on the shader programming, it could take too much from a completely beginner.
 
 Patricio starts the technical part with a code snippet that directly uses the smoothstep function. It’s not straightforward what this function does. It gets worse with the following examples due the combination of multiple function calls (in the plot function).
