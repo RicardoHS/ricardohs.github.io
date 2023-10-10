@@ -4,6 +4,7 @@ Here are some of my tech hobby work. Not all of them but just the ones with enou
 
 Sorted by time (newest first):
 
+ - [WebGPU Mandelbrot Set explorer](https://github.com/RicardoHS/wgpu_mandelbrot): [Live Demo](./demos/wgpu_mandelbrot.html) Explore the mandelbrot set in you web browser using your GPU.
  - [Conway's Game of Life using Kernels](https://github.com/RicardoHS/conway_game): Fast computation of cellular automata epochs (and easier code too). The repo also contains a self-made algorithm to find loops in the game.
  - [DeepCoinCounter](https://github.com/RicardoHS/DeepCoinCounter): A small PoC of a mobile app to automatically count cash using the phone camera. The ML models and data augmentation scripts (very useful for this problem by the way) are finished but the implementation as an app using TensorflowLite an Flutter is incomplete.
  - [Procedural Algorithms in Unity](https://github.com/RicardoHS/unity_procedural_caves): My first contact with Unity and procedural algorithms. Nothing novel, just the code of some tutorials in C#.
