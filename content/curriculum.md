@@ -1,7 +1,13 @@
 # Work Experience
 ---
+### Senior Machine Learning Engineer - Fever (Madrid)
+April 2024 - Present
+
+ - Building the app search engine and related stuff from the data team.
+ - Improving internal stuff here and there.
+
 ### Machine Learning Engineer - Wallapop (Barcelona)
-May 2022 - Present
+May 2022 - April 2024 (2 years)
 
 - Design and build the company ML Platform from the very beginning to support the data scientist needs and all ML initiatives. Huge range of technical use cases with more than 600k daily predictions each.
 - Work horizontally to detect and evolve current ML solutions. Recsys, vector embeddings and scam detection among others.
