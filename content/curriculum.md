@@ -89,13 +89,3 @@ Here you can find some of the tech courses I have studied on my own.
  <br/>
  <br/>
 
-# Technological Stack
----
-I dont really like these kind of sections. The tools I use are constantly changing and learning new stuff is not a problem for me. Nevertheless some people find this list useful.
-
- - Programming: Python, R, Bash and Javascript on things I use daily. Julia, C/C++, C#, Java, GoLang on things I use sporadically.
- - Statistics: Data Analysis, Forecasting, Clustering, Dimension Reduction, Time Series, Machine Learning, Deep Learning, Experiment Design, A/B testing.
- - Visualization: matplotlib, ggplot2, seaborn, d3.js
- - Tools/Stack: Sci-kit Learn, statsmodels, Pytorch, Pytorch Lightning, Tensorflow, Keras, Numpy, Pandas, pyspark, nltk, gensim, huggingface, tidyverse, ORMs, SQLAlchemy, Flask, Django, PostgreSQL, MongoDB (ask me if these kind of stuff is important for you)
- - Cloud/Infrastructure: Docker, Kubernetes, Apache Beam, Apache Flink, Apache Airflow, AWS, GCP, DigitalOcean
- - Software/Methodology: GNU/Linux, Git, CI/CD, SQL, NoSQL, Web and pdf Scraping, Bootstrap, Clean Architecture, Hexagonal Architecture, Microservices...
