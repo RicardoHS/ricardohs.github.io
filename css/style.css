@@ -20,6 +20,7 @@ body {
 section.main {
     margin: auto;
     width: 80%;
+    font-size: larger;
 }
 
 section.menu-top {
@@ -67,6 +68,10 @@ section.content img{
     max-width: 65vw;
 }
 
+section.content li {
+    margin-bottom: 12px
+}
+
 pre {
     background-color: #f6f6f6;
     white-space: pre-wrap;
@@ -90,8 +95,14 @@ footer a {
 }
 
 @media only screen and (max-width: 600px) {
+    section.main {
+	width: 95%;
+    }
+    section.content {
+	max-width: none;
+    }
     section.menu-left {
-        display: none
+        display: none;
     }
     section.menu-top {
         display: inline;
