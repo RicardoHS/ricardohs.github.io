@@ -4,6 +4,7 @@ Here are some of my tech hobby work. Not all of them but just the ones with enou
 
 Sorted by time (newest first):
 
+ - [Elementary Cellular Automata Lab](./content/demos/elementary_cellular_automata.html): Explore all 256 Wolfram rules in real time, start from one cell or a random state, and change the active rule without erasing previous generations.
  - [Conway's Game of Life - Rust + WebAssembly](https://github.com/RicardoHS/rust_wasm_game_of_life): [Demo](./content/demos/rust_wasm_game_of_life.html) Interactive webapp build using Rust.
  - [WebGPU Mandelbrot Set explorer](https://github.com/RicardoHS/wgpu_mandelbrot): [Demo](./content/demos/wgpu_mandelbrot.html) Explore the mandelbrot set in your web browser using your GPU.
  - [Conway's Game of Life using Convolutions (Kernels)](https://github.com/RicardoHS/conway_game): Fast computation of cellular automata epochs (and easier code too). The repo also contains a self-made algorithm to find loops in the game.
