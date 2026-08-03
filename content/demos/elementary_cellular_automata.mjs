@@ -6,9 +6,7 @@ import {
 
 const canvas = document.querySelector("#automaton-canvas");
 const context = canvas.getContext("2d", {alpha: false});
-const ruleRange = document.querySelector("#rule-range");
 const ruleNumber = document.querySelector("#rule-number");
-const ruleBinary = document.querySelector("#rule-binary");
 const densityRange = document.querySelector("#density-range");
 const densityValue = document.querySelector("#density-value");
 const ticksRange = document.querySelector("#ticks-range");
@@ -24,8 +22,8 @@ const liveValue = document.querySelector("#live-value");
 const statusValue = document.querySelector("#status-value");
 
 const COLORS = {
-    alive: [188, 255, 92, 255],
-    dead: [7, 13, 11, 255],
+    alive: [0, 0, 0, 255],
+    dead: [255, 255, 255, 255],
 };
 const automaton = new ElementaryAutomaton(canvas.width, {
     rule: Number(ruleNumber.value),
@@ -46,9 +44,7 @@ function clampInteger(value, minimum, maximum) {
 function updateRule(value) {
     const rule = clampInteger(value, 0, 255);
     automaton.setRule(rule);
-    ruleRange.value = rule;
     ruleNumber.value = rule;
-    ruleBinary.textContent = rule.toString(2).padStart(8, "0");
 
     for (const neighborhood of RULE_NEIGHBORHOODS) {
         const output = ruleOutput(rule, neighborhood);
@@ -120,7 +116,7 @@ function tick() {
 
 function setRunning(nextRunning) {
     isRunning = nextRunning;
-    playPauseButton.textContent = isRunning ? "Pause" : "Play";
+    playPauseButton.textContent = isRunning ? "⏸" : "▶️";
     playPauseButton.setAttribute("aria-pressed", String(isRunning));
     setStatus(isRunning ? "Running." : "Paused.");
 }
@@ -170,7 +166,6 @@ function animationLoop(timestamp) {
     requestAnimationFrame(animationLoop);
 }
 
-ruleRange.addEventListener("input", () => updateRule(ruleRange.value));
 ruleNumber.addEventListener("input", () => updateRule(ruleNumber.value));
 ticksRange.addEventListener("input", () => updateTicks(ticksRange.value));
 ticksNumber.addEventListener("input", () => updateTicks(ticksNumber.value));
@@ -210,4 +205,3 @@ updateTicks(ticksNumber.value);
 updateDensity();
 startWithSingleCell();
 requestAnimationFrame(animationLoop);
-
