@@ -3,8 +3,49 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Explore all 256 elementary cellular automata in real time.">
-    <title>Elementary Cellular Automata</title>
+    <meta name="description" content="Interactive online Wolfram cellular automata explorer. Run all 256 elementary rules from a single cell or random state and change rules in real time.">
+    <link rel="canonical" href="https://ricardohs.github.io/content/demos/elementary_cellular_automata.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Ricardo Hortelano">
+    <meta property="og:title" content="Wolfram Cellular Automata Explorer – 256 Rules Online">
+    <meta property="og:description" content="Explore all 256 elementary cellular automata interactively and change their rules in real time.">
+    <meta property="og:url" content="https://ricardohs.github.io/content/demos/elementary_cellular_automata.html">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Wolfram Cellular Automata Explorer – 256 Rules Online">
+    <meta name="twitter:description" content="Explore all 256 elementary cellular automata interactively and change their rules in real time.">
+
+    <title>Wolfram Cellular Automata Explorer – 256 Rules Online</title>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "Wolfram Cellular Automata Explorer",
+            "description": "An interactive online explorer for all 256 elementary cellular automata rules.",
+            "url": "https://ricardohs.github.io/content/demos/elementary_cellular_automata.html",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires JavaScript and HTML Canvas",
+            "isAccessibleForFree": true,
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+            },
+            "featureList": [
+                "Explore all 256 elementary cellular automata rules",
+                "Start from a single cell or a random state",
+                "Change rules during a running simulation",
+                "Compare fixed and periodic boundary conditions"
+            ],
+            "author": {
+                "@type": "Person",
+                "name": "Ricardo Hortelano",
+                "url": "https://ricardohs.github.io/"
+            }
+        }
+    </script>
     <style>
         * {
             box-sizing: border-box;
@@ -191,6 +232,68 @@
             text-align: center;
         }
 
+        .explanation {
+            width: min(880px, 100%);
+            margin: 34px 0 18px;
+            padding-top: 22px;
+            border-top: 1px solid black;
+            line-height: 1.55;
+        }
+
+        .explanation h2 {
+            margin: 0 0 8px;
+            font-size: 1.45rem;
+            text-align: center;
+        }
+
+        .explanation-intro {
+            max-width: 760px;
+            margin: 0 auto 22px;
+            text-align: center;
+        }
+
+        .explanation-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px 28px;
+        }
+
+        .explanation-card {
+            padding-left: 14px;
+            border-left: 3px solid black;
+        }
+
+        .explanation-card h3 {
+            margin: 0 0 6px;
+            font-size: 1.05rem;
+        }
+
+        .explanation-card p {
+            margin: 0;
+            font-size: 0.94rem;
+        }
+
+        .construction-steps {
+            margin: 0;
+            padding-left: 22px;
+        }
+
+        .construction-steps li {
+            margin-bottom: 5px;
+            font-size: 0.94rem;
+        }
+
+        .rule-equation {
+            display: block;
+            margin-top: 10px;
+            padding: 8px 10px;
+            border: 1px solid #aaa;
+            background: white;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            font-size: 0.86rem;
+            text-align: center;
+        }
+
         kbd {
             padding: 1px 5px;
             border: 1px solid #999;
@@ -249,6 +352,11 @@
                 justify-content: center;
                 flex-wrap: wrap;
             }
+
+            .explanation-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
         }
     </style>
 </head>
@@ -256,7 +364,7 @@
     <header class="page-header">
         <a class="back-link" href="/projects">← Projects</a>
         <div class="page-title">
-            <h1>Elementary Cellular Automata</h1>
+            <h1>Wolfram Cellular Automata Explorer</h1>
             <span>JavaScript + Canvas</span>
         </div>
         <p>Rule changes affect future rows.</p>
@@ -328,6 +436,63 @@
         Every row is one generation. Each cell reads only its left neighbor, itself, and
         its right neighbor. Once the canvas is full, older history scrolls upward.
     </p>
+
+    <section class="explanation" aria-labelledby="explanation-title">
+        <h2 id="explanation-title">Understanding Wolfram's cellular automata</h2>
+        <p class="explanation-intro">
+            A cellular automaton turns a tiny local instruction into a complete evolving world.
+            Stephen Wolfram systematically studied this elementary one-dimensional family and
+            numbered every possible rule from 0 to 255.
+        </p>
+
+        <div class="explanation-grid">
+            <article class="explanation-card">
+                <h3>What are they?</h3>
+                <p>
+                    The universe is a row of cells. Each cell has only two possible states—alive
+                    (black) or dead (white)—and all cells update simultaneously in discrete time
+                    steps. Stacking those generations vertically creates the image above: space
+                    runs from left to right, while time runs from top to bottom.
+                </p>
+            </article>
+
+            <article class="explanation-card">
+                <h3>How does one update work?</h3>
+                <p>
+                    A cell reads three bits: its left neighbor, itself, and its right neighbor.
+                    Three binary cells produce eight possible neighborhoods. The eight boxes above
+                    show those neighborhoods; the lower digit in each box is the cell's next state.
+                </p>
+                <code class="rule-equation">left + center + right → next state</code>
+            </article>
+
+            <article class="explanation-card">
+                <h3>How is a rule constructed?</h3>
+                <ol class="construction-steps">
+                    <li>Write the rule number as eight binary digits.</li>
+                    <li>Assign them to 111, 110, 101, 100, 011, 010, 001, and 000.</li>
+                    <li>Choose a single-cell or random initial row.</li>
+                    <li>Apply the lookup to every cell, then repeat on the new row.</li>
+                </ol>
+                <p>
+                    Because there are eight outputs and each can be 0 or 1, exactly
+                    2<sup>8</sup> = 256 elementary rules exist. Fixed boundaries add dead cells
+                    outside the row; periodic boundaries connect its two ends.
+                </p>
+            </article>
+
+            <article class="explanation-card">
+                <h3>Why are they important?</h3>
+                <p>
+                    They demonstrate emergence: simple deterministic instructions can create
+                    stable, repeating, chaotic, or unexpectedly complex structures. Rule 90 draws
+                    a Sierpiński triangle, Rule 30 produces chaotic-looking patterns, and Rule 110
+                    is capable of universal computation. They connect dynamical systems, artificial
+                    life, complexity, and the idea that computation can arise from local interaction.
+                </p>
+            </article>
+        </div>
+    </section>
 
     <script type="module" src="./elementary_cellular_automata.mjs"></script>
 </body>

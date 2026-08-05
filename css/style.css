@@ -72,6 +72,33 @@ section.content li {
     margin-bottom: 12px
 }
 
+.featured-project {
+    max-width: 620px;
+    margin: 24px 0;
+    padding: 18px 22px;
+    border: 1px solid;
+    border-radius: 4px;
+    background: whitesmoke;
+}
+
+.featured-project span {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.featured-project h2 {
+    margin: 6px 0;
+}
+
+.featured-project h2 a {
+    color: black;
+}
+
+.featured-project p {
+    margin: 0;
+}
+
 pre {
     background-color: #f6f6f6;
     white-space: pre-wrap;
