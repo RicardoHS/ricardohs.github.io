@@ -72,7 +72,7 @@ section.content li {
     margin-bottom: 12px
 }
 
-.featured-project {
+.featured-projects {
     max-width: 620px;
     margin: 24px 0;
     padding: 18px 22px;
@@ -81,22 +81,31 @@ section.content li {
     background: whitesmoke;
 }
 
-.featured-project span {
+.featured-projects > span {
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
 }
 
-.featured-project h2 {
+.featured-projects h2 {
     margin: 6px 0;
 }
 
-.featured-project h2 a {
+.featured-projects a {
     color: black;
 }
 
-.featured-project p {
-    margin: 0;
+.featured-projects ul {
+    padding-left: 22px;
+}
+
+.featured-projects li {
+    margin-bottom: 8px;
+}
+
+.all-projects-link {
+    display: inline-block;
+    margin-top: 4px;
 }
 
 pre {

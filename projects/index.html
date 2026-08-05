@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Interactive demos and software projects by Ricardo Hortelano, including cellular automata, Conway's Game of Life, WebGPU fractals, machine learning, and procedural generation.">
+    <link rel="canonical" href="https://ricardohs.github.io/projects/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Ricardo Hortelano">
+    <meta property="og:title" content="Software Projects and Interactive Demos – Ricardo Hortelano">
+    <meta property="og:description" content="Explore interactive cellular automata, WebGPU graphics, machine learning experiments, and other software projects.">
+    <meta property="og:url" content="https://ricardohs.github.io/projects/">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Software Projects and Interactive Demos – Ricardo Hortelano">
+    <meta name="twitter:description" content="Interactive cellular automata, WebGPU graphics, machine learning experiments, and more.">
+
+    <title>Software Projects and Interactive Demos – Ricardo Hortelano</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .projects-page {
+            width: min(900px, calc(100% - 32px));
+            margin: 0 auto;
+            padding: 24px 0 60px;
+            font-size: larger;
+        }
+
+        .projects-page header {
+            padding-bottom: 14px;
+            border-bottom: 1px solid;
+        }
+
+        .projects-page header a,
+        .project-list a {
+            color: black;
+        }
+
+        .projects-page h1 {
+            margin: 8px 0 4px;
+        }
+
+        .projects-page header p {
+            max-width: 720px;
+            margin: 0;
+        }
+
+        .project-list {
+            padding-left: 24px;
+        }
+
+        .project-list li {
+            margin-bottom: 14px;
+            padding-left: 5px;
+            line-height: 1.45;
+        }
+
+        .project-list strong {
+            display: block;
+        }
+    </style>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": "Software Projects and Interactive Demos",
+            "description": "A collection of interactive demos and software projects by Ricardo Hortelano.",
+            "url": "https://ricardohs.github.io/projects/",
+            "author": {
+                "@type": "Person",
+                "name": "Ricardo Hortelano",
+                "url": "https://ricardohs.github.io/"
+            }
+        }
+    </script>
+</head>
+<body>
+    <main class="projects-page">
+        <header>
+            <a href="/">← Home</a>
+            <h1>Software Projects and Interactive Demos</h1>
+            <p>
+                Experiments built to learn by doing: cellular automata, GPU graphics,
+                machine learning, algorithms, and procedural systems.
+            </p>
+        </header>
+
+        <ol class="project-list">
+            <li>
+                <strong><a href="/content/demos/elementary_cellular_automata.html">Wolfram Cellular Automata Explorer</a></strong>
+                Interactive online explorer for all 256 elementary rules. Start from one
+                cell or a random state and change the active rule in real time.
+            </li>
+            <li>
+                <strong><a href="/content/demos/rust_wasm_game_of_life.html">Conway's Game of Life Simulator</a></strong>
+                An interactive cellular automaton implemented with Rust and WebAssembly.
+                <a href="https://github.com/RicardoHS/rust_wasm_game_of_life">View source on GitHub</a>.
+            </li>
+            <li>
+                <strong><a href="/content/demos/wgpu_mandelbrot.html">WebGPU Mandelbrot Set Explorer</a></strong>
+                A real-time Mandelbrot fractal renderer for the browser using Rust,
+                WebAssembly, and WebGPU. <a href="https://github.com/RicardoHS/wgpu_mandelbrot">View source on GitHub</a>.
+            </li>
+            <li>
+                <strong><a href="https://github.com/RicardoHS/conway_game">Conway's Game of Life Using Convolutions</a></strong>
+                Fast cellular automata epochs using convolution kernels, including a
+                custom algorithm for finding loops in the simulation.
+            </li>
+            <li>
+                <strong><a href="https://github.com/RicardoHS/DeepCoinCounter">DeepCoinCounter</a></strong>
+                A machine-learning proof of concept for counting cash automatically from
+                a phone camera using augmented image data and TensorFlow Lite models.
+            </li>
+            <li>
+                <strong><a href="https://github.com/RicardoHS/geomorph_malnutrition_classification_models">Geometric Morphometrics for Malnutrition Classification</a></strong>
+                Master's thesis project applying classification models to landmark
+                configurations for acute malnutrition diagnosis.
+            </li>
+            <li>
+                <strong><a href="https://github.com/RicardoHS/zeckendorf-codes">Zeckendorf Codes</a></strong>
+                A file compressor based on a custom algorithm using Zeckendorf representations.
+            </li>
+            <li>
+                <strong><a href="https://github.com/RicardoHS/unity_procedural_caves">Procedural Algorithms in Unity</a></strong>
+                Experiments with procedural cave generation and related algorithms in Unity.
+            </li>
+            <li>
+                <strong><a href="https://github.com/RicardoHS/binance-argitrager">Binance Arbitrager</a></strong>
+                A Julia experiment for detecting triangular arbitrage using nanosecond-scale
+                graph algorithms and a custom Binance API client.
+            </li>
+            <li>
+                <strong><a href="https://github.com/RicardoHS/pythonTaraGame">Python Tara Game</a></strong>
+                An early Python game project exploring search trees and pruning.
+            </li>
+        </ol>
+    </main>
+</body>
+</html>

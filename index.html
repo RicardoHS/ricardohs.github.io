@@ -43,18 +43,31 @@
             </ul>
         </section>
         <section class='content'>
-            <article class="featured-project">
-                <span>Featured interactive project</span>
-                <h2>
-                    <a href="/content/demos/elementary_cellular_automata.html">
-                        Wolfram Cellular Automata Explorer
-                    </a>
-                </h2>
-                <p>
-                    Explore all 256 elementary rules online, choose the initial state,
-                    and change the rule while the simulation evolves.
-                </p>
-            </article>
+            <section class="featured-projects" aria-labelledby="interactive-projects-title">
+                <span>Interactive projects</span>
+                <h2 id="interactive-projects-title">Explore in your browser</h2>
+                <ul>
+                    <li>
+                        <a href="/content/demos/elementary_cellular_automata.html">
+                            Wolfram Cellular Automata Explorer
+                        </a>
+                        — Run all 256 elementary rules online.
+                    </li>
+                    <li>
+                        <a href="/content/demos/rust_wasm_game_of_life.html">
+                            Conway's Game of Life Simulator
+                        </a>
+                        — Draw patterns in a Rust and WebAssembly universe.
+                    </li>
+                    <li>
+                        <a href="/content/demos/wgpu_mandelbrot.html">
+                            WebGPU Mandelbrot Set Explorer
+                        </a>
+                        — Explore a real-time GPU-rendered fractal.
+                    </li>
+                </ul>
+                <a class="all-projects-link" href="/projects/">View all projects →</a>
+            </section>
         </section>
     </section>
     <footer>

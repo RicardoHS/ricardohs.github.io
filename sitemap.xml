@@ -4,13 +4,19 @@
         <loc>https://ricardohs.github.io/</loc>
     </url>
     <url>
+        <loc>https://ricardohs.github.io/projects/</loc>
+        <lastmod>2026-08-05</lastmod>
+    </url>
+    <url>
         <loc>https://ricardohs.github.io/content/demos/elementary_cellular_automata.html</loc>
         <lastmod>2026-08-05</lastmod>
     </url>
     <url>
         <loc>https://ricardohs.github.io/content/demos/rust_wasm_game_of_life.html</loc>
+        <lastmod>2026-08-05</lastmod>
     </url>
     <url>
         <loc>https://ricardohs.github.io/content/demos/wgpu_mandelbrot.html</loc>
+        <lastmod>2026-08-05</lastmod>
     </url>
 </urlset>
