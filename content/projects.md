@@ -4,7 +4,7 @@ Here are some of my tech hobby work. Not all of them but just the ones with enou
 
 Sorted by time (newest first):
 
- - [Homelab AI Benchmarks](../ai-benchmarks/): Reproducible local model evaluations on NVIDIA DGX Spark hardware, with preliminary agentic, optimization, and ARC results. [Methodology and harnesses](https://github.com/RicardoHS/homelab).
+ - [Homelab AI Benchmarks](../ai-benchmarks/): Reproducible local model evaluations on NVIDIA DGX Spark hardware, with preliminary agentic, optimization, and ARC results. [Public evidence and methodology](https://github.com/RicardoHS/ai-benchmark-lab).
  - [Wolfram Cellular Automata Explorer](./content/demos/elementary_cellular_automata.html): Interactive online explorer for all 256 elementary rules. Start from one cell or a random state, then change the active rule without erasing previous generations.
  - [Conway's Game of Life - Rust + WebAssembly](https://github.com/RicardoHS/rust_wasm_game_of_life): [Demo](./content/demos/rust_wasm_game_of_life.html) Interactive webapp build using Rust.
  - [WebGPU Mandelbrot Set explorer](https://github.com/RicardoHS/wgpu_mandelbrot): [Demo](./content/demos/wgpu_mandelbrot.html) Explore the mandelbrot set in your web browser using your GPU.
