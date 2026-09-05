@@ -159,6 +159,9 @@ tbody tr:last-child td { border-bottom: 0; }
 td:not(:first-child):not(:last-child) { font-family: var(--mono); font-size: .72rem; white-space: nowrap; }
 .model-cell strong { display: block; }.model-cell span { color: var(--muted); font: .58rem var(--mono); }
 .result-cell { max-width: 430px; color: var(--muted); }
+.run-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; font: .58rem var(--mono); text-transform: uppercase; }
+.run-links a { color: var(--acid); text-underline-offset: 3px; }
+.run-links span { color: #6e7572; }
 .badge { display: inline-block; margin-right: 8px; padding: 3px 6px; border: 1px solid; font: .55rem var(--mono); text-transform: uppercase; letter-spacing: .04em; }
 .badge.failed { color: var(--orange); }.badge.incomplete { color: var(--red); }.badge.passed { color: var(--acid); }
 .measurement-note, .card-footnote { color: #747b77; font: .66rem/1.6 var(--mono); }

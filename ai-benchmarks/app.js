@@ -61,7 +61,9 @@ function renderRuns() {
     <td>${formatDuration(run.agent_seconds)} / ${formatDuration(run.total_seconds)}${run.timed_out ? " · timeout" : ""}</td>
     <td>${run.decode_mean === null ? "n/c" : `${formatNumber(run.decode_mean, 3)} ± ${formatNumber(run.decode_stddev, 3)} tok/s`}</td>
     <td>${run.host_used_gib === null ? "n/c" : `${formatNumber(run.host_used_gib, 2)} / ${formatNumber(run.host_available_gib, 2)} GiB`}</td>
-    <td class="result-cell"><span class="badge ${run.verification}">${run.verification}</span>${run.summary}</td>
+    <td class="result-cell"><span class="badge ${run.verification}">${run.verification}</span>${run.summary}
+      <span class="run-links"><a href="${run.code_url}">Code</a>${run.demo_url ? `<a href="${run.demo_url}">Live demo</a>` : "<span>Demo unavailable</span>"}</span>
+    </td>
   </tr>`).join("");
 }
 
