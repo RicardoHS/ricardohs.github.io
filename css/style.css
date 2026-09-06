@@ -58,6 +58,12 @@ section.menu-left li:hover {
     transition: 300ms;
 }
 
+.menu-link {
+    color: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
 section.content {
     display: table-cell;
     padding-left: 10px;
