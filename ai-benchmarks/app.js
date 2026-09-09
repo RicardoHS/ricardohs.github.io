@@ -2,6 +2,13 @@ const DATA_URL = "/content/ai-benchmark-results.json";
 
 const state = { data: null, sort: "speed", showIncomplete: true };
 
+const escapeHtml = value => String(value ?? "")
+  .replaceAll("&", "&amp;")
+  .replaceAll("<", "&lt;")
+  .replaceAll(">", "&gt;")
+  .replaceAll('"', "&quot;")
+  .replaceAll("'", "&#039;");
+
 const formatDuration = seconds => {
   if (seconds === null || seconds === undefined) return "n/c";
   const rounded = Math.round(seconds);
@@ -83,6 +90,41 @@ function renderSecondary() {
   </article>`).join("");
 }
 
+function renderCampaign() {
+  const campaign = state.data.campaign;
+  if (!campaign) {
+    document.querySelector("#campaign-counts").innerHTML = '<p class="empty-state">No campaign snapshot published yet.</p>';
+    document.querySelector("#campaign-table").innerHTML = "";
+    return;
+  }
+  const order = { running: 0, complete: 1, "infrastructure-failed": 2, interrupted: 3, blocked: 4, queued: 5, skipped: 6 };
+  const rows = [...campaign.models].sort((a, b) => (order[a.status] ?? 9) - (order[b.status] ?? 9));
+  const labels = {
+    complete: "Complete", running: "Running", "infrastructure-failed": "Infra failed",
+    interrupted: "Interrupted", blocked: "Blocked", queued: "Queued", skipped: "Skipped",
+  };
+  document.querySelector("#campaign-counts").innerHTML = Object.entries(campaign.counts)
+    .map(([status, count]) => `<div class="campaign-count ${escapeHtml(status)}"><strong>${count}</strong><span>${escapeHtml(labels[status] ?? status)}</span></div>`)
+    .join("");
+  document.querySelector("#campaign-table").innerHTML = rows.map(run => {
+    const noData = !run.has_measurements;
+    const progress = run.arc_agentic_tasks === null ? "n/c" : `${run.arc_agentic_tasks}/${run.arc_agentic_target_tasks ?? 120} tasks`;
+    const arc = noData ? "—" : `<strong>${run.arc_agentic_exact ?? "—"} exact</strong><span>${progress} · ${run.arc_agentic_cell_accuracy === null ? "cell n/c" : `${formatNumber(run.arc_agentic_cell_accuracy * 100, 2)}% cells`}${run.arc_agentic_vision ? " · vision" : ""}</span>`;
+    const runtime = noData ? "—" : `<strong>${run.decode_mean === null ? "n/c" : `${formatNumber(run.decode_mean, 2)} ± ${formatNumber(run.decode_stddev, 2)} tok/s`}</strong><span>${run.host_used_gib === null ? "memory n/c" : `${formatNumber(run.host_used_gib, 2)} GiB used`}</span>`;
+    const np = noData ? "—" : `<strong>Cut ${formatNumber(run.np_maxcut_points, 1)}</strong><span>${run.np_maxcut_valid ?? "—"}/${run.np_maxcut_instances ?? "—"} valid</span><strong>3SAT ${formatNumber(run.np_max3sat_points, 1)}</strong><span>${run.np_max3sat_valid ?? "—"}/${run.np_max3sat_instances ?? "—"} valid</span>`;
+    const refugio = noData ? "—" : `<strong>${run.refugio_hidden_score ?? "n/c"} hidden</strong><span>${run.refugio_development_score ?? "n/c"} development${run.refugio_agent_seconds === null ? "" : ` · ${formatDuration(run.refugio_agent_seconds)}`}</span>`;
+    return `<tr class="campaign-row ${escapeHtml(run.status)}">
+      <td class="model-cell"><strong>${escapeHtml(run.model)}</strong><span>${escapeHtml(run.quantization ?? "native")} · ${escapeHtml(run.topology)}</span><span class="badge ${escapeHtml(run.status)}">${escapeHtml(labels[run.status] ?? run.status)}${run.provisional ? " · provisional" : ""}</span></td>
+      <td class="stacked-metric">${arc}</td>
+      <td class="stacked-metric">${runtime}</td>
+      <td class="stacked-metric">${np}</td>
+      <td class="stacked-metric">${refugio}</td>
+      <td><div class="capability-list">${run.capabilities.map(item => `<span>${escapeHtml(item)}</span>`).join("") || "—"}</div></td>
+    </tr>`;
+  }).join("");
+  document.querySelector("#campaign-note").textContent = campaign.notes.join(" ");
+}
+
 function bindControls() {
   document.querySelectorAll("[data-sort]").forEach(button => button.addEventListener("click", () => {
     state.sort = button.dataset.sort;
@@ -100,11 +142,12 @@ async function initialize() {
     const response = await fetch(DATA_URL, { cache: "no-store" });
     if (!response.ok) throw new Error(`Dataset returned HTTP ${response.status}`);
     state.data = await response.json();
-    document.querySelector("#run-count").textContent = state.data.creative_runs.length;
-    document.querySelector("#pass-count").textContent = state.data.creative_runs.filter(run => run.verification === "passed").length;
+    document.querySelector("#run-count").textContent = state.data.campaign?.models.length ?? state.data.creative_runs.length;
+    document.querySelector("#pass-count").textContent = state.data.campaign?.counts.complete ?? state.data.creative_runs.filter(run => run.verification === "passed").length;
     document.querySelector("#last-updated").textContent = `Dataset ${state.data.status} · updated ${state.data.updated_at.slice(0, 10)}`;
     renderRuns();
     renderSecondary();
+    renderCampaign();
     bindControls();
   } catch (error) {
     document.querySelector("#run-chart").innerHTML = `<p role="alert">The public dataset could not be loaded: ${error.message}</p>`;

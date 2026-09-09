@@ -19,6 +19,7 @@
   <header class="site-header">
     <a class="home-link" href="/">RH / LAB</a>
     <nav aria-label="Page sections">
+      <a href="#campaign">Live results</a>
       <a href="#creative">Agentic</a>
       <a href="#optimization">Optimization</a>
       <a href="#roadmap">Roadmap</a>
@@ -41,8 +42,8 @@
         <div class="status-topline"><span>Publication state</span><strong>PRELIMINARY</strong></div>
         <div class="signal" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
         <dl>
-          <div><dt>Creative runs</dt><dd id="run-count">—</dd></div>
-          <div><dt>Fully verified</dt><dd id="pass-count">—</dd></div>
+          <div><dt>Campaign models</dt><dd id="run-count">—</dd></div>
+          <div><dt>Complete</dt><dd id="pass-count">—</dd></div>
           <div><dt>Compute</dt><dd>DGX Spark</dd></div>
           <div><dt>Protocol</dt><dd>v1.0.0</dd></div>
         </dl>
@@ -54,6 +55,25 @@
       <article><span>01</span><h2>One delivery</h2><p>The agent chooses when it is finished. No best-of-three website selection.</p></article>
       <article><span>02</span><h2>Failures remain</h2><p>Timeouts, broken builds and missing assets are results—not files to quietly repair.</p></article>
       <article><span>03</span><h2>Exact provenance</h2><p>Checkpoint, runtime, topology, reasoning, elapsed time and memory travel with every final row.</p></article>
+    </section>
+
+    <section class="benchmark-section campaign-section" id="campaign" aria-labelledby="campaign-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow"><span class="live-dot"></span>Continuously published campaign</p>
+          <h2 id="campaign-title">Evidence as it lands</h2>
+        </div>
+        <p>Complete measurements and clearly marked provisional snapshots from the current two-Spark campaign. Runtime failures remain visible, but never masquerade as zero model scores.</p>
+      </div>
+
+      <div id="campaign-counts" class="campaign-counts" aria-label="Campaign status"></div>
+      <div class="table-wrap campaign-table-wrap">
+        <table class="campaign-table">
+          <thead><tr><th>Model / state</th><th>ARC agentic</th><th>Decode / memory</th><th>NP Frontier</th><th>REFUGIO</th><th>Capabilities</th></tr></thead>
+          <tbody id="campaign-table"></tbody>
+        </table>
+      </div>
+      <p class="measurement-note" id="campaign-note">Loading current campaign…</p>
     </section>
 
     <section class="benchmark-section" id="creative" aria-labelledby="creative-title">
