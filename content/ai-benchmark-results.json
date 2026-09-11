@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "title": "Homelab AI Benchmarks",
-  "updated_at": "2026-09-11T19:46:02.314292+00:00",
+  "updated_at": "2026-09-11T23:44:50.957219+00:00",
   "status": "preliminary",
   "hardware": "1× NVIDIA DGX Spark (GB10, 128 GiB unified memory) per creative run",
   "protocol": {
@@ -257,11 +257,11 @@
   "campaign": {
     "campaign_id": "coding-agentic-models-r01",
     "status": "running",
-    "generated_at": "2026-09-11T19:46:02.314292+00:00",
+    "generated_at": "2026-09-11T23:44:50.957219+00:00",
     "counts": {
       "complete": 3,
-      "queued": 17,
-      "running": 1
+      "queued": 16,
+      "running": 2
     },
     "notes": [
       "Running rows are provisional snapshots and show the number of ARC tasks observed at publication time.",
@@ -321,7 +321,7 @@
         ],
         "status": "running",
         "provisional": true,
-        "started_at": "2026-09-11T18:24:00.519617+00:00",
+        "started_at": "2026-09-11T23:44:50.954295+00:00",
         "ended_at": null,
         "wall_seconds": null,
         "host_used_gib": 97.48,
@@ -586,20 +586,20 @@
           "vision",
           "long-context"
         ],
-        "status": "queued",
+        "status": "running",
         "provisional": true,
-        "started_at": null,
+        "started_at": "2026-09-11T23:44:50.962337+00:00",
         "ended_at": null,
         "wall_seconds": null,
-        "host_used_gib": null,
-        "host_available_gib": null,
-        "arc_agentic_tasks": null,
-        "arc_agentic_target_tasks": null,
-        "arc_agentic_exact": null,
-        "arc_agentic_cell_accuracy": null,
-        "arc_agentic_vision": null,
-        "decode_mean": null,
-        "decode_stddev": null,
+        "host_used_gib": 92.91,
+        "host_available_gib": 28.78,
+        "arc_agentic_tasks": 120,
+        "arc_agentic_target_tasks": 120,
+        "arc_agentic_exact": 0,
+        "arc_agentic_cell_accuracy": 0.06597147376670696,
+        "arc_agentic_vision": true,
+        "decode_mean": 28.045586149923977,
+        "decode_stddev": 0.31688340791593306,
         "np_maxcut_points": null,
         "np_maxcut_valid": null,
         "np_maxcut_instances": null,
@@ -609,7 +609,7 @@
         "refugio_hidden_score": null,
         "refugio_development_score": null,
         "refugio_agent_seconds": null,
-        "has_measurements": false
+        "has_measurements": true
       },
       {
         "campaign_id": "ling-3-flash-base",
