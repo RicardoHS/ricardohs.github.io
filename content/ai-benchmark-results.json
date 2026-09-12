@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "title": "Homelab AI Benchmarks",
-  "updated_at": "2026-09-12T23:46:48.929680+00:00",
+  "updated_at": "2026-09-12T23:56:49.155432+00:00",
   "status": "preliminary",
   "hardware": "1× NVIDIA DGX Spark (GB10, 128 GiB unified memory) per creative run",
   "protocol": {
@@ -257,7 +257,7 @@
   "campaign": {
     "campaign_id": "coding-agentic-models-r01",
     "status": "running",
-    "generated_at": "2026-09-12T23:46:48.929680+00:00",
+    "generated_at": "2026-09-12T23:56:49.155432+00:00",
     "counts": {
       "complete": 9,
       "infrastructure-failed": 1,
@@ -677,8 +677,8 @@
         "arc_agentic_exact": null,
         "arc_agentic_cell_accuracy": null,
         "arc_agentic_vision": null,
-        "decode_mean": null,
-        "decode_stddev": null,
+        "decode_mean": 20.8429723253061,
+        "decode_stddev": 0.12029658236924654,
         "np_maxcut_points": null,
         "np_maxcut_valid": null,
         "np_maxcut_instances": null,
@@ -688,7 +688,7 @@
         "refugio_hidden_score": null,
         "refugio_development_score": null,
         "refugio_agent_seconds": null,
-        "has_measurements": false
+        "has_measurements": true
       },
       {
         "campaign_id": "glm-5-3-flash-dflash2",
