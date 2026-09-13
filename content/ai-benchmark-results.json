@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "title": "Homelab AI Benchmarks",
-  "updated_at": "2026-09-13T06:36:58.011328+00:00",
+  "updated_at": "2026-09-13T06:39:58.081548+00:00",
   "status": "preliminary",
   "hardware": "1× NVIDIA DGX Spark (GB10, 128 GiB unified memory) per creative run",
   "protocol": {
@@ -256,12 +256,11 @@
   ],
   "campaign": {
     "campaign_id": "coding-agentic-models-r01",
-    "status": "running",
-    "generated_at": "2026-09-13T06:36:58.011328+00:00",
+    "status": "waiting-runtime-profiles",
+    "generated_at": "2026-09-13T06:39:58.081548+00:00",
     "counts": {
       "complete": 13,
-      "infrastructure-failed": 6,
-      "running": 1,
+      "infrastructure-failed": 7,
       "skipped": 1
     },
     "notes": [
@@ -1039,20 +1038,20 @@
           "long-context",
           "speculative-decoding"
         ],
-        "status": "running",
+        "status": "infrastructure-failed",
         "provisional": true,
         "started_at": "2026-09-13T06:17:57.652475+00:00",
-        "ended_at": null,
+        "ended_at": "2026-09-13T06:39:58.069969+00:00",
         "wall_seconds": null,
-        "host_used_gib": 113.85,
-        "host_available_gib": 7.84,
+        "host_used_gib": null,
+        "host_available_gib": null,
         "arc_agentic_tasks": null,
         "arc_agentic_target_tasks": null,
         "arc_agentic_exact": null,
         "arc_agentic_cell_accuracy": null,
         "arc_agentic_vision": null,
-        "decode_mean": 9.393047825837929,
-        "decode_stddev": 0.7723193164992516,
+        "decode_mean": null,
+        "decode_stddev": null,
         "np_maxcut_points": null,
         "np_maxcut_valid": null,
         "np_maxcut_instances": null,
@@ -1062,7 +1061,7 @@
         "refugio_hidden_score": null,
         "refugio_development_score": null,
         "refugio_agent_seconds": null,
-        "has_measurements": true
+        "has_measurements": false
       }
     ]
   }
