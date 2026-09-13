@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "title": "Homelab AI Benchmarks",
-  "updated_at": "2026-09-13T07:53:57.140162+00:00",
+  "updated_at": "2026-09-13T08:02:57.383193+00:00",
   "status": "preliminary",
   "hardware": "1× NVIDIA DGX Spark (GB10, 128 GiB unified memory) per creative run",
   "protocol": {
@@ -257,17 +257,18 @@
   "campaign": {
     "campaign_id": "coding-agentic-models-r01",
     "status": "running",
-    "generated_at": "2026-09-13T07:53:57.140162+00:00",
+    "generated_at": "2026-09-13T08:02:57.383193+00:00",
     "counts": {
-      "complete": 2,
-      "queued": 17,
+      "complete": 4,
+      "queued": 15,
       "running": 2
     },
     "notes": [
       "Running rows are provisional snapshots and show the number of ARC tasks observed at publication time.",
       "Infrastructure failures have null metrics and are never interpreted as model scores of zero.",
       "Decode speed is the mean per concurrent request from a two-request runtime smoke, not aggregate throughput.",
-      "Unified host memory is an observed loaded-runtime snapshot on the assigned Spark nodes, not isolated model weights."
+      "Unified host memory is an observed loaded-runtime snapshot on the assigned Spark nodes, not isolated model weights.",
+      "Reasoning speed is completion tokens divided by request wall time, including prefill and decode but excluding model loading."
     ],
     "models": [
       {
@@ -313,6 +314,8 @@
         "optimization_circuito_score": null,
         "optimization_reparto_score": null,
         "optimization_stock_score": -220.55156845181642,
+        "reasoning_control": null,
+        "reasoning_levels": [],
         "has_measurements": true
       },
       {
@@ -328,13 +331,13 @@
           "high-throughput",
           "speculative-decoding"
         ],
-        "status": "running",
-        "provisional": true,
-        "started_at": "2026-09-13T07:44:56.939033+00:00",
-        "ended_at": null,
-        "wall_seconds": null,
-        "host_used_gib": 97.48,
-        "host_available_gib": 24.21,
+        "status": "complete",
+        "provisional": false,
+        "started_at": "2026-09-11T18:31:08.361439+00:00",
+        "ended_at": "2026-09-13T07:58:32.866888+00:00",
+        "wall_seconds": 134844.505,
+        "host_used_gib": 99.86,
+        "host_available_gib": 21.83,
         "arc_agentic_tasks": 120,
         "arc_agentic_target_tasks": 120,
         "arc_agentic_exact": 1,
@@ -342,24 +345,26 @@
         "arc_agentic_vision": false,
         "decode_mean": 27.405376660947308,
         "decode_stddev": 2.7438335101815174,
-        "np_maxcut_points": null,
-        "np_maxcut_valid": null,
-        "np_maxcut_instances": null,
-        "np_max3sat_points": null,
-        "np_max3sat_valid": null,
-        "np_max3sat_instances": null,
-        "refugio_hidden_score": null,
-        "refugio_development_score": null,
-        "refugio_agent_seconds": null,
-        "optimization_cases": null,
-        "optimization_successful": null,
-        "optimization_feasible_rate": null,
+        "np_maxcut_points": 1122.3218305436076,
+        "np_maxcut_valid": 27,
+        "np_maxcut_instances": 27,
+        "np_max3sat_points": 3985.1995753714473,
+        "np_max3sat_valid": 27,
+        "np_max3sat_instances": 27,
+        "refugio_hidden_score": 367,
+        "refugio_development_score": 356,
+        "refugio_agent_seconds": 1118.168,
+        "optimization_cases": 5,
+        "optimization_successful": 0,
+        "optimization_feasible_rate": 0.0,
         "optimization_normalized_score": null,
         "optimization_cajas_score": null,
         "optimization_sparks_score": null,
         "optimization_circuito_score": null,
         "optimization_reparto_score": null,
         "optimization_stock_score": null,
+        "reasoning_control": null,
+        "reasoning_levels": [],
         "has_measurements": true
       },
       {
@@ -376,20 +381,20 @@
           "long-context",
           "speculative-decoding"
         ],
-        "status": "queued",
+        "status": "running",
         "provisional": true,
-        "started_at": null,
+        "started_at": "2026-09-13T07:58:57.303566+00:00",
         "ended_at": null,
         "wall_seconds": null,
-        "host_used_gib": null,
-        "host_available_gib": null,
+        "host_used_gib": 99.12,
+        "host_available_gib": 22.57,
         "arc_agentic_tasks": null,
         "arc_agentic_target_tasks": null,
         "arc_agentic_exact": null,
         "arc_agentic_cell_accuracy": null,
         "arc_agentic_vision": null,
-        "decode_mean": null,
-        "decode_stddev": null,
+        "decode_mean": 53.405302650942886,
+        "decode_stddev": 1.778575391174589,
         "np_maxcut_points": null,
         "np_maxcut_valid": null,
         "np_maxcut_instances": null,
@@ -408,7 +413,9 @@
         "optimization_circuito_score": null,
         "optimization_reparto_score": null,
         "optimization_stock_score": null,
-        "has_measurements": false
+        "reasoning_control": null,
+        "reasoning_levels": [],
+        "has_measurements": true
       },
       {
         "campaign_id": "nemotron-3-5-lightning-base",
@@ -455,6 +462,8 @@
         "optimization_circuito_score": -243.63683393688567,
         "optimization_reparto_score": null,
         "optimization_stock_score": -220.55156845181642,
+        "reasoning_control": null,
+        "reasoning_levels": [],
         "has_measurements": true
       },
       {
@@ -501,6 +510,8 @@
         "optimization_circuito_score": null,
         "optimization_reparto_score": null,
         "optimization_stock_score": null,
+        "reasoning_control": null,
+        "reasoning_levels": [],
         "has_measurements": false
       },
       {
@@ -548,6 +559,8 @@
         "optimization_circuito_score": null,
         "optimization_reparto_score": null,
         "optimization_stock_score": null,
+        "reasoning_control": null,
+        "reasoning_levels": [],
         "has_measurements": false
       },
       {
@@ -563,13 +576,13 @@
           "vision",
           "video"
         ],
-        "status": "running",
-        "provisional": true,
-        "started_at": "2026-09-13T07:44:56.961927+00:00",
-        "ended_at": null,
-        "wall_seconds": null,
-        "host_used_gib": 3.49,
-        "host_available_gib": 118.2,
+        "status": "complete",
+        "provisional": false,
+        "started_at": "2026-09-08T14:19:59.794197+00:00",
+        "ended_at": "2026-09-13T07:56:57.667427+00:00",
+        "wall_seconds": 409017.873,
+        "host_used_gib": 80.44,
+        "host_available_gib": 41.25,
         "arc_agentic_tasks": 120,
         "arc_agentic_target_tasks": 120,
         "arc_agentic_exact": 0,
@@ -577,24 +590,26 @@
         "arc_agentic_vision": true,
         "decode_mean": 58.3222651892109,
         "decode_stddev": 0.9304734584609949,
-        "np_maxcut_points": null,
-        "np_maxcut_valid": null,
-        "np_maxcut_instances": null,
-        "np_max3sat_points": null,
-        "np_max3sat_valid": null,
-        "np_max3sat_instances": null,
-        "refugio_hidden_score": null,
-        "refugio_development_score": null,
-        "refugio_agent_seconds": null,
-        "optimization_cases": null,
-        "optimization_successful": null,
-        "optimization_feasible_rate": null,
-        "optimization_normalized_score": null,
+        "np_maxcut_points": 1507.6075229555768,
+        "np_maxcut_valid": 27,
+        "np_maxcut_instances": 27,
+        "np_max3sat_points": 4706.858911924923,
+        "np_max3sat_valid": 27,
+        "np_max3sat_instances": 27,
+        "refugio_hidden_score": 348,
+        "refugio_development_score": 346,
+        "refugio_agent_seconds": 469.472,
+        "optimization_cases": 5,
+        "optimization_successful": 2,
+        "optimization_feasible_rate": 0.4,
+        "optimization_normalized_score": -105.01397094264648,
         "optimization_cajas_score": null,
         "optimization_sparks_score": null,
-        "optimization_circuito_score": null,
-        "optimization_reparto_score": null,
+        "optimization_circuito_score": -104.34557682359028,
+        "optimization_reparto_score": -105.68236506170268,
         "optimization_stock_score": null,
+        "reasoning_control": null,
+        "reasoning_levels": [],
         "has_measurements": true
       },
       {
@@ -643,6 +658,8 @@
         "optimization_circuito_score": null,
         "optimization_reparto_score": null,
         "optimization_stock_score": null,
+        "reasoning_control": null,
+        "reasoning_levels": [],
         "has_measurements": false
       },
       {
@@ -658,20 +675,20 @@
           "vision",
           "long-context"
         ],
-        "status": "queued",
+        "status": "running",
         "provisional": true,
-        "started_at": null,
+        "started_at": "2026-09-13T07:58:57.313221+00:00",
         "ended_at": null,
         "wall_seconds": null,
-        "host_used_gib": null,
-        "host_available_gib": null,
-        "arc_agentic_tasks": null,
-        "arc_agentic_target_tasks": null,
-        "arc_agentic_exact": null,
-        "arc_agentic_cell_accuracy": null,
-        "arc_agentic_vision": null,
-        "decode_mean": null,
-        "decode_stddev": null,
+        "host_used_gib": 92.91,
+        "host_available_gib": 28.78,
+        "arc_agentic_tasks": 120,
+        "arc_agentic_target_tasks": 120,
+        "arc_agentic_exact": 0,
+        "arc_agentic_cell_accuracy": 0.06597147376670696,
+        "arc_agentic_vision": true,
+        "decode_mean": 28.045586149923977,
+        "decode_stddev": 0.31688340791593306,
         "np_maxcut_points": null,
         "np_maxcut_valid": null,
         "np_maxcut_instances": null,
@@ -690,7 +707,9 @@
         "optimization_circuito_score": null,
         "optimization_reparto_score": null,
         "optimization_stock_score": null,
-        "has_measurements": false
+        "reasoning_control": null,
+        "reasoning_levels": [],
+        "has_measurements": true
       },
       {
         "campaign_id": "ling-3-flash-base",
@@ -736,6 +755,8 @@
         "optimization_circuito_score": null,
         "optimization_reparto_score": null,
         "optimization_stock_score": null,
+        "reasoning_control": null,
+        "reasoning_levels": [],
         "has_measurements": false
       },
       {
@@ -785,6 +806,8 @@
         "optimization_circuito_score": null,
         "optimization_reparto_score": null,
         "optimization_stock_score": null,
+        "reasoning_control": null,
+        "reasoning_levels": [],
         "has_measurements": false
       },
       {
@@ -832,6 +855,8 @@
         "optimization_circuito_score": null,
         "optimization_reparto_score": null,
         "optimization_stock_score": null,
+        "reasoning_control": null,
+        "reasoning_levels": [],
         "has_measurements": false
       },
       {
@@ -877,6 +902,8 @@
         "optimization_circuito_score": null,
         "optimization_reparto_score": null,
         "optimization_stock_score": null,
+        "reasoning_control": null,
+        "reasoning_levels": [],
         "has_measurements": false
       },
       {
@@ -923,6 +950,8 @@
         "optimization_circuito_score": null,
         "optimization_reparto_score": null,
         "optimization_stock_score": null,
+        "reasoning_control": null,
+        "reasoning_levels": [],
         "has_measurements": false
       },
       {
@@ -972,6 +1001,8 @@
         "optimization_circuito_score": null,
         "optimization_reparto_score": null,
         "optimization_stock_score": null,
+        "reasoning_control": null,
+        "reasoning_levels": [],
         "has_measurements": false
       },
       {
@@ -1018,6 +1049,8 @@
         "optimization_circuito_score": null,
         "optimization_reparto_score": null,
         "optimization_stock_score": null,
+        "reasoning_control": null,
+        "reasoning_levels": [],
         "has_measurements": false
       },
       {
@@ -1065,6 +1098,8 @@
         "optimization_circuito_score": null,
         "optimization_reparto_score": null,
         "optimization_stock_score": null,
+        "reasoning_control": null,
+        "reasoning_levels": [],
         "has_measurements": false
       },
       {
@@ -1111,6 +1146,8 @@
         "optimization_circuito_score": null,
         "optimization_reparto_score": null,
         "optimization_stock_score": null,
+        "reasoning_control": null,
+        "reasoning_levels": [],
         "has_measurements": false
       },
       {
@@ -1157,6 +1194,8 @@
         "optimization_circuito_score": null,
         "optimization_reparto_score": null,
         "optimization_stock_score": null,
+        "reasoning_control": null,
+        "reasoning_levels": [],
         "has_measurements": false
       },
       {
@@ -1203,6 +1242,8 @@
         "optimization_circuito_score": null,
         "optimization_reparto_score": null,
         "optimization_stock_score": null,
+        "reasoning_control": null,
+        "reasoning_levels": [],
         "has_measurements": false
       },
       {
@@ -1250,6 +1291,8 @@
         "optimization_circuito_score": null,
         "optimization_reparto_score": null,
         "optimization_stock_score": null,
+        "reasoning_control": null,
+        "reasoning_levels": [],
         "has_measurements": false
       }
     ]
