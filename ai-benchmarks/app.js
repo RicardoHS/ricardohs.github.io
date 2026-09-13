@@ -185,6 +185,57 @@ function renderCampaign() {
         );
       }).join("") || '<span class="empty-inline">Not measured</span>';
 
+    const agenticOptimization = (run.optimization_agentic_results ?? [])
+      .map(item => {
+        const score = item.mean_normalized_score;
+        const feasible = Number(item.successful ?? 0) > 0;
+        return detailButton(
+          item.challenge,
+          score === null || score === undefined ? "invalid" : formatNumber(score, 2),
+          {
+            kicker: `${run.model} · agentic optimization`,
+            title: item.challenge,
+            summary: "Pi used file and shell tools, implemented a solver, submitted it to a bounded development verifier, iterated, and the retained best solver was evaluated on disjoint private cases.",
+            values: [
+              { label: "Private normalized score", value: formatNumber(score, 4) },
+              { label: "Private candidate objective", value: formatNumber(item.mean_candidate_objective, 4) },
+              { label: "Private baseline objective", value: formatNumber(item.mean_baseline_objective, 4) },
+              { label: "Private feasible cases", value: `${item.successful ?? 0}/${item.cases ?? 0}` },
+              { label: "Model calls", value: formatNumber(item.model_calls, 0) },
+              { label: "Tool calls", value: formatNumber(item.tool_calls, 0) },
+              { label: "Development verifier calls", value: formatNumber(item.development_evaluations, 0) },
+              { label: "Input tokens", value: formatNumber(item.input_tokens, 0) },
+              { label: "Output tokens", value: formatNumber(item.output_tokens, 0) },
+              { label: "Agent wall time", value: formatDuration(item.agent_wall_seconds) },
+              { label: "Time to first fully feasible", value: formatDuration(item.time_to_first_fully_feasible_seconds) },
+              { label: "Time to best development result", value: formatDuration(item.time_to_best_development_seconds) },
+              { label: "Best development score", value: formatNumber(item.best_development_normalized_score, 4) },
+            ],
+          },
+          feasible ? (score < 0 ? "negative" : "positive") : "invalid",
+        );
+      }).join("") || '<span class="empty-inline">Queued / not measured</span>';
+
+    const agenticCost = run.optimization_agentic_model_calls === null || run.optimization_agentic_model_calls === undefined
+      ? ""
+      : detailButton("agent cost", `${formatNumber(run.optimization_agentic_total_tokens, 0)} tok`, {
+          kicker: `${run.model} · complete five-challenge agent run`,
+          title: "Agentic cost and throughput",
+          summary: "Totals cover all model and tool turns used to develop five solvers; private solver execution is scored separately.",
+          values: [
+            { label: "Model calls", value: formatNumber(run.optimization_agentic_model_calls, 0) },
+            { label: "Tool calls", value: formatNumber(run.optimization_agentic_tool_calls, 0) },
+            { label: "Verifier calls", value: formatNumber(run.optimization_agentic_development_evaluations, 0) },
+            { label: "Input tokens", value: formatNumber(run.optimization_agentic_input_tokens, 0) },
+            { label: "Output tokens", value: formatNumber(run.optimization_agentic_output_tokens, 0) },
+            { label: "Total tokens", value: formatNumber(run.optimization_agentic_total_tokens, 0) },
+            { label: "Effective output speed", value: `${formatNumber(run.optimization_agentic_output_tps, 3)} tok/s` },
+            { label: "End-to-end time", value: formatDuration(run.optimization_agentic_wall_seconds) },
+            { label: "Private macro feasibility", value: formatPercent(run.optimization_agentic_feasible_rate) },
+            { label: "Private macro score", value: formatNumber(run.optimization_agentic_normalized_score, 4) },
+          ],
+        });
+
     const runtime = run.decode_mean === null || run.decode_mean === undefined
       ? '<span class="empty-inline">Not measured</span>'
       : detailButton("decode", `${formatNumber(run.decode_mean, 2)} tok/s`, {
@@ -251,6 +302,7 @@ function renderCampaign() {
       </header>
       <div class="model-test-grid">
         <section class="test-group wide"><h4>Optimization · each challenge</h4><div class="metric-chip-grid">${optimization}</div></section>
+        <section class="test-group wide"><h4>Agentic optimization · build, verify, iterate</h4><div class="metric-chip-grid">${agenticOptimization}${agenticCost}</div></section>
         <section class="test-group"><h4>Runtime</h4><div class="metric-chip-grid">${runtime}</div></section>
         <section class="test-group"><h4>ARC agentic</h4><div class="metric-chip-grid">${arc}</div></section>
         <section class="test-group"><h4>NP Frontier</h4><div class="metric-chip-grid">${np}</div></section>
