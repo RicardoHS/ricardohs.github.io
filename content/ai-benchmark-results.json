@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "title": "Homelab AI Benchmarks",
-  "updated_at": "2026-09-13T01:46:51.659853+00:00",
+  "updated_at": "2026-09-13T01:56:51.899466+00:00",
   "status": "preliminary",
   "hardware": "1× NVIDIA DGX Spark (GB10, 128 GiB unified memory) per creative run",
   "protocol": {
@@ -257,12 +257,12 @@
   "campaign": {
     "campaign_id": "coding-agentic-models-r01",
     "status": "running",
-    "generated_at": "2026-09-13T01:46:51.659853+00:00",
+    "generated_at": "2026-09-13T01:56:51.899466+00:00",
     "counts": {
       "complete": 10,
-      "infrastructure-failed": 2,
+      "infrastructure-failed": 3,
       "queued": 6,
-      "running": 2,
+      "running": 1,
       "skipped": 1
     },
     "notes": [
@@ -739,10 +739,10 @@
           "tools",
           "reasoning-levels"
         ],
-        "status": "running",
+        "status": "infrastructure-failed",
         "provisional": true,
         "started_at": "2026-09-13T01:42:51.573757+00:00",
-        "ended_at": null,
+        "ended_at": "2026-09-13T01:55:51.855721+00:00",
         "wall_seconds": null,
         "host_used_gib": null,
         "host_available_gib": null,
@@ -970,15 +970,15 @@
         "started_at": "2026-09-13T01:42:51.574492+00:00",
         "ended_at": null,
         "wall_seconds": null,
-        "host_used_gib": null,
-        "host_available_gib": null,
+        "host_used_gib": 83.36,
+        "host_available_gib": 38.33,
         "arc_agentic_tasks": null,
         "arc_agentic_target_tasks": null,
         "arc_agentic_exact": null,
         "arc_agentic_cell_accuracy": null,
         "arc_agentic_vision": null,
-        "decode_mean": null,
-        "decode_stddev": null,
+        "decode_mean": 7.830776977175237,
+        "decode_stddev": 0.0035032487182274016,
         "np_maxcut_points": null,
         "np_maxcut_valid": null,
         "np_maxcut_instances": null,
@@ -988,7 +988,7 @@
         "refugio_hidden_score": null,
         "refugio_development_score": null,
         "refugio_agent_seconds": null,
-        "has_measurements": false
+        "has_measurements": true
       },
       {
         "campaign_id": "laguna-s-2-1-base",
