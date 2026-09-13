@@ -203,6 +203,7 @@ function renderCampaign() {
               { label: "Private feasible cases", value: `${item.successful ?? 0}/${item.cases ?? 0}` },
               { label: "Model calls", value: formatNumber(item.model_calls, 0) },
               { label: "Tool calls", value: formatNumber(item.tool_calls, 0) },
+              { label: "Context compactions", value: formatNumber(item.context_compactions, 0) },
               { label: "Development verifier calls", value: formatNumber(item.development_evaluations, 0) },
               { label: "Input tokens", value: formatNumber(item.input_tokens, 0) },
               { label: "Output tokens", value: formatNumber(item.output_tokens, 0) },
@@ -225,6 +226,7 @@ function renderCampaign() {
           values: [
             { label: "Model calls", value: formatNumber(run.optimization_agentic_model_calls, 0) },
             { label: "Tool calls", value: formatNumber(run.optimization_agentic_tool_calls, 0) },
+            { label: "Context compactions", value: formatNumber(run.optimization_agentic_context_compactions, 0) },
             { label: "Verifier calls", value: formatNumber(run.optimization_agentic_development_evaluations, 0) },
             { label: "Input tokens", value: formatNumber(run.optimization_agentic_input_tokens, 0) },
             { label: "Output tokens", value: formatNumber(run.optimization_agentic_output_tokens, 0) },
