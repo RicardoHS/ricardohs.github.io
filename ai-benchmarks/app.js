@@ -146,7 +146,7 @@ function renderReasoning() {
     <td><span class="badge complete">${escapeHtml(level.level)}</span></td>
     <td class="stacked-metric"><strong>${formatNumber(level.macro_normalized_score, 3)} normalized</strong><span>${level.successful ?? "—"}/${level.cases ?? "—"} feasible</span></td>
     <td class="stacked-metric"><strong>${formatNumber(level.total_tokens, 0)} total</strong><span>${formatNumber(level.input_tokens, 0)} input · ${formatNumber(level.output_tokens, 0)} output · ${formatNumber(level.reasoning_tokens, 0)} reasoning</span></td>
-    <td class="stacked-metric"><strong>${formatNumber(level.effective_output_tokens_per_second, 2)} tok/s</strong><span>effective output rate</span></td>
+    <td class="stacked-metric"><strong>${formatNumber(level.effective_output_tokens_per_second, 2)} tok/s effective</strong><span>${formatNumber(level.request_output_tokens_per_second_mean, 2)} ± ${formatNumber(level.request_output_tokens_per_second_stddev, 2)} tok/s across tasks</span></td>
     <td class="stacked-metric"><strong>${formatDuration(level.wall_seconds)}</strong><span>${formatDuration(level.measured_request_seconds)} in requests</span></td>
   </tr>`).join("");
 }
