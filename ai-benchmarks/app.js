@@ -132,6 +132,25 @@ function renderCampaign() {
   document.querySelector("#campaign-note").textContent = campaign.notes.join(" ");
 }
 
+function renderReasoning() {
+  const table = document.querySelector("#reasoning-table");
+  const campaign = state.data.campaign;
+  const rows = campaign?.models.flatMap(model =>
+    (model.reasoning_levels ?? []).map(level => ({ model, level }))) ?? [];
+  if (!rows.length) {
+    table.innerHTML = '<tr><td colspan="6" class="empty-state">Native reasoning sweeps are queued. Results will appear here automatically.</td></tr>';
+    return;
+  }
+  table.innerHTML = rows.map(({ model, level }) => `<tr>
+    <td class="model-cell"><strong>${escapeHtml(model.model)}</strong><span>${escapeHtml(model.reasoning_control ?? "native")} · ${escapeHtml(model.topology)}</span></td>
+    <td><span class="badge complete">${escapeHtml(level.level)}</span></td>
+    <td class="stacked-metric"><strong>${formatNumber(level.macro_normalized_score, 3)} normalized</strong><span>${level.successful ?? "—"}/${level.cases ?? "—"} feasible</span></td>
+    <td class="stacked-metric"><strong>${formatNumber(level.total_tokens, 0)} total</strong><span>${formatNumber(level.input_tokens, 0)} input · ${formatNumber(level.output_tokens, 0)} output · ${formatNumber(level.reasoning_tokens, 0)} reasoning</span></td>
+    <td class="stacked-metric"><strong>${formatNumber(level.effective_output_tokens_per_second, 2)} tok/s</strong><span>effective output rate</span></td>
+    <td class="stacked-metric"><strong>${formatDuration(level.wall_seconds)}</strong><span>${formatDuration(level.measured_request_seconds)} in requests</span></td>
+  </tr>`).join("");
+}
+
 function bindControls() {
   document.querySelectorAll("[data-sort]").forEach(button => button.addEventListener("click", () => {
     state.sort = button.dataset.sort;
@@ -155,6 +174,7 @@ async function initialize() {
     renderRuns();
     renderSecondary();
     renderCampaign();
+    renderReasoning();
     bindControls();
   } catch (error) {
     document.querySelector("#run-chart").innerHTML = `<p role="alert">The public dataset could not be loaded: ${error.message}</p>`;

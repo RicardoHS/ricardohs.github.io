@@ -20,6 +20,7 @@
     <a class="home-link" href="/">RH / LAB</a>
     <nav aria-label="Page sections">
       <a href="#campaign">Live results</a>
+      <a href="#reasoning">Reasoning</a>
       <a href="#creative">Agentic</a>
       <a href="#optimization">Optimization</a>
       <a href="#roadmap">Roadmap</a>
@@ -74,6 +75,23 @@
         </table>
       </div>
       <p class="measurement-note" id="campaign-note">Loading current campaign…</p>
+    </section>
+
+    <section class="benchmark-section" id="reasoning" aria-labelledby="reasoning-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Native effort sweep</p>
+          <h2 id="reasoning-title">What more thinking buys</h2>
+        </div>
+        <p>The same five private optimization challenges at every reasoning level supported by each model. The output ceiling and sampling recipe remain fixed within a model so quality, token cost and latency stay comparable.</p>
+      </div>
+      <div class="table-wrap">
+        <table class="reasoning-table">
+          <thead><tr><th>Model / control</th><th>Level</th><th>Quality</th><th>Tokens</th><th>Effective speed</th><th>Time</th></tr></thead>
+          <tbody id="reasoning-table"></tbody>
+        </table>
+      </div>
+      <p class="measurement-note">Effective speed is output tokens divided by request wall time. It includes prefill and decode, but excludes model loading; it is therefore distinct from pure decode speed.</p>
     </section>
 
     <section class="benchmark-section" id="creative" aria-labelledby="creative-title">
