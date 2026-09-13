@@ -68,12 +68,7 @@
       </div>
 
       <div id="campaign-counts" class="campaign-counts" aria-label="Campaign status"></div>
-      <div class="table-wrap campaign-table-wrap">
-        <table class="campaign-table">
-          <thead><tr><th>Model / state</th><th>Optimization 5</th><th>ARC agentic</th><th>Decode / memory</th><th>NP Frontier</th><th>REFUGIO</th><th>Capabilities</th></tr></thead>
-          <tbody id="campaign-table"></tbody>
-        </table>
-      </div>
+      <div id="campaign-models" class="campaign-models" aria-live="polite"></div>
       <p class="measurement-note" id="campaign-note">Loading current campaign…</p>
     </section>
 
@@ -83,15 +78,10 @@
           <p class="eyebrow">Native effort sweep</p>
           <h2 id="reasoning-title">What more thinking buys</h2>
         </div>
-        <p>The same five private optimization challenges at every reasoning level supported by each model. The output ceiling and sampling recipe remain fixed within a model so quality, token cost and latency stay comparable.</p>
+        <p>The same five private optimization challenges at every native effort level. Protocol r03 allows up to 64K deliberation tokens, reserves 8K for structured finalization and records every ceiling hit.</p>
       </div>
-      <div class="table-wrap">
-        <table class="reasoning-table">
-          <thead><tr><th>Model / control</th><th>Level</th><th>Quality</th><th>Tokens</th><th>Effective speed</th><th>Time</th></tr></thead>
-          <tbody id="reasoning-table"></tbody>
-        </table>
-      </div>
-      <p class="measurement-note">Effective speed is output tokens divided by request wall time. It includes prefill and decode, but excludes model loading; it is therefore distinct from pure decode speed.</p>
+      <div id="reasoning-models" class="reasoning-models" aria-live="polite"></div>
+      <p class="measurement-note">Select any number for its full result and interpretation. Feasibility ranks before score; aggregate normalized scores include only feasible submissions.</p>
     </section>
 
     <section class="benchmark-section" id="creative" aria-labelledby="creative-title">
@@ -167,6 +157,15 @@
     <span>Ricardo Hortelano · Homelab AI</span>
     <span id="last-updated">Loading public dataset…</span>
   </footer>
+  <dialog id="result-dialog" class="result-dialog" aria-labelledby="result-dialog-title">
+    <div class="dialog-shell">
+      <button id="result-dialog-close" class="dialog-close" type="button" aria-label="Close result details">Close</button>
+      <p id="result-dialog-kicker" class="eyebrow"></p>
+      <h2 id="result-dialog-title"></h2>
+      <p id="result-dialog-summary" class="dialog-summary"></p>
+      <dl id="result-dialog-values" class="dialog-values"></dl>
+    </div>
+  </dialog>
   <script src="app.js" defer></script>
 </body>
 </html>

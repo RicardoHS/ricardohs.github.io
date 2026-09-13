@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "title": "Homelab AI Benchmarks",
-  "updated_at": "2026-09-13T16:44:59.715169+00:00",
+  "updated_at": "2026-09-13T17:01:57.403867+00:00",
   "status": "preliminary",
   "hardware": "1× NVIDIA DGX Spark (GB10, 128 GiB unified memory) per creative run",
   "protocol": {
@@ -257,7 +257,7 @@
   "campaign": {
     "campaign_id": "coding-agentic-models-r01",
     "status": "running",
-    "generated_at": "2026-09-13T16:44:59.715169+00:00",
+    "generated_at": "2026-09-13T17:01:57.403867+00:00",
     "counts": {
       "blocked": 1,
       "complete": 10,
@@ -270,7 +270,8 @@
       "Infrastructure failures have null metrics and are never interpreted as model scores of zero.",
       "Decode speed is the mean per concurrent request from a two-request runtime smoke, not aggregate throughput.",
       "Unified host memory is an observed loaded-runtime snapshot on the assigned Spark nodes, not isolated model weights.",
-      "Reasoning speed is completion tokens divided by request wall time, including prefill and decode but excluding model loading."
+      "Reasoning speed is completion tokens divided by request wall time, including prefill and decode but excluding model loading.",
+      "Optimization rankings are feasibility-first; normalized scores average only feasible submissions, so every per-challenge outcome is published separately."
     ],
     "models": [
       {
@@ -317,7 +318,66 @@
         "optimization_reparto_score": null,
         "optimization_stock_score": -220.55156845181642,
         "reasoning_control": null,
+        "reasoning_protocol": null,
+        "reasoning_sampling_seed": null,
         "reasoning_levels": [],
+        "optimization_results": [
+          {
+            "challenge": "cajas",
+            "cases": 1,
+            "successful": 0,
+            "feasible_rate": 0.0,
+            "mean_improvement_over_baseline": null,
+            "mean_normalized_score": null,
+            "mean_candidate_objective": null,
+            "mean_baseline_objective": null,
+            "mean_lower_bound": null
+          },
+          {
+            "challenge": "sparks",
+            "cases": 1,
+            "successful": 0,
+            "feasible_rate": 0.0,
+            "mean_improvement_over_baseline": null,
+            "mean_normalized_score": null,
+            "mean_candidate_objective": null,
+            "mean_baseline_objective": null,
+            "mean_lower_bound": null
+          },
+          {
+            "challenge": "circuito",
+            "cases": 1,
+            "successful": 0,
+            "feasible_rate": 0.0,
+            "mean_improvement_over_baseline": null,
+            "mean_normalized_score": null,
+            "mean_candidate_objective": null,
+            "mean_baseline_objective": null,
+            "mean_lower_bound": null
+          },
+          {
+            "challenge": "reparto",
+            "cases": 1,
+            "successful": 0,
+            "feasible_rate": 0.0,
+            "mean_improvement_over_baseline": null,
+            "mean_normalized_score": null,
+            "mean_candidate_objective": null,
+            "mean_baseline_objective": null,
+            "mean_lower_bound": null
+          },
+          {
+            "challenge": "stock",
+            "cases": 1,
+            "successful": 1,
+            "feasible_rate": 1.0,
+            "mean_improvement_over_baseline": -17597.631000000023,
+            "mean_normalized_score": -220.55156845181642,
+            "mean_candidate_objective": 25438.973000000038,
+            "mean_baseline_objective": 7841.342000000017,
+            "mean_lower_bound": -137.577
+          }
+        ],
         "has_measurements": true
       },
       {
@@ -366,7 +426,66 @@
         "optimization_reparto_score": null,
         "optimization_stock_score": null,
         "reasoning_control": null,
+        "reasoning_protocol": null,
+        "reasoning_sampling_seed": null,
         "reasoning_levels": [],
+        "optimization_results": [
+          {
+            "challenge": "cajas",
+            "cases": 1,
+            "successful": 0,
+            "feasible_rate": 0.0,
+            "mean_improvement_over_baseline": null,
+            "mean_normalized_score": null,
+            "mean_candidate_objective": null,
+            "mean_baseline_objective": null,
+            "mean_lower_bound": null
+          },
+          {
+            "challenge": "sparks",
+            "cases": 1,
+            "successful": 0,
+            "feasible_rate": 0.0,
+            "mean_improvement_over_baseline": null,
+            "mean_normalized_score": null,
+            "mean_candidate_objective": null,
+            "mean_baseline_objective": null,
+            "mean_lower_bound": null
+          },
+          {
+            "challenge": "circuito",
+            "cases": 1,
+            "successful": 0,
+            "feasible_rate": 0.0,
+            "mean_improvement_over_baseline": null,
+            "mean_normalized_score": null,
+            "mean_candidate_objective": null,
+            "mean_baseline_objective": null,
+            "mean_lower_bound": null
+          },
+          {
+            "challenge": "reparto",
+            "cases": 1,
+            "successful": 0,
+            "feasible_rate": 0.0,
+            "mean_improvement_over_baseline": null,
+            "mean_normalized_score": null,
+            "mean_candidate_objective": null,
+            "mean_baseline_objective": null,
+            "mean_lower_bound": null
+          },
+          {
+            "challenge": "stock",
+            "cases": 1,
+            "successful": 0,
+            "feasible_rate": 0.0,
+            "mean_improvement_over_baseline": null,
+            "mean_normalized_score": null,
+            "mean_candidate_objective": null,
+            "mean_baseline_objective": null,
+            "mean_lower_bound": null
+          }
+        ],
         "has_measurements": true
       },
       {
@@ -416,7 +535,66 @@
         "optimization_reparto_score": null,
         "optimization_stock_score": -220.55156845181642,
         "reasoning_control": null,
+        "reasoning_protocol": null,
+        "reasoning_sampling_seed": null,
         "reasoning_levels": [],
+        "optimization_results": [
+          {
+            "challenge": "cajas",
+            "cases": 1,
+            "successful": 0,
+            "feasible_rate": 0.0,
+            "mean_improvement_over_baseline": null,
+            "mean_normalized_score": null,
+            "mean_candidate_objective": null,
+            "mean_baseline_objective": null,
+            "mean_lower_bound": null
+          },
+          {
+            "challenge": "sparks",
+            "cases": 1,
+            "successful": 0,
+            "feasible_rate": 0.0,
+            "mean_improvement_over_baseline": null,
+            "mean_normalized_score": null,
+            "mean_candidate_objective": null,
+            "mean_baseline_objective": null,
+            "mean_lower_bound": null
+          },
+          {
+            "challenge": "circuito",
+            "cases": 1,
+            "successful": 1,
+            "feasible_rate": 1.0,
+            "mean_improvement_over_baseline": -457.375,
+            "mean_normalized_score": -378.5825142265908,
+            "mean_candidate_objective": 578.1875,
+            "mean_baseline_objective": 120.8125,
+            "mean_lower_bound": 0.0
+          },
+          {
+            "challenge": "reparto",
+            "cases": 1,
+            "successful": 0,
+            "feasible_rate": 0.0,
+            "mean_improvement_over_baseline": null,
+            "mean_normalized_score": null,
+            "mean_candidate_objective": null,
+            "mean_baseline_objective": null,
+            "mean_lower_bound": null
+          },
+          {
+            "challenge": "stock",
+            "cases": 1,
+            "successful": 1,
+            "feasible_rate": 1.0,
+            "mean_improvement_over_baseline": -17597.631000000023,
+            "mean_normalized_score": -220.55156845181642,
+            "mean_candidate_objective": 25438.973000000038,
+            "mean_baseline_objective": 7841.342000000017,
+            "mean_lower_bound": -137.577
+          }
+        ],
         "has_measurements": true
       },
       {
@@ -465,7 +643,66 @@
         "optimization_reparto_score": null,
         "optimization_stock_score": -220.55156845181642,
         "reasoning_control": null,
+        "reasoning_protocol": null,
+        "reasoning_sampling_seed": null,
         "reasoning_levels": [],
+        "optimization_results": [
+          {
+            "challenge": "cajas",
+            "cases": 1,
+            "successful": 0,
+            "feasible_rate": 0.0,
+            "mean_improvement_over_baseline": null,
+            "mean_normalized_score": null,
+            "mean_candidate_objective": null,
+            "mean_baseline_objective": null,
+            "mean_lower_bound": null
+          },
+          {
+            "challenge": "sparks",
+            "cases": 1,
+            "successful": 0,
+            "feasible_rate": 0.0,
+            "mean_improvement_over_baseline": null,
+            "mean_normalized_score": null,
+            "mean_candidate_objective": null,
+            "mean_baseline_objective": null,
+            "mean_lower_bound": null
+          },
+          {
+            "challenge": "circuito",
+            "cases": 1,
+            "successful": 1,
+            "feasible_rate": 1.0,
+            "mean_improvement_over_baseline": -294.34375,
+            "mean_normalized_score": -243.63683393688567,
+            "mean_candidate_objective": 415.15625,
+            "mean_baseline_objective": 120.8125,
+            "mean_lower_bound": 0.0
+          },
+          {
+            "challenge": "reparto",
+            "cases": 1,
+            "successful": 0,
+            "feasible_rate": 0.0,
+            "mean_improvement_over_baseline": null,
+            "mean_normalized_score": null,
+            "mean_candidate_objective": null,
+            "mean_baseline_objective": null,
+            "mean_lower_bound": null
+          },
+          {
+            "challenge": "stock",
+            "cases": 1,
+            "successful": 1,
+            "feasible_rate": 1.0,
+            "mean_improvement_over_baseline": -17597.631000000023,
+            "mean_normalized_score": -220.55156845181642,
+            "mean_candidate_objective": 25438.973000000038,
+            "mean_baseline_objective": 7841.342000000017,
+            "mean_lower_bound": -137.577
+          }
+        ],
         "has_measurements": true
       },
       {
@@ -482,8 +719,8 @@
         ],
         "status": "infrastructure-failed",
         "provisional": true,
-        "started_at": "2026-09-13T11:01:52.969208+00:00",
-        "ended_at": "2026-09-13T11:53:53.997943+00:00",
+        "started_at": "2026-09-06T10:34:27.957303+00:00",
+        "ended_at": "2026-09-12T22:26:47.539941+00:00",
         "wall_seconds": null,
         "host_used_gib": null,
         "host_available_gib": null,
@@ -513,7 +750,10 @@
         "optimization_reparto_score": null,
         "optimization_stock_score": null,
         "reasoning_control": null,
+        "reasoning_protocol": null,
+        "reasoning_sampling_seed": null,
         "reasoning_levels": [],
+        "optimization_results": [],
         "has_measurements": false
       },
       {
@@ -531,8 +771,8 @@
         ],
         "status": "infrastructure-failed",
         "provisional": true,
-        "started_at": "2026-09-13T11:53:54.035208+00:00",
-        "ended_at": "2026-09-13T12:26:54.683591+00:00",
+        "started_at": "2026-09-06T10:42:25.514911+00:00",
+        "ended_at": "2026-09-12T22:42:36.863170+00:00",
         "wall_seconds": null,
         "host_used_gib": null,
         "host_available_gib": null,
@@ -562,7 +802,10 @@
         "optimization_reparto_score": null,
         "optimization_stock_score": null,
         "reasoning_control": null,
+        "reasoning_protocol": null,
+        "reasoning_sampling_seed": null,
         "reasoning_levels": [],
+        "optimization_results": [],
         "has_measurements": false
       },
       {
@@ -611,7 +854,66 @@
         "optimization_reparto_score": -105.68236506170268,
         "optimization_stock_score": null,
         "reasoning_control": null,
+        "reasoning_protocol": null,
+        "reasoning_sampling_seed": null,
         "reasoning_levels": [],
+        "optimization_results": [
+          {
+            "challenge": "cajas",
+            "cases": 1,
+            "successful": 0,
+            "feasible_rate": 0.0,
+            "mean_improvement_over_baseline": null,
+            "mean_normalized_score": null,
+            "mean_candidate_objective": null,
+            "mean_baseline_objective": null,
+            "mean_lower_bound": null
+          },
+          {
+            "challenge": "sparks",
+            "cases": 1,
+            "successful": 0,
+            "feasible_rate": 0.0,
+            "mean_improvement_over_baseline": null,
+            "mean_normalized_score": null,
+            "mean_candidate_objective": null,
+            "mean_baseline_objective": null,
+            "mean_lower_bound": null
+          },
+          {
+            "challenge": "circuito",
+            "cases": 1,
+            "successful": 1,
+            "feasible_rate": 1.0,
+            "mean_improvement_over_baseline": -126.0625,
+            "mean_normalized_score": -104.34557682359028,
+            "mean_candidate_objective": 246.875,
+            "mean_baseline_objective": 120.8125,
+            "mean_lower_bound": 0.0
+          },
+          {
+            "challenge": "reparto",
+            "cases": 1,
+            "successful": 1,
+            "feasible_rate": 1.0,
+            "mean_improvement_over_baseline": -15477.249999999998,
+            "mean_normalized_score": -105.68236506170268,
+            "mean_candidate_objective": 30122.314,
+            "mean_baseline_objective": 14645.064,
+            "mean_lower_bound": 0.0
+          },
+          {
+            "challenge": "stock",
+            "cases": 1,
+            "successful": 0,
+            "feasible_rate": 0.0,
+            "mean_improvement_over_baseline": null,
+            "mean_normalized_score": null,
+            "mean_candidate_objective": null,
+            "mean_baseline_objective": null,
+            "mean_lower_bound": null
+          }
+        ],
         "has_measurements": true
       },
       {
@@ -661,6 +963,8 @@
         "optimization_reparto_score": -19.032719829698262,
         "optimization_stock_score": null,
         "reasoning_control": "top-level",
+        "reasoning_protocol": null,
+        "reasoning_sampling_seed": null,
         "reasoning_levels": [
           {
             "level": "low",
@@ -676,7 +980,70 @@
             "effective_output_tokens_per_second": 32.974651,
             "request_output_tokens_per_second_mean": 34.467523,
             "request_output_tokens_per_second_stddev": 6.994537,
-            "wall_seconds": 1348.526845
+            "wall_seconds": 1348.526845,
+            "max_deliberation_tokens": 8192,
+            "max_finalization_tokens": 8192,
+            "max_output_tokens_per_case": 16384,
+            "deliberation_requests": null,
+            "deliberation_limit_hits": null,
+            "deliberation_saturation_rate": null,
+            "challenges": [
+              {
+                "challenge": "cajas",
+                "cases": 1,
+                "successful": 0,
+                "feasible_rate": 0.0,
+                "mean_improvement_over_baseline": null,
+                "mean_normalized_score": null,
+                "mean_candidate_objective": null,
+                "mean_baseline_objective": null,
+                "mean_lower_bound": null
+              },
+              {
+                "challenge": "sparks",
+                "cases": 1,
+                "successful": 0,
+                "feasible_rate": 0.0,
+                "mean_improvement_over_baseline": null,
+                "mean_normalized_score": null,
+                "mean_candidate_objective": null,
+                "mean_baseline_objective": null,
+                "mean_lower_bound": null
+              },
+              {
+                "challenge": "circuito",
+                "cases": 1,
+                "successful": 1,
+                "feasible_rate": 1.0,
+                "mean_improvement_over_baseline": 19.4375,
+                "mean_normalized_score": 16.088980858768753,
+                "mean_candidate_objective": 101.375,
+                "mean_baseline_objective": 120.8125,
+                "mean_lower_bound": 0.0
+              },
+              {
+                "challenge": "reparto",
+                "cases": 1,
+                "successful": 1,
+                "feasible_rate": 1.0,
+                "mean_improvement_over_baseline": 5969.536,
+                "mean_normalized_score": 40.76141968379243,
+                "mean_candidate_objective": 8675.528,
+                "mean_baseline_objective": 14645.064,
+                "mean_lower_bound": 0.0
+              },
+              {
+                "challenge": "stock",
+                "cases": 1,
+                "successful": 1,
+                "feasible_rate": 1.0,
+                "mean_improvement_over_baseline": 1166.3080000000173,
+                "mean_normalized_score": 14.617368593414907,
+                "mean_candidate_objective": 6675.034,
+                "mean_baseline_objective": 7841.342000000017,
+                "mean_lower_bound": -137.577
+              }
+            ]
           },
           {
             "level": "medium",
@@ -692,7 +1059,70 @@
             "effective_output_tokens_per_second": 42.654273,
             "request_output_tokens_per_second_mean": 42.710386,
             "request_output_tokens_per_second_stddev": 1.284609,
-            "wall_seconds": 1027.964237
+            "wall_seconds": 1027.964237,
+            "max_deliberation_tokens": 8192,
+            "max_finalization_tokens": 8192,
+            "max_output_tokens_per_case": 16384,
+            "deliberation_requests": null,
+            "deliberation_limit_hits": null,
+            "deliberation_saturation_rate": null,
+            "challenges": [
+              {
+                "challenge": "cajas",
+                "cases": 1,
+                "successful": 0,
+                "feasible_rate": 0.0,
+                "mean_improvement_over_baseline": null,
+                "mean_normalized_score": null,
+                "mean_candidate_objective": null,
+                "mean_baseline_objective": null,
+                "mean_lower_bound": null
+              },
+              {
+                "challenge": "sparks",
+                "cases": 1,
+                "successful": 0,
+                "feasible_rate": 0.0,
+                "mean_improvement_over_baseline": null,
+                "mean_normalized_score": null,
+                "mean_candidate_objective": null,
+                "mean_baseline_objective": null,
+                "mean_lower_bound": null
+              },
+              {
+                "challenge": "circuito",
+                "cases": 1,
+                "successful": 1,
+                "feasible_rate": 1.0,
+                "mean_improvement_over_baseline": 44.75,
+                "mean_normalized_score": 37.04086911536472,
+                "mean_candidate_objective": 76.0625,
+                "mean_baseline_objective": 120.8125,
+                "mean_lower_bound": 0.0
+              },
+              {
+                "challenge": "reparto",
+                "cases": 1,
+                "successful": 1,
+                "feasible_rate": 1.0,
+                "mean_improvement_over_baseline": -2618.6600000000017,
+                "mean_normalized_score": -17.880836847145233,
+                "mean_candidate_objective": 17263.724000000002,
+                "mean_baseline_objective": 14645.064,
+                "mean_lower_bound": 0.0
+              },
+              {
+                "challenge": "stock",
+                "cases": 1,
+                "successful": 0,
+                "feasible_rate": 0.0,
+                "mean_improvement_over_baseline": null,
+                "mean_normalized_score": null,
+                "mean_candidate_objective": null,
+                "mean_baseline_objective": null,
+                "mean_lower_bound": null
+              }
+            ]
           },
           {
             "level": "xhigh",
@@ -708,7 +1138,127 @@
             "effective_output_tokens_per_second": 31.394554,
             "request_output_tokens_per_second_mean": 31.475322,
             "request_output_tokens_per_second_stddev": 1.892474,
-            "wall_seconds": 1404.635218
+            "wall_seconds": 1404.635218,
+            "max_deliberation_tokens": 8192,
+            "max_finalization_tokens": 8192,
+            "max_output_tokens_per_case": 16384,
+            "deliberation_requests": null,
+            "deliberation_limit_hits": null,
+            "deliberation_saturation_rate": null,
+            "challenges": [
+              {
+                "challenge": "cajas",
+                "cases": 1,
+                "successful": 1,
+                "feasible_rate": 1.0,
+                "mean_improvement_over_baseline": 1.0,
+                "mean_normalized_score": 100.0,
+                "mean_candidate_objective": 7.0,
+                "mean_baseline_objective": 8.0,
+                "mean_lower_bound": 7.0
+              },
+              {
+                "challenge": "sparks",
+                "cases": 1,
+                "successful": 0,
+                "feasible_rate": 0.0,
+                "mean_improvement_over_baseline": null,
+                "mean_normalized_score": null,
+                "mean_candidate_objective": null,
+                "mean_baseline_objective": null,
+                "mean_lower_bound": null
+              },
+              {
+                "challenge": "circuito",
+                "cases": 1,
+                "successful": 1,
+                "feasible_rate": 1.0,
+                "mean_improvement_over_baseline": 18.4375,
+                "mean_normalized_score": 15.261251939989654,
+                "mean_candidate_objective": 102.375,
+                "mean_baseline_objective": 120.8125,
+                "mean_lower_bound": 0.0
+              },
+              {
+                "challenge": "reparto",
+                "cases": 1,
+                "successful": 0,
+                "feasible_rate": 0.0,
+                "mean_improvement_over_baseline": null,
+                "mean_normalized_score": null,
+                "mean_candidate_objective": null,
+                "mean_baseline_objective": null,
+                "mean_lower_bound": null
+              },
+              {
+                "challenge": "stock",
+                "cases": 1,
+                "successful": 0,
+                "feasible_rate": 0.0,
+                "mean_improvement_over_baseline": null,
+                "mean_normalized_score": null,
+                "mean_candidate_objective": null,
+                "mean_baseline_objective": null,
+                "mean_lower_bound": null
+              }
+            ]
+          }
+        ],
+        "optimization_results": [
+          {
+            "challenge": "cajas",
+            "cases": 1,
+            "successful": 0,
+            "feasible_rate": 0.0,
+            "mean_improvement_over_baseline": null,
+            "mean_normalized_score": null,
+            "mean_candidate_objective": null,
+            "mean_baseline_objective": null,
+            "mean_lower_bound": null
+          },
+          {
+            "challenge": "sparks",
+            "cases": 1,
+            "successful": 0,
+            "feasible_rate": 0.0,
+            "mean_improvement_over_baseline": null,
+            "mean_normalized_score": null,
+            "mean_candidate_objective": null,
+            "mean_baseline_objective": null,
+            "mean_lower_bound": null
+          },
+          {
+            "challenge": "circuito",
+            "cases": 1,
+            "successful": 1,
+            "feasible_rate": 1.0,
+            "mean_improvement_over_baseline": 36.1875,
+            "mean_normalized_score": 29.953440248318675,
+            "mean_candidate_objective": 84.625,
+            "mean_baseline_objective": 120.8125,
+            "mean_lower_bound": 0.0
+          },
+          {
+            "challenge": "reparto",
+            "cases": 1,
+            "successful": 1,
+            "feasible_rate": 1.0,
+            "mean_improvement_over_baseline": -2787.354000000001,
+            "mean_normalized_score": -19.032719829698262,
+            "mean_candidate_objective": 17432.418,
+            "mean_baseline_objective": 14645.064,
+            "mean_lower_bound": 0.0
+          },
+          {
+            "challenge": "stock",
+            "cases": 1,
+            "successful": 0,
+            "feasible_rate": 0.0,
+            "mean_improvement_over_baseline": null,
+            "mean_normalized_score": null,
+            "mean_candidate_objective": null,
+            "mean_baseline_objective": null,
+            "mean_lower_bound": null
           }
         ],
         "has_measurements": true
@@ -759,7 +1309,66 @@
         "optimization_reparto_score": null,
         "optimization_stock_score": -18.3465329075277,
         "reasoning_control": null,
+        "reasoning_protocol": null,
+        "reasoning_sampling_seed": null,
         "reasoning_levels": [],
+        "optimization_results": [
+          {
+            "challenge": "cajas",
+            "cases": 1,
+            "successful": 0,
+            "feasible_rate": 0.0,
+            "mean_improvement_over_baseline": null,
+            "mean_normalized_score": null,
+            "mean_candidate_objective": null,
+            "mean_baseline_objective": null,
+            "mean_lower_bound": null
+          },
+          {
+            "challenge": "sparks",
+            "cases": 1,
+            "successful": 0,
+            "feasible_rate": 0.0,
+            "mean_improvement_over_baseline": null,
+            "mean_normalized_score": null,
+            "mean_candidate_objective": null,
+            "mean_baseline_objective": null,
+            "mean_lower_bound": null
+          },
+          {
+            "challenge": "circuito",
+            "cases": 1,
+            "successful": 1,
+            "feasible_rate": 1.0,
+            "mean_improvement_over_baseline": -24.0,
+            "mean_normalized_score": -19.865494050698395,
+            "mean_candidate_objective": 144.8125,
+            "mean_baseline_objective": 120.8125,
+            "mean_lower_bound": 0.0
+          },
+          {
+            "challenge": "reparto",
+            "cases": 1,
+            "successful": 0,
+            "feasible_rate": 0.0,
+            "mean_improvement_over_baseline": null,
+            "mean_normalized_score": null,
+            "mean_candidate_objective": null,
+            "mean_baseline_objective": null,
+            "mean_lower_bound": null
+          },
+          {
+            "challenge": "stock",
+            "cases": 1,
+            "successful": 1,
+            "feasible_rate": 1.0,
+            "mean_improvement_over_baseline": -1463.8549999999832,
+            "mean_normalized_score": -18.3465329075277,
+            "mean_candidate_objective": 9305.197,
+            "mean_baseline_objective": 7841.342000000017,
+            "mean_lower_bound": -137.577
+          }
+        ],
         "has_measurements": true
       },
       {
@@ -807,7 +1416,66 @@
         "optimization_reparto_score": -177.24467438312325,
         "optimization_stock_score": null,
         "reasoning_control": null,
+        "reasoning_protocol": null,
+        "reasoning_sampling_seed": null,
         "reasoning_levels": [],
+        "optimization_results": [
+          {
+            "challenge": "cajas",
+            "cases": 1,
+            "successful": 0,
+            "feasible_rate": 0.0,
+            "mean_improvement_over_baseline": null,
+            "mean_normalized_score": null,
+            "mean_candidate_objective": null,
+            "mean_baseline_objective": null,
+            "mean_lower_bound": null
+          },
+          {
+            "challenge": "sparks",
+            "cases": 1,
+            "successful": 0,
+            "feasible_rate": 0.0,
+            "mean_improvement_over_baseline": null,
+            "mean_normalized_score": null,
+            "mean_candidate_objective": null,
+            "mean_baseline_objective": null,
+            "mean_lower_bound": null
+          },
+          {
+            "challenge": "circuito",
+            "cases": 1,
+            "successful": 1,
+            "feasible_rate": 1.0,
+            "mean_improvement_over_baseline": -793.6875,
+            "mean_normalized_score": -656.9580962234868,
+            "mean_candidate_objective": 914.5,
+            "mean_baseline_objective": 120.8125,
+            "mean_lower_bound": 0.0
+          },
+          {
+            "challenge": "reparto",
+            "cases": 1,
+            "successful": 1,
+            "feasible_rate": 1.0,
+            "mean_improvement_over_baseline": -25957.596000000005,
+            "mean_normalized_score": -177.24467438312325,
+            "mean_candidate_objective": 40602.66,
+            "mean_baseline_objective": 14645.064,
+            "mean_lower_bound": 0.0
+          },
+          {
+            "challenge": "stock",
+            "cases": 1,
+            "successful": 0,
+            "feasible_rate": 0.0,
+            "mean_improvement_over_baseline": null,
+            "mean_normalized_score": null,
+            "mean_candidate_objective": null,
+            "mean_baseline_objective": null,
+            "mean_lower_bound": null
+          }
+        ],
         "has_measurements": true
       },
       {
@@ -858,7 +1526,66 @@
         "optimization_reparto_score": null,
         "optimization_stock_score": -220.55156845181642,
         "reasoning_control": null,
+        "reasoning_protocol": null,
+        "reasoning_sampling_seed": null,
         "reasoning_levels": [],
+        "optimization_results": [
+          {
+            "challenge": "cajas",
+            "cases": 1,
+            "successful": 0,
+            "feasible_rate": 0.0,
+            "mean_improvement_over_baseline": null,
+            "mean_normalized_score": null,
+            "mean_candidate_objective": null,
+            "mean_baseline_objective": null,
+            "mean_lower_bound": null
+          },
+          {
+            "challenge": "sparks",
+            "cases": 1,
+            "successful": 0,
+            "feasible_rate": 0.0,
+            "mean_improvement_over_baseline": null,
+            "mean_normalized_score": null,
+            "mean_candidate_objective": null,
+            "mean_baseline_objective": null,
+            "mean_lower_bound": null
+          },
+          {
+            "challenge": "circuito",
+            "cases": 1,
+            "successful": 0,
+            "feasible_rate": 0.0,
+            "mean_improvement_over_baseline": null,
+            "mean_normalized_score": null,
+            "mean_candidate_objective": null,
+            "mean_baseline_objective": null,
+            "mean_lower_bound": null
+          },
+          {
+            "challenge": "reparto",
+            "cases": 1,
+            "successful": 0,
+            "feasible_rate": 0.0,
+            "mean_improvement_over_baseline": null,
+            "mean_normalized_score": null,
+            "mean_candidate_objective": null,
+            "mean_baseline_objective": null,
+            "mean_lower_bound": null
+          },
+          {
+            "challenge": "stock",
+            "cases": 1,
+            "successful": 1,
+            "feasible_rate": 1.0,
+            "mean_improvement_over_baseline": -17597.631000000023,
+            "mean_normalized_score": -220.55156845181642,
+            "mean_candidate_objective": 25438.973000000038,
+            "mean_baseline_objective": 7841.342000000017,
+            "mean_lower_bound": -137.577
+          }
+        ],
         "has_measurements": true
       },
       {
@@ -907,7 +1634,66 @@
         "optimization_reparto_score": -25.565364548765373,
         "optimization_stock_score": null,
         "reasoning_control": null,
+        "reasoning_protocol": null,
+        "reasoning_sampling_seed": null,
         "reasoning_levels": [],
+        "optimization_results": [
+          {
+            "challenge": "cajas",
+            "cases": 1,
+            "successful": 1,
+            "feasible_rate": 1.0,
+            "mean_improvement_over_baseline": 1.0,
+            "mean_normalized_score": 100.0,
+            "mean_candidate_objective": 7.0,
+            "mean_baseline_objective": 8.0,
+            "mean_lower_bound": 7.0
+          },
+          {
+            "challenge": "sparks",
+            "cases": 1,
+            "successful": 0,
+            "feasible_rate": 0.0,
+            "mean_improvement_over_baseline": null,
+            "mean_normalized_score": null,
+            "mean_candidate_objective": null,
+            "mean_baseline_objective": null,
+            "mean_lower_bound": null
+          },
+          {
+            "challenge": "circuito",
+            "cases": 1,
+            "successful": 1,
+            "feasible_rate": 1.0,
+            "mean_improvement_over_baseline": 17.6875,
+            "mean_normalized_score": 14.640455250905328,
+            "mean_candidate_objective": 103.125,
+            "mean_baseline_objective": 120.8125,
+            "mean_lower_bound": 0.0
+          },
+          {
+            "challenge": "reparto",
+            "cases": 1,
+            "successful": 1,
+            "feasible_rate": 1.0,
+            "mean_improvement_over_baseline": -3744.0640000000003,
+            "mean_normalized_score": -25.565364548765373,
+            "mean_candidate_objective": 18389.128,
+            "mean_baseline_objective": 14645.064,
+            "mean_lower_bound": 0.0
+          },
+          {
+            "challenge": "stock",
+            "cases": 1,
+            "successful": 0,
+            "feasible_rate": 0.0,
+            "mean_improvement_over_baseline": null,
+            "mean_normalized_score": null,
+            "mean_candidate_objective": null,
+            "mean_baseline_objective": null,
+            "mean_lower_bound": null
+          }
+        ],
         "has_measurements": true
       },
       {
@@ -954,7 +1740,10 @@
         "optimization_reparto_score": null,
         "optimization_stock_score": null,
         "reasoning_control": null,
+        "reasoning_protocol": null,
+        "reasoning_sampling_seed": null,
         "reasoning_levels": [],
+        "optimization_results": [],
         "has_measurements": false
       },
       {
@@ -1005,7 +1794,10 @@
         "optimization_reparto_score": null,
         "optimization_stock_score": null,
         "reasoning_control": null,
+        "reasoning_protocol": null,
+        "reasoning_sampling_seed": null,
         "reasoning_levels": [],
+        "optimization_results": [],
         "has_measurements": false
       },
       {
@@ -1053,7 +1845,10 @@
         "optimization_reparto_score": null,
         "optimization_stock_score": null,
         "reasoning_control": null,
+        "reasoning_protocol": null,
+        "reasoning_sampling_seed": null,
         "reasoning_levels": [],
+        "optimization_results": [],
         "has_measurements": false
       },
       {
@@ -1104,7 +1899,10 @@
         "optimization_reparto_score": null,
         "optimization_stock_score": null,
         "reasoning_control": null,
+        "reasoning_protocol": null,
+        "reasoning_sampling_seed": null,
         "reasoning_levels": [],
+        "optimization_results": [],
         "has_measurements": false
       },
       {
@@ -1152,7 +1950,10 @@
         "optimization_reparto_score": null,
         "optimization_stock_score": null,
         "reasoning_control": null,
+        "reasoning_protocol": null,
+        "reasoning_sampling_seed": null,
         "reasoning_levels": [],
+        "optimization_results": [],
         "has_measurements": false
       },
       {
@@ -1170,27 +1971,27 @@
         ],
         "status": "queued",
         "provisional": true,
-        "started_at": "2026-09-13T04:34:55.486256+00:00",
-        "ended_at": null,
-        "wall_seconds": null,
-        "host_used_gib": null,
-        "host_available_gib": null,
+        "started_at": "2026-09-13T04:48:45.176941+00:00",
+        "ended_at": "2026-09-13T05:36:03.390566+00:00",
+        "wall_seconds": 2838.214,
+        "host_used_gib": 120.25,
+        "host_available_gib": 1.44,
         "arc_agentic_tasks": null,
         "arc_agentic_target_tasks": null,
         "arc_agentic_exact": null,
         "arc_agentic_cell_accuracy": null,
         "arc_agentic_vision": null,
-        "decode_mean": null,
-        "decode_stddev": null,
-        "np_maxcut_points": null,
-        "np_maxcut_valid": null,
-        "np_maxcut_instances": null,
-        "np_max3sat_points": null,
-        "np_max3sat_valid": null,
-        "np_max3sat_instances": null,
-        "refugio_hidden_score": null,
-        "refugio_development_score": null,
-        "refugio_agent_seconds": null,
+        "decode_mean": 14.085330869670333,
+        "decode_stddev": 0.04836418017116873,
+        "np_maxcut_points": 344.9398046729138,
+        "np_maxcut_valid": 27,
+        "np_maxcut_instances": 27,
+        "np_max3sat_points": 5089.293858962346,
+        "np_max3sat_valid": 27,
+        "np_max3sat_instances": 27,
+        "refugio_hidden_score": 347,
+        "refugio_development_score": 336,
+        "refugio_agent_seconds": 901.175,
         "optimization_cases": null,
         "optimization_successful": null,
         "optimization_feasible_rate": null,
@@ -1201,8 +2002,11 @@
         "optimization_reparto_score": null,
         "optimization_stock_score": null,
         "reasoning_control": null,
+        "reasoning_protocol": null,
+        "reasoning_sampling_seed": null,
         "reasoning_levels": [],
-        "has_measurements": false
+        "optimization_results": [],
+        "has_measurements": true
       },
       {
         "campaign_id": "qwen-3-8-27b-nvfp4-control",
@@ -1249,6 +2053,8 @@
         "optimization_reparto_score": -48.73008407474356,
         "optimization_stock_score": -220.55156845181642,
         "reasoning_control": "top-level",
+        "reasoning_protocol": null,
+        "reasoning_sampling_seed": null,
         "reasoning_levels": [
           {
             "level": "low",
@@ -1264,7 +2070,70 @@
             "effective_output_tokens_per_second": 22.334733,
             "request_output_tokens_per_second_mean": 22.356939,
             "request_output_tokens_per_second_stddev": 0.525039,
-            "wall_seconds": 1974.057133
+            "wall_seconds": 1974.057133,
+            "max_deliberation_tokens": 8192,
+            "max_finalization_tokens": 8192,
+            "max_output_tokens_per_case": 16384,
+            "deliberation_requests": null,
+            "deliberation_limit_hits": null,
+            "deliberation_saturation_rate": null,
+            "challenges": [
+              {
+                "challenge": "cajas",
+                "cases": 1,
+                "successful": 0,
+                "feasible_rate": 0.0,
+                "mean_improvement_over_baseline": null,
+                "mean_normalized_score": null,
+                "mean_candidate_objective": null,
+                "mean_baseline_objective": null,
+                "mean_lower_bound": null
+              },
+              {
+                "challenge": "sparks",
+                "cases": 1,
+                "successful": 0,
+                "feasible_rate": 0.0,
+                "mean_improvement_over_baseline": null,
+                "mean_normalized_score": null,
+                "mean_candidate_objective": null,
+                "mean_baseline_objective": null,
+                "mean_lower_bound": null
+              },
+              {
+                "challenge": "circuito",
+                "cases": 1,
+                "successful": 1,
+                "feasible_rate": 1.0,
+                "mean_improvement_over_baseline": -173.21875,
+                "mean_normalized_score": -143.3781686497672,
+                "mean_candidate_objective": 294.03125,
+                "mean_baseline_objective": 120.8125,
+                "mean_lower_bound": 0.0
+              },
+              {
+                "challenge": "reparto",
+                "cases": 1,
+                "successful": 1,
+                "feasible_rate": 1.0,
+                "mean_improvement_over_baseline": 4901.312,
+                "mean_normalized_score": 33.467330699271784,
+                "mean_candidate_objective": 9743.752,
+                "mean_baseline_objective": 14645.064,
+                "mean_lower_bound": 0.0
+              },
+              {
+                "challenge": "stock",
+                "cases": 1,
+                "successful": 0,
+                "feasible_rate": 0.0,
+                "mean_improvement_over_baseline": null,
+                "mean_normalized_score": null,
+                "mean_candidate_objective": null,
+                "mean_baseline_objective": null,
+                "mean_lower_bound": null
+              }
+            ]
           },
           {
             "level": "medium",
@@ -1280,7 +2149,70 @@
             "effective_output_tokens_per_second": 22.654896,
             "request_output_tokens_per_second_mean": 22.695517,
             "request_output_tokens_per_second_stddev": 0.587826,
-            "wall_seconds": 1965.91429
+            "wall_seconds": 1965.91429,
+            "max_deliberation_tokens": 8192,
+            "max_finalization_tokens": 8192,
+            "max_output_tokens_per_case": 16384,
+            "deliberation_requests": null,
+            "deliberation_limit_hits": null,
+            "deliberation_saturation_rate": null,
+            "challenges": [
+              {
+                "challenge": "cajas",
+                "cases": 1,
+                "successful": 0,
+                "feasible_rate": 0.0,
+                "mean_improvement_over_baseline": null,
+                "mean_normalized_score": null,
+                "mean_candidate_objective": null,
+                "mean_baseline_objective": null,
+                "mean_lower_bound": null
+              },
+              {
+                "challenge": "sparks",
+                "cases": 1,
+                "successful": 0,
+                "feasible_rate": 0.0,
+                "mean_improvement_over_baseline": null,
+                "mean_normalized_score": null,
+                "mean_candidate_objective": null,
+                "mean_baseline_objective": null,
+                "mean_lower_bound": null
+              },
+              {
+                "challenge": "circuito",
+                "cases": 1,
+                "successful": 1,
+                "feasible_rate": 1.0,
+                "mean_improvement_over_baseline": -290.4375,
+                "mean_normalized_score": -240.40351784790482,
+                "mean_candidate_objective": 411.25,
+                "mean_baseline_objective": 120.8125,
+                "mean_lower_bound": 0.0
+              },
+              {
+                "challenge": "reparto",
+                "cases": 1,
+                "successful": 1,
+                "feasible_rate": 1.0,
+                "mean_improvement_over_baseline": -119.60599999999977,
+                "mean_normalized_score": -0.8166983770094809,
+                "mean_candidate_objective": 14764.67,
+                "mean_baseline_objective": 14645.064,
+                "mean_lower_bound": 0.0
+              },
+              {
+                "challenge": "stock",
+                "cases": 1,
+                "successful": 0,
+                "feasible_rate": 0.0,
+                "mean_improvement_over_baseline": null,
+                "mean_normalized_score": null,
+                "mean_candidate_objective": null,
+                "mean_baseline_objective": null,
+                "mean_lower_bound": null
+              }
+            ]
           },
           {
             "level": "xhigh",
@@ -1296,7 +2228,127 @@
             "effective_output_tokens_per_second": 18.876727,
             "request_output_tokens_per_second_mean": 18.930238,
             "request_output_tokens_per_second_stddev": 1.274867,
-            "wall_seconds": 2281.763749
+            "wall_seconds": 2281.763749,
+            "max_deliberation_tokens": 8192,
+            "max_finalization_tokens": 8192,
+            "max_output_tokens_per_case": 16384,
+            "deliberation_requests": null,
+            "deliberation_limit_hits": null,
+            "deliberation_saturation_rate": null,
+            "challenges": [
+              {
+                "challenge": "cajas",
+                "cases": 1,
+                "successful": 0,
+                "feasible_rate": 0.0,
+                "mean_improvement_over_baseline": null,
+                "mean_normalized_score": null,
+                "mean_candidate_objective": null,
+                "mean_baseline_objective": null,
+                "mean_lower_bound": null
+              },
+              {
+                "challenge": "sparks",
+                "cases": 1,
+                "successful": 0,
+                "feasible_rate": 0.0,
+                "mean_improvement_over_baseline": null,
+                "mean_normalized_score": null,
+                "mean_candidate_objective": null,
+                "mean_baseline_objective": null,
+                "mean_lower_bound": null
+              },
+              {
+                "challenge": "circuito",
+                "cases": 1,
+                "successful": 1,
+                "feasible_rate": 1.0,
+                "mean_improvement_over_baseline": -459.34375,
+                "mean_normalized_score": -380.21210553543716,
+                "mean_candidate_objective": 580.15625,
+                "mean_baseline_objective": 120.8125,
+                "mean_lower_bound": 0.0
+              },
+              {
+                "challenge": "reparto",
+                "cases": 1,
+                "successful": 0,
+                "feasible_rate": 0.0,
+                "mean_improvement_over_baseline": null,
+                "mean_normalized_score": null,
+                "mean_candidate_objective": null,
+                "mean_baseline_objective": null,
+                "mean_lower_bound": null
+              },
+              {
+                "challenge": "stock",
+                "cases": 1,
+                "successful": 1,
+                "feasible_rate": 1.0,
+                "mean_improvement_over_baseline": -17597.631000000023,
+                "mean_normalized_score": -220.55156845181642,
+                "mean_candidate_objective": 25438.973000000038,
+                "mean_baseline_objective": 7841.342000000017,
+                "mean_lower_bound": -137.577
+              }
+            ]
+          }
+        ],
+        "optimization_results": [
+          {
+            "challenge": "cajas",
+            "cases": 1,
+            "successful": 0,
+            "feasible_rate": 0.0,
+            "mean_improvement_over_baseline": null,
+            "mean_normalized_score": null,
+            "mean_candidate_objective": null,
+            "mean_baseline_objective": null,
+            "mean_lower_bound": null
+          },
+          {
+            "challenge": "sparks",
+            "cases": 1,
+            "successful": 0,
+            "feasible_rate": 0.0,
+            "mean_improvement_over_baseline": null,
+            "mean_normalized_score": null,
+            "mean_candidate_objective": null,
+            "mean_baseline_objective": null,
+            "mean_lower_bound": null
+          },
+          {
+            "challenge": "circuito",
+            "cases": 1,
+            "successful": 0,
+            "feasible_rate": 0.0,
+            "mean_improvement_over_baseline": null,
+            "mean_normalized_score": null,
+            "mean_candidate_objective": null,
+            "mean_baseline_objective": null,
+            "mean_lower_bound": null
+          },
+          {
+            "challenge": "reparto",
+            "cases": 1,
+            "successful": 1,
+            "feasible_rate": 1.0,
+            "mean_improvement_over_baseline": -7136.5520000000015,
+            "mean_normalized_score": -48.73008407474356,
+            "mean_candidate_objective": 21781.616,
+            "mean_baseline_objective": 14645.064,
+            "mean_lower_bound": 0.0
+          },
+          {
+            "challenge": "stock",
+            "cases": 1,
+            "successful": 1,
+            "feasible_rate": 1.0,
+            "mean_improvement_over_baseline": -17597.631000000023,
+            "mean_normalized_score": -220.55156845181642,
+            "mean_candidate_objective": 25438.973000000038,
+            "mean_baseline_objective": 7841.342000000017,
+            "mean_lower_bound": -137.577
           }
         ],
         "has_measurements": true
@@ -1315,27 +2367,27 @@
         ],
         "status": "queued",
         "provisional": true,
-        "started_at": "2026-09-13T01:42:51.574492+00:00",
-        "ended_at": null,
-        "wall_seconds": null,
-        "host_used_gib": null,
-        "host_available_gib": null,
+        "started_at": "2026-09-13T01:50:38.730360+00:00",
+        "ended_at": "2026-09-13T03:09:43.450941+00:00",
+        "wall_seconds": 4744.721,
+        "host_used_gib": 117.38,
+        "host_available_gib": 4.31,
         "arc_agentic_tasks": null,
         "arc_agentic_target_tasks": null,
         "arc_agentic_exact": null,
         "arc_agentic_cell_accuracy": null,
         "arc_agentic_vision": null,
-        "decode_mean": null,
-        "decode_stddev": null,
-        "np_maxcut_points": null,
-        "np_maxcut_valid": null,
-        "np_maxcut_instances": null,
-        "np_max3sat_points": null,
-        "np_max3sat_valid": null,
-        "np_max3sat_instances": null,
-        "refugio_hidden_score": null,
-        "refugio_development_score": null,
-        "refugio_agent_seconds": null,
+        "decode_mean": 7.830776977175237,
+        "decode_stddev": 0.0035032487182274016,
+        "np_maxcut_points": 543.7672076804082,
+        "np_maxcut_valid": 27,
+        "np_maxcut_instances": 27,
+        "np_max3sat_points": 8922.496669884973,
+        "np_max3sat_valid": 27,
+        "np_max3sat_instances": 27,
+        "refugio_hidden_score": 347,
+        "refugio_development_score": 336,
+        "refugio_agent_seconds": 356.932,
         "optimization_cases": null,
         "optimization_successful": null,
         "optimization_feasible_rate": null,
@@ -1346,8 +2398,11 @@
         "optimization_reparto_score": null,
         "optimization_stock_score": null,
         "reasoning_control": null,
+        "reasoning_protocol": null,
+        "reasoning_sampling_seed": null,
         "reasoning_levels": [],
-        "has_measurements": false
+        "optimization_results": [],
+        "has_measurements": true
       },
       {
         "campaign_id": "laguna-s-2-1-base",
@@ -1363,27 +2418,27 @@
         ],
         "status": "queued",
         "provisional": true,
-        "started_at": "2026-09-13T05:36:56.895059+00:00",
-        "ended_at": null,
-        "wall_seconds": null,
-        "host_used_gib": null,
-        "host_available_gib": null,
+        "started_at": "2026-09-06T09:44:41.943508+00:00",
+        "ended_at": "2026-09-13T06:17:49.926916+00:00",
+        "wall_seconds": 592387.983,
+        "host_used_gib": 115.01,
+        "host_available_gib": 6.68,
         "arc_agentic_tasks": null,
         "arc_agentic_target_tasks": null,
         "arc_agentic_exact": null,
         "arc_agentic_cell_accuracy": null,
         "arc_agentic_vision": null,
-        "decode_mean": null,
-        "decode_stddev": null,
-        "np_maxcut_points": null,
-        "np_maxcut_valid": null,
-        "np_maxcut_instances": null,
-        "np_max3sat_points": null,
-        "np_max3sat_valid": null,
-        "np_max3sat_instances": null,
-        "refugio_hidden_score": null,
-        "refugio_development_score": null,
-        "refugio_agent_seconds": null,
+        "decode_mean": 14.98058238653132,
+        "decode_stddev": 0.00042364178374109144,
+        "np_maxcut_points": 1127.1739984325893,
+        "np_maxcut_valid": 27,
+        "np_maxcut_instances": 27,
+        "np_max3sat_points": 6997.056720046818,
+        "np_max3sat_valid": 27,
+        "np_max3sat_instances": 27,
+        "refugio_hidden_score": 347,
+        "refugio_development_score": 336,
+        "refugio_agent_seconds": 375.355,
         "optimization_cases": null,
         "optimization_successful": null,
         "optimization_feasible_rate": null,
@@ -1394,8 +2449,11 @@
         "optimization_reparto_score": null,
         "optimization_stock_score": null,
         "reasoning_control": null,
+        "reasoning_protocol": null,
+        "reasoning_sampling_seed": null,
         "reasoning_levels": [],
-        "has_measurements": false
+        "optimization_results": [],
+        "has_measurements": true
       },
       {
         "campaign_id": "laguna-s-2-1-dflash",
@@ -1443,7 +2501,10 @@
         "optimization_reparto_score": null,
         "optimization_stock_score": null,
         "reasoning_control": null,
+        "reasoning_protocol": null,
+        "reasoning_sampling_seed": null,
         "reasoning_levels": [],
+        "optimization_results": [],
         "has_measurements": false
       }
     ]
