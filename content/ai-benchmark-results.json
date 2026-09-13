@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "title": "Homelab AI Benchmarks",
-  "updated_at": "2026-09-13T17:25:57.923968+00:00",
+  "updated_at": "2026-09-13T17:39:58.283243+00:00",
   "status": "preliminary",
   "hardware": "1× NVIDIA DGX Spark (GB10, 128 GiB unified memory) per creative run",
   "protocol": {
@@ -257,7 +257,7 @@
   "campaign": {
     "campaign_id": "coding-agentic-models-r01",
     "status": "running",
-    "generated_at": "2026-09-13T17:25:57.923968+00:00",
+    "generated_at": "2026-09-13T17:39:58.283243+00:00",
     "counts": {
       "blocked": 1,
       "complete": 8,
@@ -270,7 +270,8 @@
       "Decode speed is the mean per concurrent request from a two-request runtime smoke, not aggregate throughput.",
       "Unified host memory is an observed loaded-runtime snapshot on the assigned Spark nodes, not isolated model weights.",
       "Reasoning speed is completion tokens divided by request wall time, including prefill and decode but excluding model loading.",
-      "Optimization rankings are feasibility-first; normalized scores average only feasible submissions, so every per-challenge outcome is published separately."
+      "Optimization rankings are feasibility-first; normalized scores average only feasible submissions, so every per-challenge outcome is published separately.",
+      "Agentic optimization uses real file/shell tools and repeated public development verification; the retained best solver is scored once on disjoint private cases."
     ],
     "models": [
       {
@@ -311,6 +312,17 @@
         "optimization_successful": 1,
         "optimization_feasible_rate": 0.2,
         "optimization_normalized_score": -220.55156845181642,
+        "optimization_agentic_feasible_rate": null,
+        "optimization_agentic_normalized_score": null,
+        "optimization_agentic_model_calls": null,
+        "optimization_agentic_tool_calls": null,
+        "optimization_agentic_context_compactions": null,
+        "optimization_agentic_development_evaluations": null,
+        "optimization_agentic_input_tokens": null,
+        "optimization_agentic_output_tokens": null,
+        "optimization_agentic_total_tokens": null,
+        "optimization_agentic_wall_seconds": null,
+        "optimization_agentic_output_tps": null,
         "optimization_cajas_score": null,
         "optimization_sparks_score": null,
         "optimization_circuito_score": null,
@@ -377,6 +389,7 @@
             "mean_lower_bound": -137.577
           }
         ],
+        "optimization_agentic_results": [],
         "has_measurements": true
       },
       {
@@ -419,6 +432,17 @@
         "optimization_successful": 0,
         "optimization_feasible_rate": 0.0,
         "optimization_normalized_score": null,
+        "optimization_agentic_feasible_rate": null,
+        "optimization_agentic_normalized_score": null,
+        "optimization_agentic_model_calls": null,
+        "optimization_agentic_tool_calls": null,
+        "optimization_agentic_context_compactions": null,
+        "optimization_agentic_development_evaluations": null,
+        "optimization_agentic_input_tokens": null,
+        "optimization_agentic_output_tokens": null,
+        "optimization_agentic_total_tokens": null,
+        "optimization_agentic_wall_seconds": null,
+        "optimization_agentic_output_tps": null,
         "optimization_cajas_score": null,
         "optimization_sparks_score": null,
         "optimization_circuito_score": null,
@@ -485,6 +509,7 @@
             "mean_lower_bound": null
           }
         ],
+        "optimization_agentic_results": [],
         "has_measurements": true
       },
       {
@@ -528,6 +553,17 @@
         "optimization_successful": 2,
         "optimization_feasible_rate": 0.4,
         "optimization_normalized_score": -299.56704133920357,
+        "optimization_agentic_feasible_rate": null,
+        "optimization_agentic_normalized_score": null,
+        "optimization_agentic_model_calls": null,
+        "optimization_agentic_tool_calls": null,
+        "optimization_agentic_context_compactions": null,
+        "optimization_agentic_development_evaluations": null,
+        "optimization_agentic_input_tokens": null,
+        "optimization_agentic_output_tokens": null,
+        "optimization_agentic_total_tokens": null,
+        "optimization_agentic_wall_seconds": null,
+        "optimization_agentic_output_tps": null,
         "optimization_cajas_score": null,
         "optimization_sparks_score": null,
         "optimization_circuito_score": -378.5825142265908,
@@ -594,6 +630,7 @@
             "mean_lower_bound": -137.577
           }
         ],
+        "optimization_agentic_results": [],
         "has_measurements": true
       },
       {
@@ -636,6 +673,17 @@
         "optimization_successful": 2,
         "optimization_feasible_rate": 0.4,
         "optimization_normalized_score": -232.09420119435106,
+        "optimization_agentic_feasible_rate": null,
+        "optimization_agentic_normalized_score": null,
+        "optimization_agentic_model_calls": null,
+        "optimization_agentic_tool_calls": null,
+        "optimization_agentic_context_compactions": null,
+        "optimization_agentic_development_evaluations": null,
+        "optimization_agentic_input_tokens": null,
+        "optimization_agentic_output_tokens": null,
+        "optimization_agentic_total_tokens": null,
+        "optimization_agentic_wall_seconds": null,
+        "optimization_agentic_output_tps": null,
         "optimization_cajas_score": null,
         "optimization_sparks_score": null,
         "optimization_circuito_score": -243.63683393688567,
@@ -702,6 +750,7 @@
             "mean_lower_bound": -137.577
           }
         ],
+        "optimization_agentic_results": [],
         "has_measurements": true
       },
       {
@@ -743,6 +792,17 @@
         "optimization_successful": 3,
         "optimization_feasible_rate": 0.6,
         "optimization_normalized_score": -85.33440944356444,
+        "optimization_agentic_feasible_rate": null,
+        "optimization_agentic_normalized_score": null,
+        "optimization_agentic_model_calls": null,
+        "optimization_agentic_tool_calls": null,
+        "optimization_agentic_context_compactions": null,
+        "optimization_agentic_development_evaluations": null,
+        "optimization_agentic_input_tokens": null,
+        "optimization_agentic_output_tokens": null,
+        "optimization_agentic_total_tokens": null,
+        "optimization_agentic_wall_seconds": null,
+        "optimization_agentic_output_tps": null,
         "optimization_cajas_score": null,
         "optimization_sparks_score": null,
         "optimization_circuito_score": -0.9570615623383342,
@@ -809,6 +869,7 @@
             "mean_lower_bound": -137.577
           }
         ],
+        "optimization_agentic_results": [],
         "has_measurements": true
       },
       {
@@ -851,6 +912,17 @@
         "optimization_successful": null,
         "optimization_feasible_rate": null,
         "optimization_normalized_score": null,
+        "optimization_agentic_feasible_rate": null,
+        "optimization_agentic_normalized_score": null,
+        "optimization_agentic_model_calls": null,
+        "optimization_agentic_tool_calls": null,
+        "optimization_agentic_context_compactions": null,
+        "optimization_agentic_development_evaluations": null,
+        "optimization_agentic_input_tokens": null,
+        "optimization_agentic_output_tokens": null,
+        "optimization_agentic_total_tokens": null,
+        "optimization_agentic_wall_seconds": null,
+        "optimization_agentic_output_tps": null,
         "optimization_cajas_score": null,
         "optimization_sparks_score": null,
         "optimization_circuito_score": null,
@@ -861,6 +933,7 @@
         "reasoning_sampling_seed": null,
         "reasoning_levels": [],
         "optimization_results": [],
+        "optimization_agentic_results": [],
         "has_measurements": true
       },
       {
@@ -903,6 +976,17 @@
         "optimization_successful": 2,
         "optimization_feasible_rate": 0.4,
         "optimization_normalized_score": -105.01397094264648,
+        "optimization_agentic_feasible_rate": null,
+        "optimization_agentic_normalized_score": null,
+        "optimization_agentic_model_calls": null,
+        "optimization_agentic_tool_calls": null,
+        "optimization_agentic_context_compactions": null,
+        "optimization_agentic_development_evaluations": null,
+        "optimization_agentic_input_tokens": null,
+        "optimization_agentic_output_tokens": null,
+        "optimization_agentic_total_tokens": null,
+        "optimization_agentic_wall_seconds": null,
+        "optimization_agentic_output_tps": null,
         "optimization_cajas_score": null,
         "optimization_sparks_score": null,
         "optimization_circuito_score": -104.34557682359028,
@@ -969,6 +1053,7 @@
             "mean_lower_bound": null
           }
         ],
+        "optimization_agentic_results": [],
         "has_measurements": true
       },
       {
@@ -1012,6 +1097,17 @@
         "optimization_successful": 2,
         "optimization_feasible_rate": 0.4,
         "optimization_normalized_score": 5.460360209310206,
+        "optimization_agentic_feasible_rate": null,
+        "optimization_agentic_normalized_score": null,
+        "optimization_agentic_model_calls": null,
+        "optimization_agentic_tool_calls": null,
+        "optimization_agentic_context_compactions": null,
+        "optimization_agentic_development_evaluations": null,
+        "optimization_agentic_input_tokens": null,
+        "optimization_agentic_output_tokens": null,
+        "optimization_agentic_total_tokens": null,
+        "optimization_agentic_wall_seconds": null,
+        "optimization_agentic_output_tps": null,
         "optimization_cajas_score": null,
         "optimization_sparks_score": null,
         "optimization_circuito_score": 29.953440248318675,
@@ -1316,6 +1412,7 @@
             "mean_lower_bound": null
           }
         ],
+        "optimization_agentic_results": [],
         "has_measurements": true
       },
       {
@@ -1358,6 +1455,17 @@
         "optimization_successful": 2,
         "optimization_feasible_rate": 0.4,
         "optimization_normalized_score": -19.106013479113045,
+        "optimization_agentic_feasible_rate": null,
+        "optimization_agentic_normalized_score": null,
+        "optimization_agentic_model_calls": null,
+        "optimization_agentic_tool_calls": null,
+        "optimization_agentic_context_compactions": null,
+        "optimization_agentic_development_evaluations": null,
+        "optimization_agentic_input_tokens": null,
+        "optimization_agentic_output_tokens": null,
+        "optimization_agentic_total_tokens": null,
+        "optimization_agentic_wall_seconds": null,
+        "optimization_agentic_output_tps": null,
         "optimization_cajas_score": null,
         "optimization_sparks_score": null,
         "optimization_circuito_score": -19.865494050698395,
@@ -1424,6 +1532,7 @@
             "mean_lower_bound": -137.577
           }
         ],
+        "optimization_agentic_results": [],
         "has_measurements": true
       },
       {
@@ -1465,6 +1574,17 @@
         "optimization_successful": 2,
         "optimization_feasible_rate": 0.4,
         "optimization_normalized_score": -417.10138530330505,
+        "optimization_agentic_feasible_rate": null,
+        "optimization_agentic_normalized_score": null,
+        "optimization_agentic_model_calls": null,
+        "optimization_agentic_tool_calls": null,
+        "optimization_agentic_context_compactions": null,
+        "optimization_agentic_development_evaluations": null,
+        "optimization_agentic_input_tokens": null,
+        "optimization_agentic_output_tokens": null,
+        "optimization_agentic_total_tokens": null,
+        "optimization_agentic_wall_seconds": null,
+        "optimization_agentic_output_tps": null,
         "optimization_cajas_score": null,
         "optimization_sparks_score": null,
         "optimization_circuito_score": -656.9580962234868,
@@ -1531,6 +1651,7 @@
             "mean_lower_bound": null
           }
         ],
+        "optimization_agentic_results": [],
         "has_measurements": true
       },
       {
@@ -1575,6 +1696,17 @@
         "optimization_successful": 1,
         "optimization_feasible_rate": 0.2,
         "optimization_normalized_score": -220.55156845181642,
+        "optimization_agentic_feasible_rate": null,
+        "optimization_agentic_normalized_score": null,
+        "optimization_agentic_model_calls": null,
+        "optimization_agentic_tool_calls": null,
+        "optimization_agentic_context_compactions": null,
+        "optimization_agentic_development_evaluations": null,
+        "optimization_agentic_input_tokens": null,
+        "optimization_agentic_output_tokens": null,
+        "optimization_agentic_total_tokens": null,
+        "optimization_agentic_wall_seconds": null,
+        "optimization_agentic_output_tps": null,
         "optimization_cajas_score": null,
         "optimization_sparks_score": null,
         "optimization_circuito_score": null,
@@ -1641,6 +1773,7 @@
             "mean_lower_bound": -137.577
           }
         ],
+        "optimization_agentic_results": [],
         "has_measurements": true
       },
       {
@@ -1683,6 +1816,17 @@
         "optimization_successful": null,
         "optimization_feasible_rate": null,
         "optimization_normalized_score": null,
+        "optimization_agentic_feasible_rate": null,
+        "optimization_agentic_normalized_score": null,
+        "optimization_agentic_model_calls": null,
+        "optimization_agentic_tool_calls": null,
+        "optimization_agentic_context_compactions": null,
+        "optimization_agentic_development_evaluations": null,
+        "optimization_agentic_input_tokens": null,
+        "optimization_agentic_output_tokens": null,
+        "optimization_agentic_total_tokens": null,
+        "optimization_agentic_wall_seconds": null,
+        "optimization_agentic_output_tps": null,
         "optimization_cajas_score": null,
         "optimization_sparks_score": null,
         "optimization_circuito_score": null,
@@ -1693,6 +1837,7 @@
         "reasoning_sampling_seed": null,
         "reasoning_levels": [],
         "optimization_results": [],
+        "optimization_agentic_results": [],
         "has_measurements": false
       },
       {
@@ -1733,6 +1878,17 @@
         "optimization_successful": null,
         "optimization_feasible_rate": null,
         "optimization_normalized_score": null,
+        "optimization_agentic_feasible_rate": null,
+        "optimization_agentic_normalized_score": null,
+        "optimization_agentic_model_calls": null,
+        "optimization_agentic_tool_calls": null,
+        "optimization_agentic_context_compactions": null,
+        "optimization_agentic_development_evaluations": null,
+        "optimization_agentic_input_tokens": null,
+        "optimization_agentic_output_tokens": null,
+        "optimization_agentic_total_tokens": null,
+        "optimization_agentic_wall_seconds": null,
+        "optimization_agentic_output_tps": null,
         "optimization_cajas_score": null,
         "optimization_sparks_score": null,
         "optimization_circuito_score": null,
@@ -1743,6 +1899,7 @@
         "reasoning_sampling_seed": null,
         "reasoning_levels": [],
         "optimization_results": [],
+        "optimization_agentic_results": [],
         "has_measurements": false
       },
       {
@@ -1787,6 +1944,17 @@
         "optimization_successful": null,
         "optimization_feasible_rate": null,
         "optimization_normalized_score": null,
+        "optimization_agentic_feasible_rate": null,
+        "optimization_agentic_normalized_score": null,
+        "optimization_agentic_model_calls": null,
+        "optimization_agentic_tool_calls": null,
+        "optimization_agentic_context_compactions": null,
+        "optimization_agentic_development_evaluations": null,
+        "optimization_agentic_input_tokens": null,
+        "optimization_agentic_output_tokens": null,
+        "optimization_agentic_total_tokens": null,
+        "optimization_agentic_wall_seconds": null,
+        "optimization_agentic_output_tps": null,
         "optimization_cajas_score": null,
         "optimization_sparks_score": null,
         "optimization_circuito_score": null,
@@ -1797,6 +1965,7 @@
         "reasoning_sampling_seed": null,
         "reasoning_levels": [],
         "optimization_results": [],
+        "optimization_agentic_results": [],
         "has_measurements": false
       },
       {
@@ -1838,6 +2007,17 @@
         "optimization_successful": null,
         "optimization_feasible_rate": null,
         "optimization_normalized_score": null,
+        "optimization_agentic_feasible_rate": null,
+        "optimization_agentic_normalized_score": null,
+        "optimization_agentic_model_calls": null,
+        "optimization_agentic_tool_calls": null,
+        "optimization_agentic_context_compactions": null,
+        "optimization_agentic_development_evaluations": null,
+        "optimization_agentic_input_tokens": null,
+        "optimization_agentic_output_tokens": null,
+        "optimization_agentic_total_tokens": null,
+        "optimization_agentic_wall_seconds": null,
+        "optimization_agentic_output_tps": null,
         "optimization_cajas_score": null,
         "optimization_sparks_score": null,
         "optimization_circuito_score": null,
@@ -1848,6 +2028,7 @@
         "reasoning_sampling_seed": null,
         "reasoning_levels": [],
         "optimization_results": [],
+        "optimization_agentic_results": [],
         "has_measurements": false
       },
       {
@@ -1892,6 +2073,17 @@
         "optimization_successful": null,
         "optimization_feasible_rate": null,
         "optimization_normalized_score": null,
+        "optimization_agentic_feasible_rate": null,
+        "optimization_agentic_normalized_score": null,
+        "optimization_agentic_model_calls": null,
+        "optimization_agentic_tool_calls": null,
+        "optimization_agentic_context_compactions": null,
+        "optimization_agentic_development_evaluations": null,
+        "optimization_agentic_input_tokens": null,
+        "optimization_agentic_output_tokens": null,
+        "optimization_agentic_total_tokens": null,
+        "optimization_agentic_wall_seconds": null,
+        "optimization_agentic_output_tps": null,
         "optimization_cajas_score": null,
         "optimization_sparks_score": null,
         "optimization_circuito_score": null,
@@ -1902,6 +2094,7 @@
         "reasoning_sampling_seed": null,
         "reasoning_levels": [],
         "optimization_results": [],
+        "optimization_agentic_results": [],
         "has_measurements": false
       },
       {
@@ -1943,6 +2136,17 @@
         "optimization_successful": null,
         "optimization_feasible_rate": null,
         "optimization_normalized_score": null,
+        "optimization_agentic_feasible_rate": null,
+        "optimization_agentic_normalized_score": null,
+        "optimization_agentic_model_calls": null,
+        "optimization_agentic_tool_calls": null,
+        "optimization_agentic_context_compactions": null,
+        "optimization_agentic_development_evaluations": null,
+        "optimization_agentic_input_tokens": null,
+        "optimization_agentic_output_tokens": null,
+        "optimization_agentic_total_tokens": null,
+        "optimization_agentic_wall_seconds": null,
+        "optimization_agentic_output_tps": null,
         "optimization_cajas_score": null,
         "optimization_sparks_score": null,
         "optimization_circuito_score": null,
@@ -1953,6 +2157,7 @@
         "reasoning_sampling_seed": null,
         "reasoning_levels": [],
         "optimization_results": [],
+        "optimization_agentic_results": [],
         "has_measurements": false
       },
       {
@@ -1995,6 +2200,17 @@
         "optimization_successful": null,
         "optimization_feasible_rate": null,
         "optimization_normalized_score": null,
+        "optimization_agentic_feasible_rate": null,
+        "optimization_agentic_normalized_score": null,
+        "optimization_agentic_model_calls": null,
+        "optimization_agentic_tool_calls": null,
+        "optimization_agentic_context_compactions": null,
+        "optimization_agentic_development_evaluations": null,
+        "optimization_agentic_input_tokens": null,
+        "optimization_agentic_output_tokens": null,
+        "optimization_agentic_total_tokens": null,
+        "optimization_agentic_wall_seconds": null,
+        "optimization_agentic_output_tps": null,
         "optimization_cajas_score": null,
         "optimization_sparks_score": null,
         "optimization_circuito_score": null,
@@ -2005,6 +2221,7 @@
         "reasoning_sampling_seed": null,
         "reasoning_levels": [],
         "optimization_results": [],
+        "optimization_agentic_results": [],
         "has_measurements": true
       },
       {
@@ -2046,6 +2263,17 @@
         "optimization_successful": 2,
         "optimization_feasible_rate": 0.4,
         "optimization_normalized_score": -134.64082626328,
+        "optimization_agentic_feasible_rate": null,
+        "optimization_agentic_normalized_score": null,
+        "optimization_agentic_model_calls": null,
+        "optimization_agentic_tool_calls": null,
+        "optimization_agentic_context_compactions": null,
+        "optimization_agentic_development_evaluations": null,
+        "optimization_agentic_input_tokens": null,
+        "optimization_agentic_output_tokens": null,
+        "optimization_agentic_total_tokens": null,
+        "optimization_agentic_wall_seconds": null,
+        "optimization_agentic_output_tps": null,
         "optimization_cajas_score": null,
         "optimization_sparks_score": null,
         "optimization_circuito_score": null,
@@ -2350,6 +2578,7 @@
             "mean_lower_bound": -137.577
           }
         ],
+        "optimization_agentic_results": [],
         "has_measurements": true
       },
       {
@@ -2391,6 +2620,17 @@
         "optimization_successful": null,
         "optimization_feasible_rate": null,
         "optimization_normalized_score": null,
+        "optimization_agentic_feasible_rate": null,
+        "optimization_agentic_normalized_score": null,
+        "optimization_agentic_model_calls": null,
+        "optimization_agentic_tool_calls": null,
+        "optimization_agentic_context_compactions": null,
+        "optimization_agentic_development_evaluations": null,
+        "optimization_agentic_input_tokens": null,
+        "optimization_agentic_output_tokens": null,
+        "optimization_agentic_total_tokens": null,
+        "optimization_agentic_wall_seconds": null,
+        "optimization_agentic_output_tps": null,
         "optimization_cajas_score": null,
         "optimization_sparks_score": null,
         "optimization_circuito_score": null,
@@ -2401,6 +2641,7 @@
         "reasoning_sampling_seed": null,
         "reasoning_levels": [],
         "optimization_results": [],
+        "optimization_agentic_results": [],
         "has_measurements": true
       },
       {
@@ -2442,6 +2683,17 @@
         "optimization_successful": null,
         "optimization_feasible_rate": null,
         "optimization_normalized_score": null,
+        "optimization_agentic_feasible_rate": null,
+        "optimization_agentic_normalized_score": null,
+        "optimization_agentic_model_calls": null,
+        "optimization_agentic_tool_calls": null,
+        "optimization_agentic_context_compactions": null,
+        "optimization_agentic_development_evaluations": null,
+        "optimization_agentic_input_tokens": null,
+        "optimization_agentic_output_tokens": null,
+        "optimization_agentic_total_tokens": null,
+        "optimization_agentic_wall_seconds": null,
+        "optimization_agentic_output_tps": null,
         "optimization_cajas_score": null,
         "optimization_sparks_score": null,
         "optimization_circuito_score": null,
@@ -2452,6 +2704,7 @@
         "reasoning_sampling_seed": null,
         "reasoning_levels": [],
         "optimization_results": [],
+        "optimization_agentic_results": [],
         "has_measurements": true
       },
       {
@@ -2494,6 +2747,17 @@
         "optimization_successful": null,
         "optimization_feasible_rate": null,
         "optimization_normalized_score": null,
+        "optimization_agentic_feasible_rate": null,
+        "optimization_agentic_normalized_score": null,
+        "optimization_agentic_model_calls": null,
+        "optimization_agentic_tool_calls": null,
+        "optimization_agentic_context_compactions": null,
+        "optimization_agentic_development_evaluations": null,
+        "optimization_agentic_input_tokens": null,
+        "optimization_agentic_output_tokens": null,
+        "optimization_agentic_total_tokens": null,
+        "optimization_agentic_wall_seconds": null,
+        "optimization_agentic_output_tps": null,
         "optimization_cajas_score": null,
         "optimization_sparks_score": null,
         "optimization_circuito_score": null,
@@ -2504,6 +2768,7 @@
         "reasoning_sampling_seed": null,
         "reasoning_levels": [],
         "optimization_results": [],
+        "optimization_agentic_results": [],
         "has_measurements": false
       }
     ]
