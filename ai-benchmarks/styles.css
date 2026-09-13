@@ -174,7 +174,7 @@ td:not(:first-child):not(:last-child) { font-family: var(--mono); font-size: .72
 .campaign-count.running strong { color: var(--cyan); }
 .campaign-count.infrastructure-failed strong, .campaign-count.interrupted strong { color: var(--orange); }
 .campaign-table-wrap { margin-top: 20px; }
-.campaign-table { min-width: 1180px; }
+.campaign-table { min-width: 1450px; }
 .campaign-table .model-cell { min-width: 220px; }
 .campaign-table .model-cell > span { display: block; margin-top: 4px; }
 .campaign-table .badge { width: fit-content; margin-top: 11px; }

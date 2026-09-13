@@ -113,8 +113,15 @@ function renderCampaign() {
     const runtime = noData ? "—" : `<strong>${run.decode_mean === null ? "n/c" : `${formatNumber(run.decode_mean, 2)} ± ${formatNumber(run.decode_stddev, 2)} tok/s`}</strong><span>${run.host_used_gib === null ? "memory n/c" : `${formatNumber(run.host_used_gib, 2)} GiB used`}</span>`;
     const np = noData ? "—" : `<strong>Cut ${formatNumber(run.np_maxcut_points, 1)}</strong><span>${run.np_maxcut_valid ?? "—"}/${run.np_maxcut_instances ?? "—"} valid</span><strong>3SAT ${formatNumber(run.np_max3sat_points, 1)}</strong><span>${run.np_max3sat_valid ?? "—"}/${run.np_max3sat_instances ?? "—"} valid</span>`;
     const refugio = noData ? "—" : `<strong>${run.refugio_hidden_score ?? "n/c"} hidden</strong><span>${run.refugio_development_score ?? "n/c"} development${run.refugio_agent_seconds === null ? "" : ` · ${formatDuration(run.refugio_agent_seconds)}`}</span>`;
+    const optimizationScores = ["cajas", "sparks", "circuito", "reparto", "stock"]
+      .map(name => `${name} ${formatNumber(run[`optimization_${name}_score`], 3)}`)
+      .join(" · ");
+    const optimization = run.optimization_cases === null || run.optimization_cases === undefined
+      ? "—"
+      : `<strong>${formatNumber(run.optimization_normalized_score, 3)} normalized</strong><span>${run.optimization_successful}/${run.optimization_cases} feasible · ${optimizationScores}</span>`;
     return `<tr class="campaign-row ${escapeHtml(run.status)}">
       <td class="model-cell"><strong>${escapeHtml(run.model)}</strong><span>${escapeHtml(run.quantization ?? "native")} · ${escapeHtml(run.topology)}</span><span class="badge ${escapeHtml(run.status)}">${escapeHtml(labels[run.status] ?? run.status)}${run.provisional ? " · provisional" : ""}</span></td>
+      <td class="stacked-metric">${optimization}</td>
       <td class="stacked-metric">${arc}</td>
       <td class="stacked-metric">${runtime}</td>
       <td class="stacked-metric">${np}</td>
