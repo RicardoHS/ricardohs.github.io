@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "title": "Homelab AI Benchmarks",
-  "updated_at": "2026-09-15T11:23:44.760367+00:00",
+  "updated_at": "2026-09-15T11:32:44.999122+00:00",
   "status": "preliminary",
   "hardware": "1× NVIDIA DGX Spark (GB10, 128 GiB unified memory) per creative run",
   "protocol": {
@@ -249,6 +249,29 @@
         "The website is an evaluated model output; benchmark measurements remain authoritative over any prose interpretation in the site."
       ],
       "public_title": "ornith-ai/Ornith-1.5-35B-A3B-NVFP4 — Homelab benchmark report"
+    },
+    {
+      "run_id": "deepseek-v4-flash-0731",
+      "model": "deepseek-ai/DeepSeek-V4-Flash-0731",
+      "checkpoint": "deepseek-ai/DeepSeek-V4-Flash-0731",
+      "quantization": "published checkpoint",
+      "topology": "2× DGX Spark · TP2",
+      "agent_seconds": 984.135,
+      "total_seconds": 1026.48,
+      "timed_out": false,
+      "decode_mean": 25.378646766934523,
+      "decode_stddev": 0.2055341580567211,
+      "host_used_gib": 224.02,
+      "host_available_gib": 19.36,
+      "verification": "failed",
+      "code_url": "https://github.com/RicardoHS/ai-eval-web-20260915-deepseek-v4-flash-0731-r01",
+      "demo_url": "https://ricardohs.github.io/ai-eval-web-20260915-deepseek-v4-flash-0731-r01/",
+      "summary": "The evaluated agent completed this explanatory site and its static build, but the objective browser audit failed. It is published unchanged as benchmark evidence, not presented as a passing delivery.",
+      "limitations": [
+        "The website is an evaluated model output; benchmark measurements remain authoritative over any prose interpretation in the site.",
+        "The browser audit reports functional or presentation defects; see the repository evidence before relying on interactive elements."
+      ],
+      "public_title": "deepseek-ai/DeepSeek-V4-Flash-0731 — Homelab benchmark report"
     }
   ],
   "optimization_smoke": [
@@ -325,12 +348,12 @@
   "campaign": {
     "campaign_id": "coding-agentic-models-r01",
     "status": "running",
-    "generated_at": "2026-09-15T11:23:44.760367+00:00",
+    "generated_at": "2026-09-15T11:32:44.999122+00:00",
     "counts": {
       "blocked": 1,
-      "complete": 5,
+      "complete": 6,
       "infrastructure-failed": 1,
-      "queued": 14,
+      "queued": 13,
       "running": 1
     },
     "notes": [
@@ -1111,11 +1134,11 @@
           "reasoning",
           "long-context"
         ],
-        "status": "running",
-        "provisional": true,
+        "status": "complete",
+        "provisional": false,
         "started_at": "2026-09-06T10:34:27.957303+00:00",
-        "ended_at": "2026-09-14T18:18:16.330476+00:00",
-        "wall_seconds": 719028.373,
+        "ended_at": "2026-09-15T11:28:36.696389+00:00",
+        "wall_seconds": 780848.739,
         "host_used_gib": 224.02,
         "host_available_gib": 19.36,
         "arc_agentic_tasks": null,
@@ -1583,7 +1606,7 @@
           "vision",
           "long-context"
         ],
-        "status": "queued",
+        "status": "running",
         "provisional": true,
         "started_at": "2026-09-06T10:42:25.514911+00:00",
         "ended_at": "2026-09-14T17:28:04.396054+00:00",
