@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "title": "Homelab AI Benchmarks",
-  "updated_at": "2026-09-16T11:30:10.542810+00:00",
+  "updated_at": "2026-09-16T11:40:11.580607+00:00",
   "status": "preliminary",
   "hardware": "1× NVIDIA DGX Spark (GB10, 128 GiB unified memory) per creative run",
   "protocol": {
@@ -370,12 +370,11 @@
   "campaign": {
     "campaign_id": "coding-agentic-models-r01",
     "status": "running",
-    "generated_at": "2026-09-16T11:30:10.542810+00:00",
+    "generated_at": "2026-09-16T11:40:11.580607+00:00",
     "counts": {
       "blocked": 2,
-      "complete": 10,
+      "complete": 11,
       "infrastructure-failed": 6,
-      "queued": 1,
       "running": 2
     },
     "notes": [
@@ -4174,11 +4173,11 @@
           "reasoning",
           "long-context"
         ],
-        "status": "running",
-        "provisional": true,
+        "status": "complete",
+        "provisional": false,
         "started_at": "2026-09-06T09:44:41.943508+00:00",
-        "ended_at": "2026-09-13T06:17:49.926916+00:00",
-        "wall_seconds": 592387.983,
+        "ended_at": "2026-09-16T11:32:25.020154+00:00",
+        "wall_seconds": 870463.077,
         "host_used_gib": 115.01,
         "host_available_gib": 6.68,
         "arc_agentic_tasks": null,
@@ -4405,20 +4404,20 @@
           "long-context",
           "speculative-decoding"
         ],
-        "status": "queued",
+        "status": "running",
         "provisional": true,
-        "started_at": null,
+        "started_at": "2026-09-16T11:33:11.338213+00:00",
         "ended_at": null,
         "wall_seconds": null,
-        "host_used_gib": null,
-        "host_available_gib": null,
+        "host_used_gib": 113.85,
+        "host_available_gib": 7.84,
         "arc_agentic_tasks": null,
         "arc_agentic_target_tasks": null,
         "arc_agentic_exact": null,
         "arc_agentic_cell_accuracy": null,
         "arc_agentic_vision": null,
-        "decode_mean": null,
-        "decode_stddev": null,
+        "decode_mean": 9.393047825837929,
+        "decode_stddev": 0.7723193164992516,
         "np_maxcut_points": null,
         "np_maxcut_valid": null,
         "np_maxcut_instances": null,
@@ -4454,7 +4453,7 @@
         "reasoning_levels": [],
         "optimization_results": [],
         "optimization_agentic_results": [],
-        "has_measurements": false
+        "has_measurements": true
       }
     ]
   }
