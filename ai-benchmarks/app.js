@@ -4,6 +4,7 @@ const state = {
   data: null,
   sort: "speed",
   showIncomplete: true,
+  campaignSort: { key: "decode_mean", direction: "desc" },
   details: new Map(),
   detailSequence: 0,
 };
@@ -131,15 +132,107 @@ function renderSecondary() {
   </article>`).join("");
 }
 
+const campaignStatusOrder = {
+  running: 0,
+  complete: 1,
+  "infrastructure-failed": 2,
+  interrupted: 3,
+  blocked: 4,
+  queued: 5,
+  skipped: 6,
+};
+
+const campaignSortLabels = {
+  model: "model",
+  status: "state",
+  decode_mean: "decode speed",
+  host_used_gib: "host memory",
+  optimization_feasible_rate: "one-shot feasibility",
+  optimization_normalized_score: "one-shot score",
+  optimization_agentic_feasible_rate: "agentic feasibility",
+  optimization_agentic_normalized_score: "agentic score",
+  optimization_agentic_total_tokens: "agent tokens",
+  optimization_agentic_wall_seconds: "agent time",
+  np_maxcut_points: "MaxCut",
+  np_max3sat_points: "Max3SAT",
+  refugio_hidden_score: "Refugio",
+  arc_agentic_exact: "ARC exact",
+};
+
+const campaignLowerIsBetter = new Set([
+  "host_used_gib",
+  "optimization_agentic_total_tokens",
+  "optimization_agentic_wall_seconds",
+]);
+
+function campaignSortValue(run, key) {
+  if (key === "model") return run.model;
+  if (key === "status") return campaignStatusOrder[run.status] ?? 99;
+  return run[key];
+}
+
+function sortedCampaignRows(models) {
+  const { key, direction } = state.campaignSort;
+  const multiplier = direction === "asc" ? 1 : -1;
+  return [...models].sort((a, b) => {
+    const av = campaignSortValue(a, key);
+    const bv = campaignSortValue(b, key);
+    const aMissing = av === null || av === undefined || Number.isNaN(av);
+    const bMissing = bv === null || bv === undefined || Number.isNaN(bv);
+    if (aMissing !== bMissing) return aMissing ? 1 : -1;
+    if (aMissing && bMissing) return a.model.localeCompare(b.model, "en", { numeric: true });
+    const comparison = typeof av === "string"
+      ? av.localeCompare(String(bv), "en", { numeric: true, sensitivity: "base" })
+      : Number(av) - Number(bv);
+    return comparison === 0
+      ? a.model.localeCompare(b.model, "en", { numeric: true })
+      : comparison * multiplier;
+  });
+}
+
+function tableDetailButton(value, detail, tone = "neutral") {
+  if (value === null || value === undefined) return '<span class="table-empty">—</span>';
+  const id = `detail-${state.detailSequence++}`;
+  state.details.set(id, detail);
+  return `<button class="table-metric ${escapeHtml(tone)}" type="button" data-detail="${id}">${escapeHtml(value)}</button>`;
+}
+
+function challengeValues(results, field = "mean_normalized_score") {
+  return (results ?? []).map(item => ({
+    label: item.challenge,
+    value: item[field] === null || item[field] === undefined
+      ? "Invalid / unavailable"
+      : formatNumber(item[field], 4),
+  }));
+}
+
+function updateCampaignSortHeader() {
+  const { key, direction } = state.campaignSort;
+  document.querySelectorAll("[data-campaign-sort]").forEach(button => {
+    const active = button.dataset.campaignSort === key;
+    const header = button.closest("th");
+    if (header) header.setAttribute("aria-sort", active ? (direction === "asc" ? "ascending" : "descending") : "none");
+    const marker = button.querySelector("span");
+    if (marker) marker.textContent = active ? (direction === "asc" ? "↑" : "↓") : "↕";
+    button.classList.toggle("active", active);
+  });
+  const summary = document.querySelector("#campaign-sort-summary");
+  const orderDescription = key === "model"
+    ? (direction === "asc" ? "A–Z" : "Z–A")
+    : key === "status"
+      ? (direction === "asc" ? "active and complete first" : "queued and failed first")
+      : (direction === "asc" ? "lowest first" : "highest first");
+  if (summary) summary.textContent = `Sorted by ${campaignSortLabels[key] ?? key}, ${orderDescription}.`;
+}
+
 function renderCampaign() {
   const campaign = state.data.campaign;
   if (!campaign) {
     document.querySelector("#campaign-counts").innerHTML = '<p class="empty-state">No campaign snapshot published yet.</p>';
-    document.querySelector("#campaign-models").innerHTML = "";
+    document.querySelector("#campaign-models").innerHTML = '<tr><td colspan="14" class="empty-state">No campaign snapshot published yet.</td></tr>';
     return;
   }
-  const order = { running: 0, complete: 1, "infrastructure-failed": 2, interrupted: 3, blocked: 4, queued: 5, skipped: 6 };
-  const rows = [...campaign.models].sort((a, b) => (order[a.status] ?? 9) - (order[b.status] ?? 9));
+  const rows = sortedCampaignRows(campaign.models);
   const labels = {
     complete: "Complete", running: "Running", "infrastructure-failed": "Infra failed",
     interrupted: "Interrupted", blocked: "Blocked", queued: "Queued", skipped: "Skipped",
@@ -148,171 +241,91 @@ function renderCampaign() {
     .map(([status, count]) => `<div class="campaign-count ${escapeHtml(status)}"><strong>${count}</strong><span>${escapeHtml(labels[status] ?? status)}</span></div>`)
     .join("");
   document.querySelector("#campaign-models").innerHTML = rows.map(run => {
-    const optimizationRows = run.optimization_results?.length
-      ? run.optimization_results
-      : ["cajas", "sparks", "circuito", "reparto", "stock"].map(challenge => ({
-          challenge,
-          cases: run.optimization_cases ? 1 : null,
-          successful: run[`optimization_${challenge}_score`] === null ? 0 : 1,
-          feasible_rate: run[`optimization_${challenge}_score`] === null ? 0 : 1,
-          mean_normalized_score: run[`optimization_${challenge}_score`],
-          mean_improvement_over_baseline: null,
-        }));
-    const optimization = optimizationRows
-      .filter(item => item.cases !== null && item.cases !== undefined)
-      .map(item => {
-        const score = item.mean_normalized_score;
-        const feasible = Number(item.successful ?? 0) > 0;
-        return detailButton(
-          item.challenge,
-          score === null || score === undefined ? "invalid" : formatNumber(score, 2),
-          {
-            kicker: `${run.model} · optimization`,
-            title: item.challenge,
-            summary: scoreExplanation(score),
-            values: [
-              { label: "Verifier result", value: feasible ? "Feasible" : "Invalid / no feasible solution" },
-              { label: "Normalized score", value: formatNumber(score, 4) },
-              { label: "Candidate objective", value: formatNumber(item.mean_candidate_objective, 4) },
-              { label: "Baseline objective", value: formatNumber(item.mean_baseline_objective, 4) },
-              { label: "Theoretical lower bound", value: formatNumber(item.mean_lower_bound, 4) },
-              { label: "Improvement over baseline", value: formatNumber(item.mean_improvement_over_baseline, 4) },
-              { label: "Feasible cases", value: `${item.successful ?? 0}/${item.cases ?? 0}` },
-              { label: "Feasible rate", value: formatPercent(item.feasible_rate) },
-            ],
-          },
-          feasible ? (score < 0 ? "negative" : "positive") : "invalid",
-        );
-      }).join("") || '<span class="empty-inline">Not measured</span>';
+    const optimizationDetail = {
+      kicker: `${run.model} · one-shot optimization`,
+      title: "Five-challenge summary",
+      summary: scoreExplanation(run.optimization_normalized_score),
+      values: [
+        { label: "Feasible", value: `${run.optimization_successful ?? 0}/${run.optimization_cases ?? 0} · ${formatPercent(run.optimization_feasible_rate)}` },
+        { label: "Macro normalized score", value: formatNumber(run.optimization_normalized_score, 4) },
+        ...challengeValues(run.optimization_results),
+      ],
+    };
+    const agentDetail = {
+      kicker: `${run.model} · agentic optimization`,
+      title: "Build, verify and iterate",
+      summary: "Pi implemented five solvers, iterated against bounded development feedback and was evaluated on disjoint private cases.",
+      values: [
+        { label: "Private macro feasibility", value: formatPercent(run.optimization_agentic_feasible_rate) },
+        { label: "Private macro score", value: formatNumber(run.optimization_agentic_normalized_score, 4) },
+        { label: "Model / tool calls", value: `${formatNumber(run.optimization_agentic_model_calls, 0)} / ${formatNumber(run.optimization_agentic_tool_calls, 0)}` },
+        { label: "Verifier calls", value: formatNumber(run.optimization_agentic_development_evaluations, 0) },
+        { label: "Input / output tokens", value: `${formatNumber(run.optimization_agentic_input_tokens, 0)} / ${formatNumber(run.optimization_agentic_output_tokens, 0)}` },
+        { label: "Effective output speed", value: `${formatNumber(run.optimization_agentic_output_tps, 3)} tok/s` },
+        { label: "End-to-end time", value: formatDuration(run.optimization_agentic_wall_seconds) },
+        ...challengeValues(run.optimization_agentic_results),
+      ],
+    };
+    const runtimeDetail = {
+      kicker: `${run.model} · runtime`,
+      title: "Runtime and memory",
+      summary: "Decode is the mean per-request rate from the two-request smoke, not aggregate multi-user throughput. Memory is the observed post-run host snapshot.",
+      values: [
+        { label: "Decode mean", value: `${formatNumber(run.decode_mean, 4)} tok/s` },
+        { label: "Decode standard deviation", value: `${formatNumber(run.decode_stddev, 4)} tok/s` },
+        { label: "Host used", value: `${formatNumber(run.host_used_gib, 2)} GiB` },
+        { label: "Host available", value: `${formatNumber(run.host_available_gib, 2)} GiB` },
+        { label: "Topology", value: run.topology },
+        { label: "Quantization", value: run.quantization ?? "native" },
+      ],
+    };
+    const npDetail = (name, points, valid, instances) => ({
+      kicker: `${run.model} · NP Frontier`,
+      title: name,
+      summary: "One-shot frontier score recalculated by the independent verifier.",
+      values: [
+        { label: "Frontier points", value: formatNumber(points, 4) },
+        { label: "Valid solutions", value: `${valid ?? "n/c"}/${instances ?? "n/c"}` },
+      ],
+    });
 
-    const agenticOptimization = (run.optimization_agentic_results ?? [])
-      .map(item => {
-        const score = item.mean_normalized_score;
-        const feasible = Number(item.successful ?? 0) > 0;
-        return detailButton(
-          item.challenge,
-          score === null || score === undefined ? "invalid" : formatNumber(score, 2),
-          {
-            kicker: `${run.model} · agentic optimization`,
-            title: item.challenge,
-            summary: "Pi used file and shell tools, implemented a solver, submitted it to a bounded development verifier, iterated, and the retained best solver was evaluated on disjoint private cases.",
-            values: [
-              { label: "Private normalized score", value: formatNumber(score, 4) },
-              { label: "Private candidate objective", value: formatNumber(item.mean_candidate_objective, 4) },
-              { label: "Private baseline objective", value: formatNumber(item.mean_baseline_objective, 4) },
-              { label: "Private feasible cases", value: `${item.successful ?? 0}/${item.cases ?? 0}` },
-              { label: "Model calls", value: formatNumber(item.model_calls, 0) },
-              { label: "Tool calls", value: formatNumber(item.tool_calls, 0) },
-              { label: "Context compactions", value: formatNumber(item.context_compactions, 0) },
-              { label: "Development verifier calls", value: formatNumber(item.development_evaluations, 0) },
-              { label: "Input tokens", value: formatNumber(item.input_tokens, 0) },
-              { label: "Output tokens", value: formatNumber(item.output_tokens, 0) },
-              { label: "Agent wall time", value: formatDuration(item.agent_wall_seconds) },
-              { label: "Time to first fully feasible", value: formatDuration(item.time_to_first_fully_feasible_seconds) },
-              { label: "Time to best development result", value: formatDuration(item.time_to_best_development_seconds) },
-              { label: "Best development score", value: formatNumber(item.best_development_normalized_score, 4) },
-            ],
-          },
-          feasible ? (score < 0 ? "negative" : "positive") : "invalid",
-        );
-      }).join("") || '<span class="empty-inline">Queued / not measured</span>';
-
-    const agenticCost = run.optimization_agentic_model_calls === null || run.optimization_agentic_model_calls === undefined
-      ? ""
-      : detailButton("agent cost", `${formatNumber(run.optimization_agentic_total_tokens, 0)} tok`, {
-          kicker: `${run.model} · complete five-challenge agent run`,
-          title: "Agentic cost and throughput",
-          summary: "Totals cover all model and tool turns used to develop five solvers; private solver execution is scored separately.",
-          values: [
-            { label: "Model calls", value: formatNumber(run.optimization_agentic_model_calls, 0) },
-            { label: "Tool calls", value: formatNumber(run.optimization_agentic_tool_calls, 0) },
-            { label: "Context compactions", value: formatNumber(run.optimization_agentic_context_compactions, 0) },
-            { label: "Verifier calls", value: formatNumber(run.optimization_agentic_development_evaluations, 0) },
-            { label: "Input tokens", value: formatNumber(run.optimization_agentic_input_tokens, 0) },
-            { label: "Output tokens", value: formatNumber(run.optimization_agentic_output_tokens, 0) },
-            { label: "Total tokens", value: formatNumber(run.optimization_agentic_total_tokens, 0) },
-            { label: "Effective output speed", value: `${formatNumber(run.optimization_agentic_output_tps, 3)} tok/s` },
-            { label: "End-to-end time", value: formatDuration(run.optimization_agentic_wall_seconds) },
-            { label: "Private macro feasibility", value: formatPercent(run.optimization_agentic_feasible_rate) },
-            { label: "Private macro score", value: formatNumber(run.optimization_agentic_normalized_score, 4) },
-          ],
-        });
-
-    const runtime = run.decode_mean === null || run.decode_mean === undefined
-      ? '<span class="empty-inline">Not measured</span>'
-      : detailButton("decode", `${formatNumber(run.decode_mean, 2)} tok/s`, {
-          kicker: `${run.model} · runtime smoke`,
-          title: "Concurrent decode throughput",
-          summary: "Mean per-request decode rate from the two-request runtime smoke. This is not aggregate server throughput.",
-          values: [
-            { label: "Mean", value: `${formatNumber(run.decode_mean, 4)} tok/s` },
-            { label: "Standard deviation", value: `${formatNumber(run.decode_stddev, 4)} tok/s` },
-            { label: "Observed host memory", value: `${formatNumber(run.host_used_gib, 2)} GiB` },
-            { label: "Available host memory", value: `${formatNumber(run.host_available_gib, 2)} GiB` },
-          ],
-        });
-
-    const arc = run.arc_agentic_tasks === null || run.arc_agentic_tasks === undefined
-      ? '<span class="empty-inline">Paused / not measured</span>'
-      : detailButton("ARC agentic", `${run.arc_agentic_exact ?? 0} exact`, {
-          kicker: `${run.model} · ARC-AGI-2 agentic`,
-          title: "Agentic ARC result",
-          summary: "The agent may use the enabled tools and model-native vision. Exact tasks and cell accuracy are reported separately.",
-          values: [
-            { label: "Exact tasks", value: String(run.arc_agentic_exact ?? "n/c") },
-            { label: "Tasks evaluated", value: `${run.arc_agentic_tasks}/${run.arc_agentic_target_tasks ?? 120}` },
-            { label: "Cell accuracy", value: formatPercent(run.arc_agentic_cell_accuracy) },
-            { label: "Vision enabled", value: run.arc_agentic_vision ? "Yes" : "No" },
-          ],
-        });
-
-    const np = [
-      ["MaxCut", run.np_maxcut_points, run.np_maxcut_valid, run.np_maxcut_instances],
-      ["Max3SAT", run.np_max3sat_points, run.np_max3sat_valid, run.np_max3sat_instances],
-    ].map(([name, points, valid, instances]) => points === null || points === undefined ? "" : detailButton(
-      name,
-      formatNumber(points, 1),
-      {
-        kicker: `${run.model} · NP Frontier`,
-        title: name,
-        summary: "One-shot optimization frontier score. The independent verifier ignores model-declared objectives.",
+    const oneShotTone = run.optimization_normalized_score < 0 ? "negative" : "positive";
+    const agentTone = run.optimization_agentic_normalized_score < 0 ? "negative" : "positive";
+    return `<tr class="campaign-row ${escapeHtml(run.status)}">
+      <td class="model-cell"><strong>${escapeHtml(run.model)}</strong><span>${escapeHtml(run.quantization ?? "native")} · ${escapeHtml(run.topology)}</span></td>
+      <td><span class="badge ${escapeHtml(run.status)}">${escapeHtml(labels[run.status] ?? run.status)}</span>${run.provisional ? '<span class="provisional-mark">provisional</span>' : ""}</td>
+      <td>${tableDetailButton(run.decode_mean === null || run.decode_mean === undefined ? null : formatNumber(run.decode_mean, 2), runtimeDetail)}</td>
+      <td>${tableDetailButton(run.host_used_gib === null || run.host_used_gib === undefined ? null : formatNumber(run.host_used_gib, 1), runtimeDetail)}</td>
+      <td>${tableDetailButton(run.optimization_feasible_rate === null || run.optimization_feasible_rate === undefined ? null : formatPercent(run.optimization_feasible_rate), optimizationDetail)}</td>
+      <td>${tableDetailButton(run.optimization_normalized_score === null || run.optimization_normalized_score === undefined ? null : formatNumber(run.optimization_normalized_score, 2), optimizationDetail, oneShotTone)}</td>
+      <td>${tableDetailButton(run.optimization_agentic_feasible_rate === null || run.optimization_agentic_feasible_rate === undefined ? null : formatPercent(run.optimization_agentic_feasible_rate), agentDetail)}</td>
+      <td>${tableDetailButton(run.optimization_agentic_normalized_score === null || run.optimization_agentic_normalized_score === undefined ? null : formatNumber(run.optimization_agentic_normalized_score, 2), agentDetail, agentTone)}</td>
+      <td>${tableDetailButton(run.optimization_agentic_total_tokens === null || run.optimization_agentic_total_tokens === undefined ? null : formatNumber(run.optimization_agentic_total_tokens, 0), agentDetail)}</td>
+      <td>${tableDetailButton(run.optimization_agentic_wall_seconds === null || run.optimization_agentic_wall_seconds === undefined ? null : formatDuration(run.optimization_agentic_wall_seconds), agentDetail)}</td>
+      <td>${tableDetailButton(run.np_maxcut_points === null || run.np_maxcut_points === undefined ? null : formatNumber(run.np_maxcut_points, 1), npDetail("MaxCut", run.np_maxcut_points, run.np_maxcut_valid, run.np_maxcut_instances), "positive")}</td>
+      <td>${tableDetailButton(run.np_max3sat_points === null || run.np_max3sat_points === undefined ? null : formatNumber(run.np_max3sat_points, 1), npDetail("Max3SAT", run.np_max3sat_points, run.np_max3sat_valid, run.np_max3sat_instances), "positive")}</td>
+      <td>${tableDetailButton(run.refugio_hidden_score === null || run.refugio_hidden_score === undefined ? null : String(run.refugio_hidden_score), {
+        kicker: `${run.model} · policy arena`, title: "Refugio hidden evaluation",
+        summary: "The policy was developed on public instances and scored once on the frozen hidden suite.",
         values: [
-          { label: "Frontier points", value: formatNumber(points, 4) },
-          { label: "Valid solutions", value: `${valid ?? "n/c"}/${instances ?? "n/c"}` },
+          { label: "Hidden score", value: String(run.refugio_hidden_score ?? "n/c") },
+          { label: "Development score", value: String(run.refugio_development_score ?? "n/c") },
+          { label: "Agent time", value: formatDuration(run.refugio_agent_seconds) },
         ],
-      },
-      valid ? "positive" : "invalid",
-    )).join("") || '<span class="empty-inline">Not measured</span>';
-
-    const refugio = run.refugio_hidden_score === null || run.refugio_hidden_score === undefined
-      ? '<span class="empty-inline">Not measured</span>'
-      : detailButton("REFUGIO", String(run.refugio_hidden_score), {
-          kicker: `${run.model} · policy arena`,
-          title: "REFUGIO hidden evaluation",
-          summary: "A policy is developed against public instances, then scored once against the frozen hidden suite.",
-          values: [
-            { label: "Hidden score", value: String(run.refugio_hidden_score) },
-            { label: "Development score", value: String(run.refugio_development_score ?? "n/c") },
-            { label: "Agent wall time", value: formatDuration(run.refugio_agent_seconds) },
-          ],
-        });
-
-    return `<article class="model-result-card ${escapeHtml(run.status)}">
-      <header class="model-result-header">
-        <div><h3>${escapeHtml(run.model)}</h3><span>${escapeHtml(run.quantization ?? "native")} · ${escapeHtml(run.topology)}</span></div>
-        <span class="badge ${escapeHtml(run.status)}">${escapeHtml(labels[run.status] ?? run.status)}${run.provisional ? " · provisional" : ""}</span>
-      </header>
-      <div class="model-test-grid">
-        <section class="test-group wide"><h4>Optimization · each challenge</h4><div class="metric-chip-grid">${optimization}</div></section>
-        <section class="test-group wide"><h4>Agentic optimization · build, verify, iterate</h4><div class="metric-chip-grid">${agenticOptimization}${agenticCost}</div></section>
-        <section class="test-group"><h4>Runtime</h4><div class="metric-chip-grid">${runtime}</div></section>
-        <section class="test-group"><h4>ARC agentic</h4><div class="metric-chip-grid">${arc}</div></section>
-        <section class="test-group"><h4>NP Frontier</h4><div class="metric-chip-grid">${np}</div></section>
-        <section class="test-group"><h4>Policy arena</h4><div class="metric-chip-grid">${refugio}</div></section>
-      </div>
-      <div class="model-result-footer"><div class="capability-list">${run.capabilities.map(item => `<span>${escapeHtml(item)}</span>`).join("") || "—"}</div></div>
-    </article>`;
+      }, "positive")}</td>
+      <td>${tableDetailButton(run.arc_agentic_exact === null || run.arc_agentic_exact === undefined ? null : `${run.arc_agentic_exact}/${run.arc_agentic_tasks ?? "?"}`, {
+        kicker: `${run.model} · ARC-AGI-2 agentic`, title: "ARC exact tasks",
+        summary: "Exact task success and cell accuracy are separate measurements.",
+        values: [
+          { label: "Exact tasks", value: String(run.arc_agentic_exact ?? "n/c") },
+          { label: "Tasks evaluated", value: `${run.arc_agentic_tasks ?? "n/c"}/${run.arc_agentic_target_tasks ?? 120}` },
+          { label: "Cell accuracy", value: formatPercent(run.arc_agentic_cell_accuracy) },
+          { label: "Vision enabled", value: run.arc_agentic_vision ? "Yes" : "No" },
+        ],
+      })}</td>
+    </tr>`;
   }).join("");
+  updateCampaignSortHeader();
   document.querySelector("#campaign-note").textContent = campaign.notes.join(" ");
 }
 
@@ -379,6 +392,18 @@ function renderReasoning() {
 }
 
 function bindControls() {
+  document.querySelectorAll("[data-campaign-sort]").forEach(button => button.addEventListener("click", () => {
+    const key = button.dataset.campaignSort;
+    if (state.campaignSort.key === key) {
+      state.campaignSort.direction = state.campaignSort.direction === "asc" ? "desc" : "asc";
+    } else {
+      state.campaignSort = {
+        key,
+        direction: key === "model" || key === "status" || campaignLowerIsBetter.has(key) ? "asc" : "desc",
+      };
+    }
+    renderCampaign();
+  }));
   document.querySelectorAll("[data-sort]").forEach(button => button.addEventListener("click", () => {
     state.sort = button.dataset.sort;
     document.querySelectorAll("[data-sort]").forEach(candidate => candidate.setAttribute("aria-pressed", String(candidate === button)));

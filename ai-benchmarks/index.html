@@ -68,7 +68,44 @@
       </div>
 
       <div id="campaign-counts" class="campaign-counts" aria-label="Campaign status"></div>
-      <div id="campaign-models" class="campaign-models" aria-live="polite"></div>
+      <div class="campaign-table-head">
+        <p>Click any column to sort. Click a measured value to inspect its evidence.</p>
+        <p id="campaign-sort-summary" class="campaign-sort-summary" aria-live="polite">Sorted by decode speed, highest first.</p>
+      </div>
+      <div class="table-wrap campaign-table-wrap">
+        <table class="campaign-table">
+          <colgroup>
+            <col class="campaign-model-col">
+            <col class="campaign-state-col">
+            <col span="12" class="campaign-metric-col">
+          </colgroup>
+          <thead>
+            <tr class="column-groups">
+              <th rowspan="2" scope="col"><button type="button" data-campaign-sort="model">Model <span aria-hidden="true"></span></button></th>
+              <th rowspan="2" scope="col"><button type="button" data-campaign-sort="status">State <span aria-hidden="true"></span></button></th>
+              <th colspan="2" scope="colgroup">Runtime</th>
+              <th colspan="2" scope="colgroup">One-shot optimization</th>
+              <th colspan="4" scope="colgroup">Agentic optimization</th>
+              <th colspan="2" scope="colgroup">NP frontier</th>
+              <th rowspan="2" scope="col"><button type="button" data-campaign-sort="refugio_hidden_score">Refugio <span aria-hidden="true"></span></button></th>
+              <th rowspan="2" scope="col"><button type="button" data-campaign-sort="arc_agentic_exact">ARC exact <span aria-hidden="true"></span></button></th>
+            </tr>
+            <tr>
+              <th scope="col"><button type="button" data-campaign-sort="decode_mean">Tok/s <span aria-hidden="true"></span></button></th>
+              <th scope="col"><button type="button" data-campaign-sort="host_used_gib">Memory <span aria-hidden="true"></span></button></th>
+              <th scope="col"><button type="button" data-campaign-sort="optimization_feasible_rate">Feasible <span aria-hidden="true"></span></button></th>
+              <th scope="col"><button type="button" data-campaign-sort="optimization_normalized_score">Score <span aria-hidden="true"></span></button></th>
+              <th scope="col"><button type="button" data-campaign-sort="optimization_agentic_feasible_rate">Feasible <span aria-hidden="true"></span></button></th>
+              <th scope="col"><button type="button" data-campaign-sort="optimization_agentic_normalized_score">Score <span aria-hidden="true"></span></button></th>
+              <th scope="col"><button type="button" data-campaign-sort="optimization_agentic_total_tokens">Tokens <span aria-hidden="true"></span></button></th>
+              <th scope="col"><button type="button" data-campaign-sort="optimization_agentic_wall_seconds">Time <span aria-hidden="true"></span></button></th>
+              <th scope="col"><button type="button" data-campaign-sort="np_maxcut_points">MaxCut <span aria-hidden="true"></span></button></th>
+              <th scope="col"><button type="button" data-campaign-sort="np_max3sat_points">Max3SAT <span aria-hidden="true"></span></button></th>
+            </tr>
+          </thead>
+          <tbody id="campaign-models" aria-live="polite"></tbody>
+        </table>
+      </div>
       <p class="measurement-note" id="campaign-note">Loading current campaign…</p>
     </section>
 
