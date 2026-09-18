@@ -183,6 +183,30 @@ td:not(:first-child):not(:last-child) { font-family: var(--mono); font-size: .72
 }
 .campaign-table-head p { margin: 0; }
 .campaign-sort-summary { color: var(--cyan); text-align: right; }
+.campaign-tables { display: grid; gap: 64px; margin-top: 28px; }
+.topology-table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+.topology-table-header .eyebrow { margin-bottom: 7px; }
+.topology-table-header h3 { margin: 0; font-size: clamp(1.55rem, 3vw, 2.5rem); letter-spacing: -.035em; }
+.topology-table-actions { display: flex; align-items: center; gap: 14px; color: var(--muted); font: .58rem var(--mono); text-transform: uppercase; }
+.topology-table-actions button {
+  padding: 7px 9px;
+  color: var(--cyan);
+  background: transparent;
+  border: 1px solid #35414e;
+  font: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+}
+.topology-table-actions button:hover,
+.topology-table-actions button:focus-visible { color: var(--acid); border-color: var(--acid); outline: 0; }
+.topology-table > .campaign-sort-summary { min-height: 1em; margin: 10px 0 0; font: .58rem var(--mono); }
 .campaign-table-wrap {
   max-height: min(72vh, 860px);
   margin-top: 10px;
@@ -191,7 +215,7 @@ td:not(:first-child):not(:last-child) { font-family: var(--mono); font-size: .72
   scrollbar-color: #3c4652 #13171d;
 }
 .campaign-table {
-  min-width: 1356px;
+  min-width: 1444px;
   table-layout: fixed;
   font-variant-numeric: tabular-nums;
 }
@@ -226,10 +250,11 @@ td:not(:first-child):not(:last-child) { font-family: var(--mono); font-size: .72
 .campaign-table th[aria-sort="ascending"] button span,
 .campaign-table th[aria-sort="descending"] button span { color: var(--acid); }
 .campaign-model-col { width: 210px; }
+.campaign-reasoning-col { width: 88px; }
 .campaign-state-col { width: 90px; }
 .campaign-metric-col { width: 88px; }
 .campaign-table thead tr:nth-child(2) th,
-.campaign-table tbody td:nth-child(n+3) { text-align: right; }
+.campaign-table tbody td:nth-child(n+4) { text-align: right; }
 .campaign-table .column-groups th:first-child,
 .campaign-table tbody td:first-child {
   position: sticky;
@@ -239,8 +264,8 @@ td:not(:first-child):not(:last-child) { font-family: var(--mono); font-size: .72
   box-shadow: 1px 0 0 var(--line);
 }
 .campaign-table thead .column-groups th:first-child { z-index: 7; background: #11151b; }
-.campaign-table tbody tr:nth-child(even) td { background-color: rgba(255, 255, 255, .012); }
-.campaign-table tbody tr:nth-child(even) td:first-child { background: #11151b; }
+.campaign-table tbody .model-summary td { border-top: 1px solid #39414c; background-color: rgba(255, 255, 255, .012); }
+.campaign-table tbody .model-summary td:first-child { background: #11151b; }
 .campaign-table tbody tr:hover td { background-color: #151a21; }
 .campaign-table tbody tr:hover td:first-child { background: #171c23; }
 .campaign-table td {
@@ -258,7 +283,31 @@ td:not(:first-child):not(:last-child) { font-family: var(--mono); font-size: .72
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.campaign-table .model-cell > span { display: block; margin-top: 2px; font-size: .53rem; }
+.model-heading { display: grid; grid-template-columns: 24px minmax(0, 1fr); align-items: center; gap: 6px; }
+.model-heading > div > span { display: block; margin-top: 2px; color: var(--muted); font: .53rem var(--mono); }
+.model-toggle,
+.model-toggle-spacer { width: 23px; height: 23px; }
+.model-toggle {
+  display: grid;
+  place-items: center;
+  padding: 0;
+  color: var(--cyan);
+  background: #151a21;
+  border: 1px solid #36404b;
+  font: 600 .8rem var(--mono);
+  cursor: pointer;
+}
+.model-toggle:hover,
+.model-toggle:focus-visible { color: var(--acid); border-color: var(--acid); outline: 0; }
+.row-variant { color: var(--muted); font: .56rem var(--mono); text-transform: uppercase; }
+.reasoning-row td { height: 42px; background: rgba(79, 191, 255, .025); }
+.reasoning-row td:first-child { background: #0d141a; }
+.reasoning-row.saturated { opacity: .72; }
+.campaign-table .reasoning-model { padding-left: 39px; }
+.campaign-table .reasoning-model > span { display: inline; margin-right: 7px; color: #4f5b68; }
+.campaign-table .reasoning-model strong { display: inline-block; max-width: 148px; color: #aeb8c2; font-size: .66rem; font-weight: 500; vertical-align: middle; }
+.campaign-table .reasoning-empty { text-align: left !important; }
+.reasoning-empty span { color: #616c78; font: .56rem var(--mono); }
 .campaign-table .badge { width: fit-content; margin: 0; white-space: nowrap; }
 .provisional-mark { display: block; margin-top: 3px; color: var(--orange); font: .5rem var(--mono); text-transform: uppercase; }
 .table-metric {
@@ -281,6 +330,7 @@ td:not(:first-child):not(:last-child) { font-family: var(--mono); font-size: .72
 .badge.running { color: var(--cyan); }
 .badge.infrastructure-failed, .badge.interrupted { color: var(--orange); }
 .badge.blocked, .badge.queued, .badge.skipped { color: var(--muted); }
+.badge.reasoning { color: var(--cyan); }
 .campaign-row.infrastructure-failed, .campaign-row.interrupted, .campaign-row.blocked { opacity: .68; }
 .campaign-models, .reasoning-models { display: grid; gap: 18px; margin-top: 20px; }
 .model-result-card, .reasoning-model-card {
@@ -466,10 +516,15 @@ footer { min-height: 90px; display: flex; justify-content: space-between; align-
   .test-group { min-height: 0; border-right: 0; }
   .model-result-header, .reasoning-model-card > header { flex-direction: column; }
   .campaign-table-head { align-items: flex-start; flex-direction: column; gap: 5px; }
+  .topology-table-header { align-items: flex-start; flex-direction: column; }
+  .topology-table-actions { width: 100%; justify-content: space-between; }
   .campaign-sort-summary { text-align: left; }
   .campaign-table-wrap { max-height: 70vh; margin-inline: -13px; }
   .campaign-model-col { width: 190px; }
+  .campaign-reasoning-col { width: 82px; }
   .campaign-table .model-cell strong { max-width: 170px; }
+  .campaign-table .reasoning-model { padding-left: 24px; }
+  .campaign-table .reasoning-model strong { max-width: 140px; }
   .reasoning-levels { grid-template-columns: 1fr; }
   .dialog-values { grid-template-columns: 1fr; }
   .method { margin-inline: -13px; margin-bottom: 60px; }

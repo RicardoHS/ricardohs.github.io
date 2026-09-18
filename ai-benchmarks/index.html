@@ -20,7 +20,6 @@
     <a class="home-link" href="/">RH / LAB</a>
     <nav aria-label="Page sections">
       <a href="#campaign">Live results</a>
-      <a href="#reasoning">Reasoning</a>
       <a href="#creative">Agentic</a>
       <a href="#optimization">Optimization</a>
       <a href="#roadmap">Roadmap</a>
@@ -64,61 +63,15 @@
           <p class="eyebrow"><span class="live-dot"></span>Continuously published campaign</p>
           <h2 id="campaign-title">Evidence as it lands</h2>
         </div>
-        <p>Complete measurements and clearly marked provisional snapshots from the current two-Spark campaign. Runtime failures remain visible, but never masquerade as zero model scores.</p>
+        <p>Complete measurements and clearly marked provisional snapshots from the current homelab campaign. Runtime failures remain visible, but never masquerade as zero model scores.</p>
       </div>
 
       <div id="campaign-counts" class="campaign-counts" aria-label="Campaign status"></div>
       <div class="campaign-table-head">
-        <p>Click any column to sort. Click a measured value to inspect its evidence.</p>
-        <p id="campaign-sort-summary" class="campaign-sort-summary" aria-live="polite">Sorted by decode speed, highest first.</p>
+        <p>Each table sorts independently. Model blocks stay together; expand a model to compare its native reasoning levels.</p>
       </div>
-      <div class="table-wrap campaign-table-wrap">
-        <table class="campaign-table">
-          <colgroup>
-            <col class="campaign-model-col">
-            <col class="campaign-state-col">
-            <col span="12" class="campaign-metric-col">
-          </colgroup>
-          <thead>
-            <tr class="column-groups">
-              <th rowspan="2" scope="col"><button type="button" data-campaign-sort="model">Model <span aria-hidden="true"></span></button></th>
-              <th rowspan="2" scope="col"><button type="button" data-campaign-sort="status">State <span aria-hidden="true"></span></button></th>
-              <th colspan="2" scope="colgroup">Runtime</th>
-              <th colspan="2" scope="colgroup">One-shot optimization</th>
-              <th colspan="4" scope="colgroup">Agentic optimization</th>
-              <th colspan="2" scope="colgroup">NP frontier</th>
-              <th rowspan="2" scope="col"><button type="button" data-campaign-sort="refugio_hidden_score">Refugio <span aria-hidden="true"></span></button></th>
-              <th rowspan="2" scope="col"><button type="button" data-campaign-sort="arc_agentic_exact">ARC exact <span aria-hidden="true"></span></button></th>
-            </tr>
-            <tr>
-              <th scope="col"><button type="button" data-campaign-sort="decode_mean">Tok/s <span aria-hidden="true"></span></button></th>
-              <th scope="col"><button type="button" data-campaign-sort="host_used_gib">Memory <span aria-hidden="true"></span></button></th>
-              <th scope="col"><button type="button" data-campaign-sort="optimization_feasible_rate">Feasible <span aria-hidden="true"></span></button></th>
-              <th scope="col"><button type="button" data-campaign-sort="optimization_normalized_score">Score <span aria-hidden="true"></span></button></th>
-              <th scope="col"><button type="button" data-campaign-sort="optimization_agentic_feasible_rate">Feasible <span aria-hidden="true"></span></button></th>
-              <th scope="col"><button type="button" data-campaign-sort="optimization_agentic_normalized_score">Score <span aria-hidden="true"></span></button></th>
-              <th scope="col"><button type="button" data-campaign-sort="optimization_agentic_total_tokens">Tokens <span aria-hidden="true"></span></button></th>
-              <th scope="col"><button type="button" data-campaign-sort="optimization_agentic_wall_seconds">Time <span aria-hidden="true"></span></button></th>
-              <th scope="col"><button type="button" data-campaign-sort="np_maxcut_points">MaxCut <span aria-hidden="true"></span></button></th>
-              <th scope="col"><button type="button" data-campaign-sort="np_max3sat_points">Max3SAT <span aria-hidden="true"></span></button></th>
-            </tr>
-          </thead>
-          <tbody id="campaign-models" aria-live="polite"></tbody>
-        </table>
-      </div>
+      <div id="campaign-tables" class="campaign-tables" aria-live="polite"></div>
       <p class="measurement-note" id="campaign-note">Loading current campaign…</p>
-    </section>
-
-    <section class="benchmark-section" id="reasoning" aria-labelledby="reasoning-title">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">Native effort sweep</p>
-          <h2 id="reasoning-title">What more thinking buys</h2>
-        </div>
-        <p>The same five private optimization challenges at every native effort level. Protocol r03 allows up to 64K deliberation tokens, reserves 8K for structured finalization and records every ceiling hit.</p>
-      </div>
-      <div id="reasoning-models" class="reasoning-models" aria-live="polite"></div>
-      <p class="measurement-note">Select any number for its full result and interpretation. Feasibility ranks before score; aggregate normalized scores include only feasible submissions.</p>
     </section>
 
     <section class="benchmark-section" id="creative" aria-labelledby="creative-title">
