@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "title": "Homelab AI Benchmarks",
-  "updated_at": "2026-09-20T13:52:58.170383+00:00",
+  "updated_at": "2026-09-20T14:02:58.410176+00:00",
   "status": "preliminary",
   "hardware": "1× NVIDIA DGX Spark (GB10, 128 GiB unified memory) per creative run",
   "protocol": {
@@ -370,7 +370,7 @@
   "campaign": {
     "campaign_id": "coding-agentic-models-r01",
     "status": "running",
-    "generated_at": "2026-09-20T13:52:58.170383+00:00",
+    "generated_at": "2026-09-20T14:02:58.410176+00:00",
     "counts": {
       "complete": 19,
       "queued": 3,
@@ -3453,10 +3453,10 @@
         "refugio_hidden_score": null,
         "refugio_development_score": null,
         "refugio_agent_seconds": null,
-        "optimization_cases": null,
-        "optimization_successful": null,
-        "optimization_feasible_rate": null,
-        "optimization_normalized_score": null,
+        "optimization_cases": 5,
+        "optimization_successful": 3,
+        "optimization_feasible_rate": 0.6,
+        "optimization_normalized_score": -91.75467062173402,
         "optimization_agentic_feasible_rate": null,
         "optimization_agentic_normalized_score": null,
         "optimization_agentic_model_calls": null,
@@ -3470,14 +3470,70 @@
         "optimization_agentic_output_tps": null,
         "optimization_cajas_score": null,
         "optimization_sparks_score": null,
-        "optimization_circuito_score": null,
-        "optimization_reparto_score": null,
-        "optimization_stock_score": null,
+        "optimization_circuito_score": -70.17589239524055,
+        "optimization_reparto_score": 15.463448981854906,
+        "optimization_stock_score": -220.55156845181642,
         "reasoning_control": null,
         "reasoning_protocol": null,
         "reasoning_sampling_seed": null,
         "reasoning_levels": [],
-        "optimization_results": [],
+        "optimization_results": [
+          {
+            "challenge": "cajas",
+            "cases": 1,
+            "successful": 0,
+            "feasible_rate": 0.0,
+            "mean_improvement_over_baseline": null,
+            "mean_normalized_score": null,
+            "mean_candidate_objective": null,
+            "mean_baseline_objective": null,
+            "mean_lower_bound": null
+          },
+          {
+            "challenge": "sparks",
+            "cases": 1,
+            "successful": 0,
+            "feasible_rate": 0.0,
+            "mean_improvement_over_baseline": null,
+            "mean_normalized_score": null,
+            "mean_candidate_objective": null,
+            "mean_baseline_objective": null,
+            "mean_lower_bound": null
+          },
+          {
+            "challenge": "circuito",
+            "cases": 1,
+            "successful": 1,
+            "feasible_rate": 1.0,
+            "mean_improvement_over_baseline": -84.78125,
+            "mean_normalized_score": -70.17589239524055,
+            "mean_candidate_objective": 205.59375,
+            "mean_baseline_objective": 120.8125,
+            "mean_lower_bound": 0.0
+          },
+          {
+            "challenge": "reparto",
+            "cases": 1,
+            "successful": 1,
+            "feasible_rate": 1.0,
+            "mean_improvement_over_baseline": 2264.6319999999996,
+            "mean_normalized_score": 15.463448981854906,
+            "mean_candidate_objective": 12380.432,
+            "mean_baseline_objective": 14645.064,
+            "mean_lower_bound": 0.0
+          },
+          {
+            "challenge": "stock",
+            "cases": 1,
+            "successful": 1,
+            "feasible_rate": 1.0,
+            "mean_improvement_over_baseline": -17597.631000000023,
+            "mean_normalized_score": -220.55156845181642,
+            "mean_candidate_objective": 25438.973000000038,
+            "mean_baseline_objective": 7841.342000000017,
+            "mean_lower_bound": -137.577
+          }
+        ],
         "optimization_agentic_results": [],
         "has_measurements": true
       },
