@@ -284,7 +284,31 @@ td:not(:first-child):not(:last-child) { font-family: var(--mono); font-size: .72
   white-space: nowrap;
 }
 .model-heading { display: grid; grid-template-columns: 24px minmax(0, 1fr); align-items: center; gap: 6px; }
-.model-heading > div > span { display: block; margin-top: 2px; color: var(--muted); font: .53rem var(--mono); }
+.model-heading > div > .model-meta {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+  margin-top: 2px;
+  color: var(--muted);
+  font: .53rem var(--mono);
+}
+.model-links { display: inline-flex; flex: none; align-items: center; gap: 3px; }
+.model-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+  padding: 1px 3px;
+  color: #8c98a5;
+  border: 1px solid #343d47;
+  font: 500 .48rem var(--mono);
+  line-height: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.model-link:hover,
+.model-link:focus-visible { color: var(--acid); border-color: var(--acid); outline: 0; }
+.model-link span { color: inherit; font-size: .45rem; }
 .model-toggle,
 .model-toggle-spacer { width: 23px; height: 23px; }
 .model-toggle {

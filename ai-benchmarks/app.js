@@ -36,6 +36,27 @@ const formatPercent = value => value === null || value === undefined
   ? "n/c"
   : `${formatNumber(value * 100, 1)}%`;
 
+function checkpointUrl(checkpoint) {
+  const parts = String(checkpoint ?? "").split("/");
+  if (parts.length !== 2 || parts.some(part => !part)) return null;
+  return `https://huggingface.co/${parts.map(encodeURIComponent).join("/")}`;
+}
+
+function modelLinks(run) {
+  const links = [];
+  const checkpoint = checkpointUrl(run.checkpoint);
+  if (checkpoint) {
+    links.push(`<a class="model-link" href="${escapeHtml(checkpoint)}" target="_blank" rel="noopener noreferrer" title="Open ${escapeHtml(run.checkpoint)} on Hugging Face">HF<span aria-hidden="true">↗</span></a>`);
+  }
+  const publishedRun = state.data.creative_runs.find(item =>
+    item.run_id === run.campaign_id && typeof item.demo_url === "string" && item.demo_url
+  );
+  if (publishedRun) {
+    links.push(`<a class="model-link" href="${escapeHtml(publishedRun.demo_url)}" target="_blank" rel="noopener noreferrer" title="Open the model's benchmark website">web<span aria-hidden="true">↗</span></a>`);
+  }
+  return links.length ? `<span class="model-links">${links.join("")}</span>` : "";
+}
+
 function showDetail(id) {
   const detail = state.details.get(id);
   if (!detail) return;
@@ -372,7 +393,7 @@ function campaignModelRows(run, topology) {
   const oneShotTone = run.optimization_normalized_score < 0 ? "negative" : "positive";
   const agentTone = run.optimization_agentic_normalized_score < 0 ? "negative" : "positive";
   const parent = `<tr class="campaign-row model-summary ${escapeHtml(run.status)}" data-model-group="${escapeHtml(groupKey)}">
-    <td class="model-cell"><div class="model-heading">${toggle}<div><strong>${escapeHtml(run.model)}</strong><span>${escapeHtml(run.quantization ?? "native")} · ${escapeHtml(run.topology)}</span></div></div></td>
+    <td class="model-cell"><div class="model-heading">${toggle}<div><strong>${escapeHtml(run.model)}</strong><span class="model-meta">${escapeHtml(run.quantization ?? "native")} · ${escapeHtml(run.topology)} ${modelLinks(run)}</span></div></div></td>
     <td><span class="row-variant">Campaign</span></td>
     <td><span class="badge ${escapeHtml(run.status)}">${escapeHtml(campaignLabels[run.status] ?? run.status)}</span>${run.provisional ? '<span class="provisional-mark">provisional</span>' : ""}</td>
     <td>${tableDetailButton(run.decode_mean === null || run.decode_mean === undefined ? null : formatNumber(run.decode_mean, 2), runtimeDetail)}</td>
