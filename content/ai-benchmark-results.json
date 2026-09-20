@@ -317,6 +317,29 @@
         "The browser audit reports functional or presentation defects; see the repository evidence before relying on interactive elements."
       ],
       "public_title": "RedHatAI/GLM-5.3-Flash-NVFP4 — Homelab benchmark report"
+    },
+    {
+      "run_id": "nemotron-3-5-lightning-dspark",
+      "model": "nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-NVFP4",
+      "checkpoint": "nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-NVFP4",
+      "quantization": "NVFP4",
+      "topology": "1× DGX Spark · TP1",
+      "agent_seconds": 2162.292,
+      "total_seconds": 2197.412,
+      "timed_out": false,
+      "decode_mean": 53.405302650942886,
+      "decode_stddev": 1.778575391174589,
+      "host_used_gib": 102.51,
+      "host_available_gib": 19.18,
+      "verification": "failed",
+      "code_url": "https://github.com/RicardoHS/ai-eval-web-20260915-nemotron-3-5-lightning-dspark-r01",
+      "demo_url": "https://ricardohs.github.io/ai-eval-web-20260915-nemotron-3-5-lightning-dspark-r01/",
+      "summary": "The evaluated agent completed this explanatory site and its static build, but the objective browser audit failed. It is published unchanged as benchmark evidence, not presented as a passing delivery.",
+      "limitations": [
+        "The website is an evaluated model output; benchmark measurements remain authoritative over any prose interpretation in the site.",
+        "The browser audit reports functional or presentation defects; see the repository evidence before relying on interactive elements."
+      ],
+      "public_title": "nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-NVFP4 — Homelab benchmark report"
     }
   ],
   "optimization_smoke": [
