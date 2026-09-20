@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "title": "Homelab AI Benchmarks",
-  "updated_at": "2026-09-20T16:53:02.331682+00:00",
+  "updated_at": "2026-09-20T17:00:02.576645+00:00",
   "status": "preliminary",
   "hardware": "1× NVIDIA DGX Spark (GB10, 128 GiB unified memory) per creative run",
   "protocol": {
@@ -294,6 +294,29 @@
         "The website is an evaluated model output; benchmark measurements remain authoritative over any prose interpretation in the site."
       ],
       "public_title": "deepseek-ai/DeepSeek-V4-Flash-Vision-Exp — Homelab benchmark report"
+    },
+    {
+      "run_id": "glm-5-3-flash-dflash2",
+      "model": "RedHatAI/GLM-5.3-Flash-NVFP4",
+      "checkpoint": "RedHatAI/GLM-5.3-Flash-NVFP4",
+      "quantization": "NVFP4",
+      "topology": "2× DGX Spark · TP2",
+      "agent_seconds": 1822.985,
+      "total_seconds": 1868.507,
+      "timed_out": false,
+      "decode_mean": 12.482638513510778,
+      "decode_stddev": 1.2175726236055562,
+      "host_used_gib": 230.25,
+      "host_available_gib": 13.13,
+      "verification": "failed",
+      "code_url": "https://github.com/RicardoHS/ai-eval-web-20260918-glm-5-3-flash-dflash2-r01",
+      "demo_url": "https://ricardohs.github.io/ai-eval-web-20260918-glm-5-3-flash-dflash2-r01/",
+      "summary": "The evaluated agent completed this explanatory site and its static build, but the objective browser audit failed. It is published unchanged as benchmark evidence, not presented as a passing delivery.",
+      "limitations": [
+        "The website is an evaluated model output; benchmark measurements remain authoritative over any prose interpretation in the site.",
+        "The browser audit reports functional or presentation defects; see the repository evidence before relying on interactive elements."
+      ],
+      "public_title": "RedHatAI/GLM-5.3-Flash-NVFP4 — Homelab benchmark report"
     }
   ],
   "optimization_smoke": [
@@ -370,7 +393,7 @@
   "campaign": {
     "campaign_id": "coding-agentic-models-r01",
     "status": "running",
-    "generated_at": "2026-09-20T16:53:02.331682+00:00",
+    "generated_at": "2026-09-20T17:00:02.576645+00:00",
     "counts": {
       "complete": 19,
       "queued": 3,
