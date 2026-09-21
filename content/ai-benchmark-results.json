@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "title": "Homelab AI Benchmarks",
-  "updated_at": "2026-09-21T15:29:26.043995+00:00",
+  "updated_at": "2026-09-21T15:39:26.302375+00:00",
   "status": "preliminary",
   "hardware": "1× NVIDIA DGX Spark (GB10, 128 GiB unified memory) per creative run",
   "protocol": {
@@ -508,7 +508,7 @@
   "campaign": {
     "campaign_id": "coding-agentic-models-r01",
     "status": "running",
-    "generated_at": "2026-09-21T15:29:26.043995+00:00",
+    "generated_at": "2026-09-21T15:39:26.302375+00:00",
     "counts": {
       "complete": 13,
       "infrastructure-failed": 2,
@@ -3066,8 +3066,8 @@
             "feasible_rate": 0.68,
             "mean_normalized_score": 57.3352928369552,
             "mean_improvement_over_baseline": 29740.301588235292,
-            "mean_candidate_objective": 23536.213882352942,
-            "mean_baseline_objective": 53276.51547058824,
+            "mean_candidate_objective": 15548.33762,
+            "mean_baseline_objective": 107957.66720000001,
             "mean_lower_bound": 0.0
           },
           {
