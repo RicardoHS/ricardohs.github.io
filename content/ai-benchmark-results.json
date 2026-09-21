@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "title": "Homelab AI Benchmarks",
-  "updated_at": "2026-09-21T08:13:56.626970+00:00",
+  "updated_at": "2026-09-21T08:17:56.777599+00:00",
   "status": "preliminary",
   "hardware": "1× NVIDIA DGX Spark (GB10, 128 GiB unified memory) per creative run",
   "protocol": {
@@ -340,6 +340,29 @@
         "The browser audit reports functional or presentation defects; see the repository evidence before relying on interactive elements."
       ],
       "public_title": "nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-NVFP4 — Homelab benchmark report"
+    },
+    {
+      "run_id": "deepseek-v4-1-flash-mia-exl3",
+      "model": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "checkpoint": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "quantization": "EXL3",
+      "topology": "2× DGX Spark · TP2",
+      "agent_seconds": 2561.873,
+      "total_seconds": 2562.253,
+      "timed_out": false,
+      "decode_mean": 10.276025716334644,
+      "decode_stddev": 0.30211868564889016,
+      "host_used_gib": 227.78,
+      "host_available_gib": 15.6,
+      "verification": "failed",
+      "code_url": "https://github.com/RicardoHS/ai-eval-web-20260921-deepseek-v4-1-flash-mia-exl3-r01",
+      "demo_url": "https://ricardohs.github.io/ai-eval-web-20260921-deepseek-v4-1-flash-mia-exl3-r01/",
+      "summary": "The evaluated agent produced a safely renderable static site, but the objective delivery contract did not pass in full. It is published unchanged as benchmark evidence, not presented as a passing delivery.",
+      "limitations": [
+        "The website is an evaluated model output; benchmark measurements remain authoritative over any prose interpretation in the site.",
+        "The delivery may be missing required documentation, social-preview assets, or objective browser checks; consult the repository evidence before relying on it as a complete submission."
+      ],
+      "public_title": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw — Homelab benchmark report"
     }
   ],
   "optimization_smoke": [
@@ -416,7 +439,7 @@
   "campaign": {
     "campaign_id": "coding-agentic-models-r01",
     "status": "running",
-    "generated_at": "2026-09-21T08:13:56.626970+00:00",
+    "generated_at": "2026-09-21T08:17:56.777599+00:00",
     "counts": {
       "complete": 21,
       "infrastructure-failed": 2,
