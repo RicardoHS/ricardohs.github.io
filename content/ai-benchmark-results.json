@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "title": "Homelab AI Benchmarks",
-  "updated_at": "2026-09-21T21:39:35.534456+00:00",
+  "updated_at": "2026-09-21T21:49:35.768734+00:00",
   "status": "preliminary",
   "hardware": "1× NVIDIA DGX Spark (GB10, 128 GiB unified memory) per creative run",
   "protocol": {
@@ -508,12 +508,12 @@
   "campaign": {
     "campaign_id": "coding-agentic-models-r01",
     "status": "running",
-    "generated_at": "2026-09-21T21:39:35.534456+00:00",
+    "generated_at": "2026-09-21T21:49:35.768734+00:00",
     "counts": {
-      "complete": 17,
+      "complete": 19,
       "infrastructure-failed": 3,
-      "queued": 2,
-      "running": 2
+      "queued": 1,
+      "running": 1
     },
     "notes": [
       "Running rows are provisional snapshots and show the number of ARC tasks observed at publication time.",
@@ -6127,11 +6127,11 @@
           "reasoning",
           "vision"
         ],
-        "status": "running",
-        "provisional": true,
+        "status": "complete",
+        "provisional": false,
         "started_at": "2026-09-16T06:21:33.059500+00:00",
-        "ended_at": "2026-09-18T22:14:12.669960+00:00",
-        "wall_seconds": 229959.61,
+        "ended_at": "2026-09-21T21:46:02.286495+00:00",
+        "wall_seconds": 487469.227,
         "host_used_gib": 106.23,
         "host_available_gib": 15.46,
         "arc_agentic_tasks": null,
@@ -7220,13 +7220,13 @@
           "reasoning",
           "vision"
         ],
-        "status": "running",
-        "provisional": true,
+        "status": "complete",
+        "provisional": false,
         "started_at": "2026-09-13T01:50:38.730360+00:00",
-        "ended_at": "2026-09-17T15:43:29.529213+00:00",
-        "wall_seconds": 395570.799,
-        "host_used_gib": 88.1,
-        "host_available_gib": 33.59,
+        "ended_at": "2026-09-21T21:44:42.114704+00:00",
+        "wall_seconds": 762843.384,
+        "host_used_gib": 117.38,
+        "host_available_gib": 4.31,
         "arc_agentic_tasks": null,
         "arc_agentic_target_tasks": null,
         "arc_agentic_exact": null,
@@ -7691,7 +7691,7 @@
           "reasoning",
           "long-context"
         ],
-        "status": "queued",
+        "status": "running",
         "provisional": true,
         "started_at": "2026-09-06T09:44:41.943508+00:00",
         "ended_at": "2026-09-16T11:32:25.020154+00:00",
