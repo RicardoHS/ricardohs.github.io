@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "title": "Homelab AI Benchmarks",
-  "updated_at": "2026-09-21T14:39:24.856037+00:00",
+  "updated_at": "2026-09-21T14:49:25.074561+00:00",
   "status": "preliminary",
   "hardware": "1× NVIDIA DGX Spark (GB10, 128 GiB unified memory) per creative run",
   "protocol": {
@@ -508,11 +508,11 @@
   "campaign": {
     "campaign_id": "coding-agentic-models-r01",
     "status": "running",
-    "generated_at": "2026-09-21T14:39:24.856037+00:00",
+    "generated_at": "2026-09-21T14:49:25.074561+00:00",
     "counts": {
-      "complete": 12,
+      "complete": 13,
       "infrastructure-failed": 2,
-      "queued": 8,
+      "queued": 7,
       "running": 2
     },
     "notes": [
@@ -3108,13 +3108,13 @@
           "vision",
           "long-context"
         ],
-        "status": "running",
-        "provisional": true,
+        "status": "complete",
+        "provisional": false,
         "started_at": "2026-09-09T07:15:43.568073+00:00",
-        "ended_at": "2026-09-15T10:26:06.300206+00:00",
-        "wall_seconds": 529822.732,
-        "host_used_gib": 95.39,
-        "host_available_gib": 26.3,
+        "ended_at": "2026-09-21T14:41:49.233929+00:00",
+        "wall_seconds": 1063565.666,
+        "host_used_gib": 105.69,
+        "host_available_gib": 16.0,
         "arc_agentic_tasks": 120,
         "arc_agentic_target_tasks": 120,
         "arc_agentic_exact": 0,
@@ -4108,13 +4108,13 @@
           "long-context",
           "high-memory-efficiency"
         ],
-        "status": "queued",
+        "status": "running",
         "provisional": true,
         "started_at": "2026-09-19T21:52:59.511800+00:00",
         "ended_at": "2026-09-21T05:56:04.083928+00:00",
         "wall_seconds": 115384.572,
-        "host_used_gib": 104.97,
-        "host_available_gib": 16.72,
+        "host_used_gib": 40.78,
+        "host_available_gib": 80.91,
         "arc_agentic_tasks": null,
         "arc_agentic_target_tasks": null,
         "arc_agentic_exact": null,
