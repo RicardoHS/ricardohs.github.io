@@ -5,8 +5,8 @@ const state = {
   sort: "speed",
   showIncomplete: true,
   campaignSort: {
-    single: { key: "decode_mean", direction: "desc" },
-    dual: { key: "decode_mean", direction: "desc" },
+    single: { key: "optimization_agentic_feasible_rate", direction: "desc" },
+    dual: { key: "optimization_agentic_feasible_rate", direction: "desc" },
   },
   collapsedModels: new Set(),
   details: new Map(),
@@ -354,9 +354,22 @@ function campaignModelRows(run, topology) {
     ],
   };
   const agentDetail = {
-    kicker: `${run.model} · agentic optimization`, title: "Build, verify and iterate",
-    summary: "Pi implemented five solvers, iterated against bounded development feedback and was evaluated on disjoint private cases.",
+    kicker: `${run.model} · agentic optimization`,
+    title: run.decisive_final_rank ? `Decisive final · rank #${run.decisive_final_rank}` : "Build, verify and iterate",
+    summary: run.decisive_final_rank
+      ? "Frozen high-budget final: three independent runs across five challenges. Missing solvers count as failures in the scheduled-case denominator."
+      : "Pi implemented five solvers, iterated against bounded development feedback and was evaluated on disjoint private cases.",
     values: [
+      ...(run.decisive_final_rank ? [
+        { label: "Final rank", value: `#${run.decisive_final_rank}${run.decisive_final_winner ? " · overall winner" : ""}` },
+        { label: "Protocol", value: run.optimization_agentic_protocol },
+        { label: "Independent repetitions", value: formatNumber(run.optimization_agentic_repetitions, 0) },
+        { label: "Solved / scheduled cases", value: `${formatNumber(run.optimization_agentic_hidden_successful, 0)} / ${formatNumber(run.optimization_agentic_hidden_cases, 0)}` },
+        { label: "Cases reached by a solver", value: formatNumber(run.optimization_agentic_evaluated_cases, 0) },
+        { label: "Repeat feasibility sd", value: formatPercent(run.optimization_agentic_feasible_stddev) },
+        { label: "Repeat score sd", value: formatNumber(run.optimization_agentic_score_stddev, 4) },
+        { label: "Tokens / successful case", value: formatNumber(run.optimization_agentic_tokens_per_successful_case, 2) },
+      ] : []),
       { label: "Private macro feasibility", value: formatPercent(run.optimization_agentic_feasible_rate) },
       { label: "Private macro score", value: formatNumber(run.optimization_agentic_normalized_score, 4) },
       { label: "Model / tool calls", value: `${formatNumber(run.optimization_agentic_model_calls, 0)} / ${formatNumber(run.optimization_agentic_tool_calls, 0)}` },
@@ -392,9 +405,9 @@ function campaignModelRows(run, topology) {
     : '<span class="model-toggle-spacer" aria-hidden="true"></span>';
   const oneShotTone = run.optimization_normalized_score < 0 ? "negative" : "positive";
   const agentTone = run.optimization_agentic_normalized_score < 0 ? "negative" : "positive";
-  const parent = `<tr class="campaign-row model-summary ${escapeHtml(run.status)}" data-model-group="${escapeHtml(groupKey)}">
+  const parent = `<tr class="campaign-row model-summary ${escapeHtml(run.status)}${run.decisive_final_winner ? " decisive-winner" : ""}" data-model-group="${escapeHtml(groupKey)}">
     <td class="model-cell"><div class="model-heading">${toggle}<div><strong>${escapeHtml(run.model)}</strong><span class="model-meta">${escapeHtml(run.quantization ?? "native")} · ${escapeHtml(run.topology)} ${modelLinks(run)}</span></div></div></td>
-    <td><span class="row-variant">Campaign</span></td>
+    <td><span class="row-variant">${run.decisive_final_rank ? `Final #${run.decisive_final_rank}` : "Campaign"}</span></td>
     <td><span class="badge ${escapeHtml(run.status)}">${escapeHtml(campaignLabels[run.status] ?? run.status)}</span>${run.provisional ? '<span class="provisional-mark">provisional</span>' : ""}</td>
     <td>${tableDetailButton(run.decode_mean === null || run.decode_mean === undefined ? null : formatNumber(run.decode_mean, 2), runtimeDetail)}</td>
     <td>${tableDetailButton(run.host_used_gib === null || run.host_used_gib === undefined ? null : formatNumber(run.host_used_gib, 1), runtimeDetail)}</td>
@@ -456,9 +469,29 @@ function renderCampaign() {
   state.detailSequence = 0;
   const campaign = state.data.campaign;
   if (!campaign) {
+    document.querySelector("#decisive-final").hidden = true;
     document.querySelector("#campaign-counts").innerHTML = '<p class="empty-state">No campaign snapshot published yet.</p>';
     document.querySelector("#campaign-tables").innerHTML = '<p class="empty-state">No campaign snapshot published yet.</p>';
     return;
+  }
+  const final = campaign.decisive_final;
+  const finalElement = document.querySelector("#decisive-final");
+  if (final) {
+    const winner = campaign.models.find(model => model.campaign_id === final.winner);
+    finalElement.hidden = false;
+    finalElement.innerHTML = `<div class="winner-rank">#1<span>Decisive final winner</span></div>
+      <div><p class="eyebrow">${escapeHtml(final.protocol_id)}</p>
+        <h3>${escapeHtml(winner?.model ?? final.winner)}</h3>
+        <p>Ranked by hidden-case feasibility, then conditional solution quality, then tokens per successful case.</p>
+        <dl>
+          <div><dt>Feasibility</dt><dd>${formatPercent(winner?.optimization_agentic_feasible_rate)}</dd></div>
+          <div><dt>Solved</dt><dd>${formatNumber(winner?.optimization_agentic_hidden_successful, 0)} / ${formatNumber(winner?.optimization_agentic_hidden_cases, 0)}</dd></div>
+          <div><dt>Tokens / success</dt><dd>${formatNumber(winner?.optimization_agentic_tokens_per_successful_case, 0)}</dd></div>
+        </dl>
+      </div>`;
+  } else {
+    finalElement.hidden = true;
+    finalElement.innerHTML = "";
   }
   document.querySelector("#campaign-counts").innerHTML = Object.entries(campaign.counts)
     .map(([status, count]) => `<div class="campaign-count ${escapeHtml(status)}"><strong>${count}</strong><span>${escapeHtml(campaignLabels[status] ?? status)}</span></div>`)
